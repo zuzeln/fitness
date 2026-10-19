@@ -7,34 +7,16 @@
   <meta name="description" content="邹泽霖 (Ethan) 的个人主页 - 私人健身教练与健康管理师。" />
   <style>
     :root {
-      /* Apple 视觉平衡体系 - 雾感弥散与胶片微噪点设计系统 (Design Tokens) */
-      --bg-dark: #080b11;
-      --bg-surface: #0e1320;
-      --bg-card: rgba(16, 21, 32, 0.65);
-      --bg-card-hover: rgba(22, 28, 44, 0.78);
-      --bg-card-inner: rgba(255, 255, 255, 0.025);
+      /* Apple 视觉平衡体系 - 设计系统变量 (Design Tokens) */
+      --bg-dark: #090c13;
+      --bg-surface: #0e131f;
+      --bg-card: rgba(18, 23, 33, 0.85);
+      --bg-card-hover: rgba(24, 30, 44, 0.95);
+      --bg-card-inner: rgba(255, 255, 255, 0.035);
 
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.22);
+      --border-hover: rgba(255, 255, 255, 0.18);
       --border-active: rgba(56, 155, 255, 0.35);
-      --border-glass-specular: rgba(255, 255, 255, 0.13);
-
-      --item-card-bg: rgba(255, 255, 255, 0.025);
-      --item-card-border: rgba(255, 255, 255, 0.08);
-      --item-card-hover-bg: rgba(255, 255, 255, 0.06);
-      --item-card-hover-border: rgba(255, 255, 255, 0.22);
-
-      --badge-bg: rgba(255, 255, 255, 0.05);
-      --badge-border: rgba(255, 255, 255, 0.18);
-
-      --tag-pill-bg: rgba(255, 255, 255, 0.045);
-      --tag-pill-border: rgba(255, 255, 255, 0.14);
-      --tag-pill-hover-bg: rgba(255, 255, 255, 0.09);
-      --tag-pill-hover-border: rgba(255, 255, 255, 0.3);
-
-      --copy-btn-bg: rgba(255, 255, 255, 0.07);
-      --copy-btn-border: rgba(255, 255, 255, 0.18);
-      --copy-btn-hover-bg: rgba(255, 255, 255, 0.15);
 
       --candy-orange: #FF9A45;
       --candy-green: #4FD6A0;
@@ -61,283 +43,9 @@
       --radius-squircle: 16px;
       --radius-pill: 9999px;
 
-      --shadow-card: 0 24px 60px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 20px rgba(255, 255, 255, 0.015);
-      --shadow-hover: 0 32px 70px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+      --shadow-card: 0 4px 24px -1px rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.6);
       --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-
-      --grain-opacity: 0.045;
-      --grain-blend: screen;
-      --orb-1-bg: radial-gradient(circle, rgba(235, 150, 95, 0.12) 0%, rgba(200, 110, 80, 0.04) 50%, transparent 70%);
-      --orb-2-bg: radial-gradient(circle, rgba(120, 175, 255, 0.11) 0%, rgba(160, 130, 240, 0.04) 50%, transparent 70%);
-
-      --modal-overlay-bg: rgba(0, 0, 0, 0.8);
-      --modal-bg: rgba(16, 21, 32, 0.88);
-      --modal-border: rgba(255, 255, 255, 0.18);
-      --modal-title-color: #ffffff;
-      --modal-close-bg: rgba(255, 255, 255, 0.08);
-
-      --avatar-border: rgba(255, 255, 255, 0.28);
-      --avatar-bg: #111622;
-      --cert-img-box-bg: rgba(255, 255, 255, 0.025);
-      --cert-img-box-border: rgba(255, 255, 255, 0.05);
-
-      --section-tag-bg: rgba(127, 180, 255, 0.08);
-      --section-tag-border: rgba(127, 180, 255, 0.28);
-      --section-tag-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 0 2px 10px rgba(0, 0, 0, 0.2);
-
-      --timeline-badge-bg: rgba(255, 154, 69, 0.1);
-      --timeline-badge-border: rgba(255, 154, 69, 0.2);
-
-      --icon-orange-bg: rgba(255, 154, 69, 0.12);
-      --icon-green-bg: rgba(79, 214, 160, 0.12);
-      --icon-blue-bg: rgba(127, 180, 255, 0.12);
-      --icon-purple-bg: rgba(194, 155, 255, 0.12);
-      --icon-amber-bg: rgba(245, 196, 83, 0.12);
-    }
-
-    /* System Light Mode: 自动跟随系统级浅色外观 */
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) {
-        --bg-dark: #f1f4f9;
-        --bg-surface: #ffffff;
-        --bg-card: rgba(255, 255, 255, 0.74);
-        --bg-card-hover: rgba(255, 255, 255, 0.92);
-        --bg-card-inner: rgba(0, 0, 0, 0.02);
-
-        --border-subtle: rgba(0, 0, 0, 0.06);
-        --border-hover: rgba(0, 0, 0, 0.16);
-        --border-active: rgba(2, 132, 199, 0.35);
-        --border-glass-specular: rgba(255, 255, 255, 0.92);
-
-        --item-card-bg: rgba(255, 255, 255, 0.58);
-        --item-card-border: rgba(0, 0, 0, 0.06);
-        --item-card-hover-bg: rgba(255, 255, 255, 0.92);
-        --item-card-hover-border: rgba(0, 0, 0, 0.12);
-
-        --badge-bg: rgba(255, 255, 255, 0.72);
-        --badge-border: rgba(0, 0, 0, 0.08);
-
-        --tag-pill-bg: rgba(0, 0, 0, 0.04);
-        --tag-pill-border: rgba(0, 0, 0, 0.08);
-        --tag-pill-hover-bg: rgba(0, 0, 0, 0.08);
-        --tag-pill-hover-border: rgba(0, 0, 0, 0.18);
-
-        --copy-btn-bg: rgba(0, 0, 0, 0.04);
-        --copy-btn-border: rgba(0, 0, 0, 0.1);
-        --copy-btn-hover-bg: rgba(0, 0, 0, 0.08);
-
-        --candy-orange: #EA580C;
-        --candy-green: #0D9488;
-        --candy-pink: #E11D48;
-        --candy-blue: #0284C7;
-        --candy-purple: #7C3AED;
-        --candy-amber: #D97706;
-
-        --grad-orange: linear-gradient(135deg, #FB923C, #EA580C);
-        --grad-green: linear-gradient(135deg, #2DD4BF, #0D9488);
-        --grad-pink: linear-gradient(135deg, #F43F5E, #E11D48);
-        --grad-blue: linear-gradient(135deg, #38BDF8, #0284C7);
-        --grad-purple: linear-gradient(135deg, #A855F7, #7C3AED);
-        --grad-amber: linear-gradient(135deg, #FBBF24, #D97706);
-
-        --text-main: #0f172a;
-        --text-muted: #475569;
-        --text-dim: #94a3b8;
-
-        --shadow-card: 0 16px 45px -10px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-        --shadow-hover: 0 24px 55px -10px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff;
-
-        --grain-opacity: 0.028;
-        --grain-blend: multiply;
-        --orb-1-bg: radial-gradient(circle, rgba(251, 146, 60, 0.22) 0%, rgba(249, 115, 22, 0.06) 50%, transparent 70%);
-        --orb-2-bg: radial-gradient(circle, rgba(56, 189, 248, 0.20) 0%, rgba(129, 140, 248, 0.06) 50%, transparent 70%);
-
-        --modal-overlay-bg: rgba(15, 23, 42, 0.45);
-        --modal-bg: rgba(255, 255, 255, 0.95);
-        --modal-border: rgba(0, 0, 0, 0.1);
-        --modal-title-color: #0f172a;
-        --modal-close-bg: rgba(0, 0, 0, 0.06);
-
-        --avatar-border: rgba(0, 0, 0, 0.12);
-        --avatar-bg: #e2e8f0;
-        --cert-img-box-bg: rgba(255, 255, 255, 0.85);
-        --cert-img-box-border: rgba(0, 0, 0, 0.06);
-
-        --section-tag-bg: rgba(2, 132, 199, 0.08);
-        --section-tag-border: rgba(2, 132, 199, 0.25);
-        --section-tag-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 2px 6px rgba(15, 23, 42, 0.05);
-
-        --timeline-badge-bg: rgba(234, 88, 12, 0.08);
-        --timeline-badge-border: rgba(234, 88, 12, 0.2);
-
-        --icon-orange-bg: rgba(234, 88, 12, 0.1);
-        --icon-green-bg: rgba(13, 148, 136, 0.1);
-        --icon-blue-bg: rgba(2, 132, 199, 0.1);
-        --icon-purple-bg: rgba(124, 58, 237, 0.1);
-        --icon-amber-bg: rgba(217, 119, 6, 0.1);
-      }
-    }
-
-    /* Manual Light Override (用户手动选择浅色模式) */
-    :root[data-theme="light"] {
-      --bg-dark: #f1f4f9;
-      --bg-surface: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.74);
-      --bg-card-hover: rgba(255, 255, 255, 0.92);
-      --bg-card-inner: rgba(0, 0, 0, 0.02);
-
-      --border-subtle: rgba(0, 0, 0, 0.06);
-      --border-hover: rgba(0, 0, 0, 0.16);
-      --border-active: rgba(2, 132, 199, 0.35);
-      --border-glass-specular: rgba(255, 255, 255, 0.92);
-
-      --item-card-bg: rgba(255, 255, 255, 0.58);
-      --item-card-border: rgba(0, 0, 0, 0.06);
-      --item-card-hover-bg: rgba(255, 255, 255, 0.92);
-      --item-card-hover-border: rgba(0, 0, 0, 0.12);
-
-      --badge-bg: rgba(255, 255, 255, 0.72);
-      --badge-border: rgba(0, 0, 0, 0.08);
-
-      --tag-pill-bg: rgba(0, 0, 0, 0.04);
-      --tag-pill-border: rgba(0, 0, 0, 0.08);
-      --tag-pill-hover-bg: rgba(0, 0, 0, 0.08);
-      --tag-pill-hover-border: rgba(0, 0, 0, 0.18);
-
-      --copy-btn-bg: rgba(0, 0, 0, 0.04);
-      --copy-btn-border: rgba(0, 0, 0, 0.1);
-      --copy-btn-hover-bg: rgba(0, 0, 0, 0.08);
-
-      --candy-orange: #EA580C;
-      --candy-green: #0D9488;
-      --candy-pink: #E11D48;
-      --candy-blue: #0284C7;
-      --candy-purple: #7C3AED;
-      --candy-amber: #D97706;
-
-      --grad-orange: linear-gradient(135deg, #FB923C, #EA580C);
-      --grad-green: linear-gradient(135deg, #2DD4BF, #0D9488);
-      --grad-pink: linear-gradient(135deg, #F43F5E, #E11D48);
-      --grad-blue: linear-gradient(135deg, #38BDF8, #0284C7);
-      --grad-purple: linear-gradient(135deg, #A855F7, #7C3AED);
-      --grad-amber: linear-gradient(135deg, #FBBF24, #D97706);
-
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --text-dim: #94a3b8;
-
-      --shadow-card: 0 16px 45px -10px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-      --shadow-hover: 0 24px 55px -10px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff;
-
-      --grain-opacity: 0.028;
-      --grain-blend: multiply;
-      --orb-1-bg: radial-gradient(circle, rgba(251, 146, 60, 0.22) 0%, rgba(249, 115, 22, 0.06) 50%, transparent 70%);
-      --orb-2-bg: radial-gradient(circle, rgba(56, 189, 248, 0.20) 0%, rgba(129, 140, 248, 0.06) 50%, transparent 70%);
-
-      --modal-overlay-bg: rgba(15, 23, 42, 0.45);
-      --modal-bg: rgba(255, 255, 255, 0.95);
-      --modal-border: rgba(0, 0, 0, 0.1);
-      --modal-title-color: #0f172a;
-      --modal-close-bg: rgba(0, 0, 0, 0.06);
-
-      --avatar-border: rgba(0, 0, 0, 0.12);
-      --avatar-bg: #e2e8f0;
-      --cert-img-box-bg: rgba(255, 255, 255, 0.85);
-      --cert-img-box-border: rgba(0, 0, 0, 0.06);
-
-      --section-tag-bg: rgba(2, 132, 199, 0.08);
-      --section-tag-border: rgba(2, 132, 199, 0.25);
-      --section-tag-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 2px 6px rgba(15, 23, 42, 0.05);
-
-      --timeline-badge-bg: rgba(234, 88, 12, 0.08);
-      --timeline-badge-border: rgba(234, 88, 12, 0.2);
-
-      --icon-orange-bg: rgba(234, 88, 12, 0.1);
-      --icon-green-bg: rgba(13, 148, 136, 0.1);
-      --icon-blue-bg: rgba(2, 132, 199, 0.1);
-      --icon-purple-bg: rgba(124, 58, 237, 0.1);
-      --icon-amber-bg: rgba(217, 119, 6, 0.1);
-    }
-
-    /* Manual Dark Override (用户手动选择深色模式) */
-    :root[data-theme="dark"] {
-      --bg-dark: #080b11;
-      --bg-surface: #0e1320;
-      --bg-card: rgba(16, 21, 32, 0.65);
-      --bg-card-hover: rgba(22, 28, 44, 0.78);
-      --bg-card-inner: rgba(255, 255, 255, 0.025);
-
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.22);
-      --border-active: rgba(56, 155, 255, 0.35);
-      --border-glass-specular: rgba(255, 255, 255, 0.13);
-
-      --item-card-bg: rgba(255, 255, 255, 0.025);
-      --item-card-border: rgba(255, 255, 255, 0.08);
-      --item-card-hover-bg: rgba(255, 255, 255, 0.06);
-      --item-card-hover-border: rgba(255, 255, 255, 0.22);
-
-      --badge-bg: rgba(255, 255, 255, 0.05);
-      --badge-border: rgba(255, 255, 255, 0.18);
-
-      --tag-pill-bg: rgba(255, 255, 255, 0.045);
-      --tag-pill-border: rgba(255, 255, 255, 0.14);
-      --tag-pill-hover-bg: rgba(255, 255, 255, 0.09);
-      --tag-pill-hover-border: rgba(255, 255, 255, 0.3);
-
-      --copy-btn-bg: rgba(255, 255, 255, 0.07);
-      --copy-btn-border: rgba(255, 255, 255, 0.18);
-      --copy-btn-hover-bg: rgba(255, 255, 255, 0.15);
-
-      --candy-orange: #FF9A45;
-      --candy-green: #4FD6A0;
-      --candy-pink: #FF7E9D;
-      --candy-blue: #7FB4FF;
-      --candy-purple: #C29BFF;
-      --candy-amber: #F5C453;
-
-      --grad-orange: linear-gradient(135deg, #FF9A45, #E2620C);
-      --grad-green: linear-gradient(135deg, #4FD6A0, #0E7C63);
-      --grad-pink: linear-gradient(135deg, #FF7E9D, #C7365A);
-      --grad-blue: linear-gradient(135deg, #7FB4FF, #2F6FD0);
-      --grad-purple: linear-gradient(135deg, #C29BFF, #8A4BD1);
-      --grad-amber: linear-gradient(135deg, #F5C453, #D49B00);
-
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-
-      --shadow-card: 0 24px 60px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 20px rgba(255, 255, 255, 0.015);
-      --shadow-hover: 0 32px 70px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-
-      --grain-opacity: 0.045;
-      --grain-blend: screen;
-      --orb-1-bg: radial-gradient(circle, rgba(235, 150, 95, 0.12) 0%, rgba(200, 110, 80, 0.04) 50%, transparent 70%);
-      --orb-2-bg: radial-gradient(circle, rgba(120, 175, 255, 0.11) 0%, rgba(160, 130, 240, 0.04) 50%, transparent 70%);
-
-      --modal-overlay-bg: rgba(0, 0, 0, 0.8);
-      --modal-bg: rgba(16, 21, 32, 0.88);
-      --modal-border: rgba(255, 255, 255, 0.18);
-      --modal-title-color: #ffffff;
-      --modal-close-bg: rgba(255, 255, 255, 0.08);
-
-      --avatar-border: rgba(255, 255, 255, 0.28);
-      --avatar-bg: #111622;
-      --cert-img-box-bg: rgba(255, 255, 255, 0.025);
-      --cert-img-box-border: rgba(255, 255, 255, 0.05);
-
-      --section-tag-bg: rgba(127, 180, 255, 0.08);
-      --section-tag-border: rgba(127, 180, 255, 0.28);
-      --section-tag-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), 0 2px 10px rgba(0, 0, 0, 0.2);
-
-      --timeline-badge-bg: rgba(255, 154, 69, 0.1);
-      --timeline-badge-border: rgba(255, 154, 69, 0.2);
-
-      --icon-orange-bg: rgba(255, 154, 69, 0.12);
-      --icon-green-bg: rgba(79, 214, 160, 0.12);
-      --icon-blue-bg: rgba(127, 180, 255, 0.12);
-      --icon-purple-bg: rgba(194, 155, 255, 0.12);
-      --icon-amber-bg: rgba(245, 196, 83, 0.12);
     }
 
     * {
@@ -357,46 +65,18 @@
       overflow-x: hidden;
     }
 
-    /* Ambient background glow 1: top-left warm greige/terracotta aura */
+    /* Ambient background glow */
     body::before {
       content: "";
       position: fixed;
-      top: -120px;
-      left: 12%;
-      width: 750px;
-      height: 750px;
-      border-radius: 50%;
-      background: var(--orb-1-bg);
-      filter: blur(90px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Ambient background glow 2: mid-right cool slate/indigo aura */
-    .ambient-orb-2 {
-      position: fixed;
-      top: 380px;
-      right: 5%;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: var(--orb-2-bg);
-      filter: blur(100px);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Tactile Film Grain Overlay (胶片微噪点颗粒) */
-    .grain-overlay {
-      position: fixed;
-      inset: 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100vw;
-      height: 100vh;
+      height: 600px;
+      background: radial-gradient(circle at 50% 0%, rgba(127, 180, 255, 0.12), transparent 60%);
       pointer-events: none;
-      z-index: 99;
-      opacity: var(--grain-opacity);
-      mix-blend-mode: var(--grain-blend);
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index: 0;
     }
 
     .container {
@@ -413,13 +93,6 @@
       align-items: center;
       margin-bottom: 32px;
       padding: 0 4px;
-      gap: 12px;
-    }
-
-    .top-bar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .badge-glass {
@@ -427,75 +100,14 @@
       align-items: center;
       gap: 8px;
       padding: 8px 16px;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.25),
-        0 4px 16px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Apple 质感胶囊外观切换器 (Segmented Theme Pill) */
-    .theme-toggle-pill {
-      display: inline-flex;
-      align-items: center;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      border-radius: var(--radius-pill);
-      padding: 3px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.25),
-        0 4px 16px rgba(0, 0, 0, 0.1);
-      gap: 2px;
-    }
-
-    .theme-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 5px 11px;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      border-radius: var(--radius-pill);
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      user-select: none;
-    }
-
-    .theme-btn svg {
-      width: 13px;
-      height: 13px;
-      stroke-width: 2;
-      flex-shrink: 0;
-    }
-
-    .theme-btn:hover {
-      color: var(--text-main);
-    }
-
-    .theme-btn.active {
-      background: rgba(255, 255, 255, 0.16);
-      color: var(--text-main);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-    }
-
-    :root[data-theme="light"] .theme-btn.active,
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme="dark"]) .theme-btn.active {
-        background: #ffffff;
-        color: var(--text-main);
-        box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12), inset 0 1px 1px #ffffff;
-      }
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
     .status-dot {
@@ -515,9 +127,9 @@
 
     .card {
       background: var(--bg-card);
-      backdrop-filter: blur(36px) saturate(145%);
-      -webkit-backdrop-filter: blur(36px) saturate(145%);
-      border: 1px solid var(--border-glass-specular);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-card);
       padding: 32px;
       box-shadow: var(--shadow-card);
@@ -530,7 +142,7 @@
       background: var(--bg-card-hover);
       transform: translateY(-3px);
       box-shadow: var(--shadow-hover);
-      border-color: rgba(255, 255, 255, 0.22);
+      border-color: var(--border-hover);
     }
 
     /* Grid Spans */
@@ -546,19 +158,16 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 14px;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 12px;
-      background: var(--section-tag-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--section-tag-border);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
       color: var(--candy-blue);
-      box-shadow: var(--section-tag-shadow);
     }
 
     .section-tag svg {
@@ -598,11 +207,11 @@
       width: 80px;
       height: 80px;
       border-radius: var(--radius-squircle);
-      border: 1.5px solid var(--avatar-border);
+      border: 1.5px solid rgba(255, 255, 255, 0.18);
       overflow: hidden;
       flex-shrink: 0;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.4);
-      background: var(--avatar-bg);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      background: #111622;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -646,28 +255,12 @@
 
     .tag-pill {
       padding: 6px 14px;
-      background: var(--tag-pill-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--tag-pill-border);
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
-      box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.22),
-        0 2px 8px rgba(0, 0, 0, 0.08);
-      transition: var(--transition);
-    }
-
-    .tag-pill:hover {
-      background: var(--tag-pill-hover-bg);
-      border-color: var(--tag-pill-hover-border);
-      color: var(--text-main);
-      transform: translateY(-1px);
-      box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.45),
-        0 4px 14px rgba(0, 0, 0, 0.15);
     }
 
     /* Metrics Card */
@@ -709,14 +302,14 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .icon-squircle.orange { background: var(--icon-orange-bg); color: var(--candy-orange); }
-    .icon-squircle.green  { background: var(--icon-green-bg);  color: var(--candy-green); }
-    .icon-squircle.blue   { background: var(--icon-blue-bg);   color: var(--candy-blue); }
-    .icon-squircle.purple { background: var(--icon-purple-bg); color: var(--candy-purple); }
-    .icon-squircle.amber  { background: var(--icon-amber-bg);  color: var(--candy-amber); }
+    .icon-squircle.orange { background: rgba(255, 154, 69, 0.12); color: var(--candy-orange); }
+    .icon-squircle.green  { background: rgba(79, 214, 160, 0.12); color: var(--candy-green); }
+    .icon-squircle.blue   { background: rgba(127, 180, 255, 0.12); color: var(--candy-blue); }
+    .icon-squircle.purple { background: rgba(194, 155, 255, 0.12); color: var(--candy-purple); }
+    .icon-squircle.amber  { background: rgba(245, 196, 83, 0.12); color: var(--candy-amber); }
 
     .icon-squircle svg {
       width: 22px;
@@ -733,10 +326,8 @@
     }
 
     .cert-card {
-      background: var(--item-card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--item-card-border);
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-inner);
       padding: 16px;
       cursor: pointer;
@@ -745,16 +336,12 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .cert-card:hover {
-      background: var(--item-card-hover-bg);
+      background: rgba(255, 255, 255, 0.06);
       border-color: var(--candy-blue);
       transform: translateY(-3px);
-      box-shadow: 
-        0 14px 30px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     .cert-img-box {
@@ -762,8 +349,8 @@
       height: 160px;
       border-radius: 8px;
       overflow: hidden;
-      background: var(--cert-img-box-bg);
-      border: 1px solid var(--cert-img-box-border);
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -779,8 +366,8 @@
       height: auto;
       object-fit: contain;
       border-radius: 4px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-      border: 1px solid var(--border-subtle);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
@@ -810,23 +397,13 @@
     }
 
     .comp-item {
-      background: var(--item-card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--item-card-border);
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-inner);
       padding: 20px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: var(--transition);
-    }
-
-    .comp-item:hover {
-      background: var(--item-card-hover-bg);
-      border-color: var(--item-card-hover-border);
-      transform: translateY(-2px);
     }
 
     .comp-title {
@@ -888,10 +465,10 @@
       font-weight: 600;
       font-family: var(--font-mono);
       color: var(--candy-orange);
-      background: var(--timeline-badge-bg);
+      background: rgba(255, 154, 69, 0.1);
       padding: 2px 10px;
       border-radius: var(--radius-pill);
-      border: 1px solid var(--timeline-badge-border);
+      border: 1px solid rgba(255, 154, 69, 0.2);
     }
 
     .timeline-company {
@@ -916,25 +493,19 @@
     }
 
     .contact-box {
-      background: var(--item-card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--item-card-border);
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-inner);
       padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       transition: var(--transition);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .contact-box:hover {
-      background: var(--item-card-hover-bg);
-      border-color: var(--item-card-hover-border);
-      box-shadow: 
-        0 12px 28px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border-hover);
     }
 
     .contact-info-left {
@@ -959,10 +530,8 @@
 
     .btn-copy {
       padding: 6px 14px;
-      background: var(--copy-btn-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid var(--copy-btn-border);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
       border-radius: var(--radius-pill);
       color: var(--text-main);
       font-size: 12px;
@@ -972,17 +541,11 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.3),
-        0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .btn-copy:hover {
-      background: var(--copy-btn-hover-bg);
+      background: rgba(255, 255, 255, 0.16);
       border-color: var(--candy-blue);
-      box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.45),
-        0 4px 14px rgba(0, 0, 0, 0.15);
     }
 
     .btn-copy svg {
@@ -997,7 +560,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: var(--modal-overlay-bg);
+      background: rgba(0, 0, 0, 0.8);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       display: none;
@@ -1012,10 +575,8 @@
     }
 
     .modal-content {
-      background: var(--modal-bg);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border: 1px solid var(--modal-border);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hover);
       border-radius: var(--radius-card);
       max-width: 820px;
       width: 100%;
@@ -1023,7 +584,7 @@
       overflow-y: auto;
       padding: 32px;
       position: relative;
-      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
       text-align: center;
     }
 
@@ -1034,7 +595,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: var(--modal-close-bg);
+      background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--border-subtle);
       color: var(--text-main);
       display: flex;
@@ -1045,8 +606,7 @@
     }
 
     .modal-close:hover {
-      background: var(--modal-close-bg);
-      opacity: 0.8;
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .modal-img {
@@ -1073,76 +633,9 @@
         grid-template-columns: 1fr;
       }
     }
-
-    @media (max-width: 680px) {
-      .top-bar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-      }
-      .top-bar-right {
-        justify-content: space-between;
-      }
-      .hide-mobile {
-        display: none !important;
-      }
-    }
   </style>
-  <script>
-    (function() {
-      try {
-        var p = localStorage.getItem('theme-preference');
-        if (p === 'light' || p === 'dark') {
-          document.documentElement.setAttribute('data-theme', p);
-        }
-      } catch (e) {}
-    })();
-
-    // Theme Switcher Controller (系统级自动适配 + 手动切换记忆)
-    (function() {
-      const themeButtons = document.querySelectorAll('.theme-btn');
-      let currentPref = 'auto';
-      try {
-        currentPref = localStorage.getItem('theme-preference') || 'auto';
-      } catch (e) {}
-
-      function applyTheme(pref) {
-        if (pref === 'light') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        } else if (pref === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-
-        themeButtons.forEach(btn => {
-          if (btn.getAttribute('data-theme-val') === pref) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
-        });
-      }
-
-      themeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const mode = btn.getAttribute('data-theme-val');
-          try {
-            localStorage.setItem('theme-preference', mode);
-          } catch (e) {}
-          applyTheme(mode);
-        });
-      });
-
-      applyTheme(currentPref);
-    })();
-  </script>
 </head>
 <body>
-
-  <!-- Ambient Diffused Glow & Film Grain Noise -->
-  <div class="grain-overlay" aria-hidden="true"></div>
-  <div class="ambient-orb-2" aria-hidden="true"></div>
 
   <div class="container">
     <!-- Top Bar -->
@@ -1151,24 +644,8 @@
         <span class="status-dot"></span>
         <span>可接受一对一私教预约</span>
       </div>
-      <div class="top-bar-right">
-        <div class="badge-glass hide-mobile">
-          <span>专业健身指导 · 健康管理师</span>
-        </div>
-        <div class="theme-toggle-pill" id="themeToggle" role="group" aria-label="主题外观">
-          <button type="button" class="theme-btn active" data-theme-val="auto" title="跟随系统" aria-label="跟随系统">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            <span>自动</span>
-          </button>
-          <button type="button" class="theme-btn" data-theme-val="light" title="浅色外观" aria-label="浅色外观">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <span>浅色</span>
-          </button>
-          <button type="button" class="theme-btn" data-theme-val="dark" title="深色外观" aria-label="深色外观">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <span>深色</span>
-          </button>
-        </div>
+      <div class="badge-glass">
+        <span>专业健身指导 · 健康管理师</span>
       </div>
     </div>
 
@@ -1462,7 +939,7 @@
   <div class="modal-overlay" id="certModal" onclick="closeModal('certModal')">
     <div class="modal-content" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="closeModal('certModal')"><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
-      <h3 id="modalTitle" style="font-size: 20px; font-weight: 700; color: var(--modal-title-color); margin-bottom: 6px;">证书标题</h3>
+      <h3 id="modalTitle" style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px;">证书标题</h3>
       <p id="modalSub" style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">证书编号与认证说明</p>
       <img id="modalImg" class="modal-img" src="" alt="证书大图" />
     </div>
