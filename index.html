@@ -7,16 +7,17 @@
   <meta name="description" content="邹泽霖 (Ethan) 的个人主页 - 私人健身教练与健康管理师。" />
   <style>
     :root {
-      /* Apple 视觉平衡体系 - 设计系统变量 (Design Tokens) */
-      --bg-dark: #090c13;
-      --bg-surface: #0e131f;
-      --bg-card: rgba(18, 23, 33, 0.85);
-      --bg-card-hover: rgba(24, 30, 44, 0.95);
-      --bg-card-inner: rgba(255, 255, 255, 0.035);
+      /* Apple 视觉平衡体系 - 雾感弥散与胶片微噪点设计系统 (Design Tokens) */
+      --bg-dark: #080b11;
+      --bg-surface: #0e1320;
+      --bg-card: rgba(16, 21, 32, 0.65);
+      --bg-card-hover: rgba(22, 28, 44, 0.78);
+      --bg-card-inner: rgba(255, 255, 255, 0.025);
 
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(255, 255, 255, 0.18);
+      --border-hover: rgba(255, 255, 255, 0.22);
       --border-active: rgba(56, 155, 255, 0.35);
+      --border-glass-specular: rgba(255, 255, 255, 0.13);
 
       --candy-orange: #FF9A45;
       --candy-green: #4FD6A0;
@@ -43,8 +44,8 @@
       --radius-squircle: 16px;
       --radius-pill: 9999px;
 
-      --shadow-card: 0 4px 24px -1px rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
-      --shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.6);
+      --shadow-card: 0 24px 60px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 20px rgba(255, 255, 255, 0.015);
+      --shadow-hover: 0 32px 70px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
       --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -65,18 +66,46 @@
       overflow-x: hidden;
     }
 
-    /* Ambient background glow */
+    /* Ambient background glow 1: top-left warm greige/terracotta aura */
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100vw;
-      height: 600px;
-      background: radial-gradient(circle at 50% 0%, rgba(127, 180, 255, 0.12), transparent 60%);
+      top: -120px;
+      left: 12%;
+      width: 750px;
+      height: 750px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(235, 150, 95, 0.12) 0%, rgba(200, 110, 80, 0.04) 50%, transparent 70%);
+      filter: blur(90px);
       pointer-events: none;
       z-index: 0;
+    }
+
+    /* Ambient background glow 2: mid-right cool slate/indigo aura */
+    .ambient-orb-2 {
+      position: fixed;
+      top: 380px;
+      right: 5%;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(120, 175, 255, 0.11) 0%, rgba(160, 130, 240, 0.04) 50%, transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Tactile Film Grain Overlay (胶片微噪点颗粒) */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 99;
+      opacity: 0.045;
+      mix-blend-mode: screen;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
     .container {
@@ -101,13 +130,17 @@
       gap: 8px;
       padding: 8px 16px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.3),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.25),
+        0 4px 16px rgba(0, 0, 0, 0.2);
     }
 
     .status-dot {
@@ -127,9 +160,9 @@
 
     .card {
       background: var(--bg-card);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(36px) saturate(145%);
+      -webkit-backdrop-filter: blur(36px) saturate(145%);
+      border: 1px solid var(--border-glass-specular);
       border-radius: var(--radius-card);
       padding: 32px;
       box-shadow: var(--shadow-card);
@@ -142,7 +175,7 @@
       background: var(--bg-card-hover);
       transform: translateY(-3px);
       box-shadow: var(--shadow-hover);
-      border-color: var(--border-hover);
+      border-color: rgba(255, 255, 255, 0.22);
     }
 
     /* Grid Spans */
@@ -158,16 +191,21 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 12px;
+      padding: 5px 14px;
       border-radius: var(--radius-pill);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       margin-bottom: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
+      background: rgba(127, 180, 255, 0.08);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(127, 180, 255, 0.28);
       color: var(--candy-blue);
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.35),
+        0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
     .section-tag svg {
@@ -207,10 +245,10 @@
       width: 80px;
       height: 80px;
       border-radius: var(--radius-squircle);
-      border: 1.5px solid rgba(255, 255, 255, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.28);
       overflow: hidden;
       flex-shrink: 0;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.4);
       background: #111622;
       display: flex;
       align-items: center;
@@ -255,12 +293,28 @@
 
     .tag-pill {
       padding: 6px 14px;
-      background: var(--bg-card-inner);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.045);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
+      box-shadow: 
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.22),
+        0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: var(--transition);
+    }
+
+    .tag-pill:hover {
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--text-main);
+      transform: translateY(-1px);
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.45),
+        0 4px 14px rgba(0, 0, 0, 0.25);
     }
 
     /* Metrics Card */
@@ -326,8 +380,10 @@
     }
 
     .cert-card {
-      background: var(--bg-card-inner);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-inner);
       padding: 16px;
       cursor: pointer;
@@ -336,12 +392,16 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .cert-card:hover {
       background: rgba(255, 255, 255, 0.06);
-      border-color: var(--candy-blue);
+      border-color: rgba(127, 180, 255, 0.45);
       transform: translateY(-3px);
+      box-shadow: 
+        0 14px 30px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     .cert-img-box {
@@ -397,13 +457,23 @@
     }
 
     .comp-item {
-      background: var(--bg-card-inner);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-inner);
       padding: 20px;
       display: flex;
       gap: 16px;
       align-items: flex-start;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .comp-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.16);
+      transform: translateY(-2px);
     }
 
     .comp-title {
@@ -493,19 +563,25 @@
     }
 
     .contact-box {
-      background: var(--bg-card-inner);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-inner);
       padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       transition: var(--transition);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     .contact-box:hover {
       background: rgba(255, 255, 255, 0.06);
-      border-color: var(--border-hover);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 
+        0 12px 28px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
     }
 
     .contact-info-left {
@@ -530,8 +606,10 @@
 
     .btn-copy {
       padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: var(--radius-pill);
       color: var(--text-main);
       font-size: 12px;
@@ -541,11 +619,17 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      box-shadow: 
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .btn-copy:hover {
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.15);
       border-color: var(--candy-blue);
+      box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.45),
+        0 4px 14px rgba(0, 0, 0, 0.3);
     }
 
     .btn-copy svg {
@@ -575,8 +659,10 @@
     }
 
     .modal-content {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hover);
+      background: rgba(16, 21, 32, 0.85);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: var(--radius-card);
       max-width: 820px;
       width: 100%;
@@ -584,7 +670,7 @@
       overflow-y: auto;
       padding: 32px;
       position: relative;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
       text-align: center;
     }
 
@@ -636,6 +722,10 @@
   </style>
 </head>
 <body>
+
+  <!-- Ambient Diffused Glow & Film Grain Noise -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="ambient-orb-2" aria-hidden="true"></div>
 
   <div class="container">
     <!-- Top Bar -->
