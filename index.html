@@ -8,10 +8,10 @@
   <style>
     :root {
       /* Apple 视觉平衡体系 - 雾感弥散与胶片微噪点设计系统 (Design Tokens) */
-      --bg-dark: #080b11;
-      --bg-surface: #0e1320;
-      --bg-card: rgba(16, 21, 32, 0.65);
-      --bg-card-hover: rgba(22, 28, 44, 0.78);
+      --bg-dark: #090A0F;
+      --bg-surface: #11131A;
+      --bg-card: rgba(18, 20, 28, 0.68);
+      --bg-card-hover: rgba(24, 27, 38, 0.82);
       --bg-card-inner: rgba(255, 255, 255, 0.025);
 
       --border-subtle: rgba(255, 255, 255, 0.08);
@@ -50,10 +50,10 @@
       --grad-purple: linear-gradient(135deg, #C29BFF, #8A4BD1);
       --grad-amber: linear-gradient(135deg, #F5C453, #D49B00);
 
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --text-main: #FAF5EB;
+      --text-muted: #B8B0A2;
+      --text-dim: #7A7268;
+      --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
       --radius-card: 28px;
@@ -67,8 +67,8 @@
 
       --grain-opacity: 0.045;
       --grain-blend: screen;
-      --orb-1-bg: radial-gradient(circle, rgba(235, 150, 95, 0.12) 0%, rgba(200, 110, 80, 0.04) 50%, transparent 70%);
-      --orb-2-bg: radial-gradient(circle, rgba(120, 175, 255, 0.11) 0%, rgba(160, 130, 240, 0.04) 50%, transparent 70%);
+      --orb-1-bg: radial-gradient(circle, rgba(235, 145, 95, 0.18) 0%, rgba(185, 95, 65, 0.05) 50%, transparent 70%);
+      --orb-2-bg: radial-gradient(circle, rgba(135, 180, 250, 0.12) 0%, rgba(150, 120, 220, 0.04) 50%, transparent 70%);
 
       --modal-overlay-bg: rgba(0, 0, 0, 0.8);
       --modal-bg: rgba(16, 21, 32, 0.88);
@@ -98,10 +98,10 @@
     /* System Light Mode: 自动跟随系统级浅色外观 */
     @media (prefers-color-scheme: light) {
       :root:not([data-theme="dark"]) {
-        --bg-dark: #f1f4f9;
-        --bg-surface: #ffffff;
-        --bg-card: rgba(255, 255, 255, 0.74);
-        --bg-card-hover: rgba(255, 255, 255, 0.92);
+        --bg-dark: #F5F3EF;
+        --bg-surface: #FFFFFF;
+        --bg-card: rgba(255, 255, 255, 0.76);
+        --bg-card-hover: rgba(255, 255, 255, 0.94);
         --bg-card-inner: rgba(0, 0, 0, 0.02);
 
         --border-subtle: rgba(0, 0, 0, 0.06);
@@ -140,9 +140,9 @@
         --grad-purple: linear-gradient(135deg, #A855F7, #7C3AED);
         --grad-amber: linear-gradient(135deg, #FBBF24, #D97706);
 
-        --text-main: #0f172a;
-        --text-muted: #475569;
-        --text-dim: #94a3b8;
+        --text-main: #1C1917;
+        --text-muted: #57534E;
+        --text-dim: #8C827A;
 
         --shadow-card: 0 16px 45px -10px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
         --shadow-hover: 0 24px 55px -10px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff;
@@ -180,10 +180,10 @@
 
     /* Manual Light Override (用户手动选择浅色模式) */
     :root[data-theme="light"] {
-      --bg-dark: #f1f4f9;
-      --bg-surface: #ffffff;
-      --bg-card: rgba(255, 255, 255, 0.74);
-      --bg-card-hover: rgba(255, 255, 255, 0.92);
+      --bg-dark: #F5F3EF;
+      --bg-surface: #FFFFFF;
+      --bg-card: rgba(255, 255, 255, 0.76);
+      --bg-card-hover: rgba(255, 255, 255, 0.94);
       --bg-card-inner: rgba(0, 0, 0, 0.02);
 
       --border-subtle: rgba(0, 0, 0, 0.06);
@@ -222,9 +222,9 @@
       --grad-purple: linear-gradient(135deg, #A855F7, #7C3AED);
       --grad-amber: linear-gradient(135deg, #FBBF24, #D97706);
 
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --text-dim: #94a3b8;
+        --text-main: #1C1917;
+        --text-muted: #57534E;
+        --text-dim: #8C827A;
 
       --shadow-card: 0 16px 45px -10px rgba(15, 23, 42, 0.07), 0 1px 3px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
       --shadow-hover: 0 24px 55px -10px rgba(15, 23, 42, 0.12), 0 2px 6px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff;
@@ -261,10 +261,10 @@
 
     /* Manual Dark Override (用户手动选择深色模式) */
     :root[data-theme="dark"] {
-      --bg-dark: #080b11;
-      --bg-surface: #0e1320;
-      --bg-card: rgba(16, 21, 32, 0.65);
-      --bg-card-hover: rgba(22, 28, 44, 0.78);
+      --bg-dark: #090A0F;
+      --bg-surface: #11131A;
+      --bg-card: rgba(18, 20, 28, 0.68);
+      --bg-card-hover: rgba(24, 27, 38, 0.82);
       --bg-card-inner: rgba(255, 255, 255, 0.025);
 
       --border-subtle: rgba(255, 255, 255, 0.08);
@@ -303,17 +303,17 @@
       --grad-purple: linear-gradient(135deg, #C29BFF, #8A4BD1);
       --grad-amber: linear-gradient(135deg, #F5C453, #D49B00);
 
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --text-main: #FAF5EB;
+      --text-muted: #B8B0A2;
+      --text-dim: #7A7268;
 
       --shadow-card: 0 24px 60px -12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 20px rgba(255, 255, 255, 0.015);
       --shadow-hover: 0 32px 70px -12px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 
       --grain-opacity: 0.045;
       --grain-blend: screen;
-      --orb-1-bg: radial-gradient(circle, rgba(235, 150, 95, 0.12) 0%, rgba(200, 110, 80, 0.04) 50%, transparent 70%);
-      --orb-2-bg: radial-gradient(circle, rgba(120, 175, 255, 0.11) 0%, rgba(160, 130, 240, 0.04) 50%, transparent 70%);
+      --orb-1-bg: radial-gradient(circle, rgba(235, 145, 95, 0.18) 0%, rgba(185, 95, 65, 0.05) 50%, transparent 70%);
+      --orb-2-bg: radial-gradient(circle, rgba(135, 180, 250, 0.12) 0%, rgba(150, 120, 220, 0.04) 50%, transparent 70%);
 
       --modal-overlay-bg: rgba(0, 0, 0, 0.8);
       --modal-bg: rgba(16, 21, 32, 0.88);
@@ -433,11 +433,12 @@
       font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
       box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.25),
-        0 4px 16px rgba(0, 0, 0, 0.1);
+        inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.45),
+        inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.15);
     }
 
     /* Apple 质感胶囊外观切换器 (Segmented Theme Pill) */
@@ -554,11 +555,14 @@
       text-transform: uppercase;
       margin-bottom: 12px;
       background: var(--section-tag-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
       border: 1px solid var(--section-tag-border);
       color: var(--candy-blue);
-      box-shadow: var(--section-tag-shadow);
+      box-shadow: 
+        inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.25),
+        0 4px 14px rgba(0, 0, 0, 0.12);
     }
 
     .section-tag svg {
@@ -647,15 +651,16 @@
     .tag-pill {
       padding: 6px 14px;
       background: var(--tag-pill-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
       border: 1px solid var(--tag-pill-border);
       border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
       color: var(--text-muted);
       box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.22),
+        inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 2px 0 rgba(0, 0, 0, 0.25),
         0 2px 8px rgba(0, 0, 0, 0.08);
       transition: var(--transition);
     }
@@ -666,8 +671,8 @@
       color: var(--text-main);
       transform: translateY(-1px);
       box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 0.45),
-        0 4px 14px rgba(0, 0, 0, 0.15);
+        inset 0 1.5px 1.5px rgba(255, 255, 255, 0.6),
+        0 4px 14px rgba(0, 0, 0, 0.18);
     }
 
     /* Metrics Card */
@@ -700,28 +705,109 @@
       margin-top: 6px;
     }
 
-    /* Squircle Icon Badge */
-    .icon-squircle {
-      width: 44px;
-      height: 44px;
-      border-radius: var(--radius-squircle);
+    /* Bespoke Liquid Lens Emblem (高定液态透镜微章 - 告别模板化彩色方块) */
+    .icon-lens {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      border: 1px solid var(--border-subtle);
+      background: var(--item-card-bg);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid var(--border-glass-specular);
+      color: var(--text-main);
+      box-shadow: 
+        inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.45),
+        inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35),
+        0 4px 14px rgba(0, 0, 0, 0.15);
+      position: relative;
+      transition: var(--transition);
     }
 
-    .icon-squircle.orange { background: var(--icon-orange-bg); color: var(--candy-orange); }
-    .icon-squircle.green  { background: var(--icon-green-bg);  color: var(--candy-green); }
-    .icon-squircle.blue   { background: var(--icon-blue-bg);   color: var(--candy-blue); }
-    .icon-squircle.purple { background: var(--icon-purple-bg); color: var(--candy-purple); }
-    .icon-squircle.amber  { background: var(--icon-amber-bg);  color: var(--candy-amber); }
-
-    .icon-squircle svg {
+    .icon-lens svg {
       width: 22px;
       height: 22px;
-      stroke-width: 2;
+      stroke-width: 1.8;
+      stroke: var(--text-main);
+      transition: var(--transition);
+    }
+
+    /* Breathing Micro-Indicator Dot (聚焦呼吸微点 - 低饱和微光点缀) */
+    .lens-dot {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .lens-dot.coral   { background: #FF9A45; box-shadow: 0 0 8px rgba(255, 154, 69, 0.7); }
+    .lens-dot.teal    { background: #4FD6A0; box-shadow: 0 0 8px rgba(79, 214, 160, 0.7); }
+    .lens-dot.azure   { background: #7FB4FF; box-shadow: 0 0 8px rgba(127, 180, 255, 0.7); }
+    .lens-dot.amber   { background: #F5C453; box-shadow: 0 0 8px rgba(245, 196, 83, 0.7); }
+    .lens-dot.indigo  { background: #C29BFF; box-shadow: 0 0 8px rgba(194, 155, 255, 0.7); }
+
+    /* Editorial Competency Item */
+    .comp-item {
+      background: var(--item-card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--item-card-border);
+      border-radius: var(--radius-inner);
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .comp-item:hover {
+      background: var(--item-card-hover-bg);
+      border-color: var(--item-card-hover-border);
+      transform: translateY(-2px);
+    }
+
+    .comp-item:hover .icon-lens {
+      border-color: rgba(255, 255, 255, 0.35);
+      box-shadow: 
+        inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.65),
+        inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.35),
+        0 6px 20px rgba(0, 0, 0, 0.22);
+    }
+
+    .comp-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .comp-idx {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--candy-orange);
+      letter-spacing: 0.05em;
+      opacity: 0.85;
+    }
+
+    .comp-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    .comp-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     /* Certificates Grid */
@@ -807,39 +893,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-top: 18px;
-    }
-
-    .comp-item {
-      background: var(--item-card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--item-card-border);
-      border-radius: var(--radius-inner);
-      padding: 20px;
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: var(--transition);
-    }
-
-    .comp-item:hover {
-      background: var(--item-card-hover-bg);
-      border-color: var(--item-card-hover-border);
-      transform: translateY(-2px);
-    }
-
-    .comp-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 6px;
-    }
-
-    .comp-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
     }
 
     /* Timeline */
@@ -1137,6 +1190,9 @@
       applyTheme(currentPref);
     })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -1278,38 +1334,54 @@
         <div class="card-title">四大定制教学模块</div>
         <div class="comp-grid">
           <div class="comp-item">
-            <div class="icon-squircle coral">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path></svg>
+            <div class="icon-lens" aria-hidden="true">
+              <span class="lens-dot coral"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path><circle cx="12" cy="12" r="3"></circle></svg>
             </div>
             <div>
-              <div class="comp-title">不良体态评估与纠错</div>
+              <div class="comp-header">
+                <span class="comp-idx">01</span>
+                <div class="comp-title">不良体态评估与纠错</div>
+              </div>
               <div class="comp-desc">针对圆肩驼背、头前引、骨盆前倾等失衡，激活深层稳定肌，重塑端正挺拔体态。</div>
             </div>
           </div>
           <div class="comp-item">
-            <div class="icon-squircle blue">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <div class="icon-lens" aria-hidden="true">
+              <span class="lens-dot teal"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v6M9 11h6"></path></svg>
             </div>
             <div>
-              <div class="comp-title">久坐高压人群脊椎减压</div>
+              <div class="comp-header">
+                <span class="comp-idx">02</span>
+                <div class="comp-title">久坐高压人群脊椎减压</div>
+              </div>
               <div class="comp-desc">科学融入筋膜松解与核心抗旋训练，温和改善肩颈酸痛与腰椎劳损，提升日常精力。</div>
             </div>
           </div>
           <div class="comp-item">
-            <div class="icon-squircle green">
+            <div class="icon-lens" aria-hidden="true">
+              <span class="lens-dot amber"></span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             </div>
             <div>
-              <div class="comp-title">科学减脂塑形与线条雕刻</div>
+              <div class="comp-header">
+                <span class="comp-idx">03</span>
+                <div class="comp-title">科学减脂塑形与线条雕刻</div>
+              </div>
               <div class="comp-desc">定制温和可持续进阶计划，拒绝极端节食；把控动作发力轨迹细节，打造紧致健康体魄。</div>
             </div>
           </div>
           <div class="comp-item">
-            <div class="icon-squircle purple">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <div class="icon-lens" aria-hidden="true">
+              <span class="lens-dot azure"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line><polyline points="7 10 10 13 17 7"></polyline></svg>
             </div>
             <div>
-              <div class="comp-title">数字化全周期身体档案</div>
+              <div class="comp-header">
+                <span class="comp-idx">04</span>
+                <div class="comp-title">数字化全周期身体档案</div>
+              </div>
               <div class="comp-desc">课前确认身心状态，课后肌肉反馈追踪；建立阶段性体测对比表，让体能改善清晰可见。</div>
             </div>
           </div>
@@ -1405,7 +1477,8 @@
           <!-- Phone -->
           <div class="contact-box">
             <div class="contact-info-left">
-              <div class="icon-squircle orange">
+              <div class="icon-lens" aria-hidden="true">
+                <span class="lens-dot coral"></span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
               </div>
               <div>
@@ -1422,7 +1495,8 @@
           <!-- Email -->
           <div class="contact-box">
             <div class="contact-info-left">
-              <div class="icon-squircle purple">
+              <div class="icon-lens" aria-hidden="true">
+                <span class="lens-dot indigo"></span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
               </div>
               <div>
@@ -1439,7 +1513,8 @@
           <!-- WeChat -->
           <div class="contact-box">
             <div class="contact-info-left">
-              <div class="icon-squircle green">
+              <div class="icon-lens" aria-hidden="true">
+                <span class="lens-dot teal"></span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
               </div>
               <div>
