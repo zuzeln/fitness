@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>邹泽霖 Ethan | 私人健身教练 · 健康管理师</title>
+  <meta name="description" content="邹泽霖 (Ethan) 的个人主页 - 私人健身教练与健康管理师。" />
   <style>
     :root {
-      --bg: #F5F5F7;
-      --card-bg: rgba(255, 255, 255, 0.88);
-      --card-hover: #FFFFFF;
-      --text-primary: #1D1D1F;
-      --text-secondary: #86868B;
-      --text-tertiary: #A1A1A6;
-      --accent: #0071E3;
-      --accent-soft: rgba(0, 113, 227, 0.08);
-      --card-radius: 22px;
-      --border: rgba(0, 0, 0, 0.06);
-      --shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-      --shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.10);
+      /* Apple 视觉平衡体系 - 设计系统变量 (Design Tokens) */
+      --bg-dark: #090c13;
+      --bg-surface: #0e131f;
+      --bg-card: rgba(18, 23, 33, 0.85);
+      --bg-card-hover: rgba(24, 30, 44, 0.95);
+      --bg-card-inner: rgba(255, 255, 255, 0.035);
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.18);
+      --border-active: rgba(56, 155, 255, 0.35);
+
+      --candy-orange: #FF9A45;
+      --candy-green: #4FD6A0;
+      --candy-pink: #FF7E9D;
+      --candy-blue: #7FB4FF;
+      --candy-purple: #C29BFF;
+      --candy-amber: #F5C453;
+
+      --grad-orange: linear-gradient(135deg, #FF9A45, #E2620C);
+      --grad-green: linear-gradient(135deg, #4FD6A0, #0E7C63);
+      --grad-pink: linear-gradient(135deg, #FF7E9D, #C7365A);
+      --grad-blue: linear-gradient(135deg, #7FB4FF, #2F6FD0);
+      --grad-purple: linear-gradient(135deg, #C29BFF, #8A4BD1);
+      --grad-amber: linear-gradient(135deg, #F5C453, #D49B00);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      --radius-card: 28px;
+      --radius-inner: 12px;
+      --radius-squircle: 16px;
+      --radius-pill: 9999px;
+
+      --shadow-card: 0 4px 24px -1px rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.6);
       --transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -29,48 +56,69 @@
     }
 
     body {
-      background-color: var(--bg);
-      color: var(--text-primary);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      line-height: 1.5;
-      padding: 40px 20px 80px;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      padding: 40px 20px 100px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background glow */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 600px;
+      background: radial-gradient(circle at 50% 0%, rgba(127, 180, 255, 0.12), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     .container {
       max-width: 1160px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Top Brand Bar */
+    /* Top Nav / Status Bar */
     .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       padding: 0 4px;
     }
 
-    .badge-pill {
+    .badge-glass {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      background: rgba(0, 0, 0, 0.04);
-      border-radius: 999px;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
-      color: var(--text-secondary);
-      backdrop-filter: blur(10px);
+      color: var(--text-muted);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
-    .badge-pill span.dot {
-      width: 7px;
-      height: 7px;
-      background: #34C759;
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--candy-green);
       border-radius: 50%;
+      box-shadow: 0 0 10px var(--candy-green);
     }
 
-    /* Bento Grid Layout */
+    /* Bento Grid */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -78,23 +126,23 @@
     }
 
     .card {
-      background: var(--card-bg);
+      background: var(--bg-card);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      border-radius: var(--card-radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
     }
 
     .card:hover {
-      background: var(--card-hover);
+      background: var(--bg-card-hover);
       transform: translateY(-3px);
       box-shadow: var(--shadow-hover);
-      border-color: rgba(0, 0, 0, 0.09);
+      border-color: var(--border-hover);
     }
 
     /* Grid Spans */
@@ -105,28 +153,40 @@
     .col-5  { grid-column: span 5; }
     .col-4  { grid-column: span 4; }
 
-    /* Card Typo */
-    .card-label {
-      font-size: 12px;
-      font-weight: 600;
+    /* Section Tag Badge */
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-secondary);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--candy-blue);
+    }
+
+    .section-tag svg {
+      width: 14px;
+      height: 14px;
     }
 
     .card-title {
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: var(--text-primary);
+      color: var(--text-main);
       margin-bottom: 12px;
     }
 
     .card-desc {
       font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.6;
+      color: var(--text-muted);
+      line-height: 1.7;
     }
 
     /* Hero Card */
@@ -134,49 +194,49 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 290px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 250, 0.85) 100%);
+      min-height: 320px;
     }
 
     .hero-header {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
     }
 
-    .avatar-box {
-      width: 76px;
-      height: 76px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #1D1D1F 0%, #3A3A3C 100%);
-      color: #FFFFFF;
+    .avatar-frame {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-squircle);
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 28px;
       font-weight: 700;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
       flex-shrink: 0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
 
     .hero-name {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 800;
       letter-spacing: -0.03em;
-      color: var(--text-primary);
+      color: var(--text-main);
     }
 
     .hero-name span {
       font-size: 20px;
       font-weight: 400;
-      color: var(--text-secondary);
+      color: var(--text-dim);
       margin-left: 8px;
     }
 
     .hero-subtitle {
       font-size: 16px;
       font-weight: 600;
-      color: var(--accent);
+      color: var(--candy-blue);
       margin-top: 4px;
     }
 
@@ -184,60 +244,86 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
-    .tag-chip {
-      padding: 6px 12px;
-      background: rgba(0, 0, 0, 0.04);
-      border-radius: 8px;
+    .tag-pill {
+      padding: 6px 14px;
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
       font-size: 13px;
       font-weight: 500;
-      color: var(--text-primary);
+      color: var(--text-muted);
     }
 
-    /* Metric Card */
-    .metric-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 28px;
-    }
-
+    /* Metrics Card */
     .metric-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 24px;
+      margin-top: 10px;
     }
 
-    .metric-item .metric-num {
-      font-size: 38px;
+    .metric-num {
+      font-size: 40px;
       font-weight: 800;
       letter-spacing: -0.04em;
-      color: var(--text-primary);
+      color: var(--text-main);
       line-height: 1.1;
+      font-family: var(--font-sans);
     }
 
-    .metric-item .metric-text {
+    .metric-num span {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--candy-orange);
+    }
+
+    .metric-label {
       font-size: 13px;
       font-weight: 500;
-      color: var(--text-secondary);
-      margin-top: 4px;
+      color: var(--text-muted);
+      margin-top: 6px;
     }
 
-    /* Certificate Cards */
-    .cert-container {
+    /* Squircle Icon Badge */
+    .icon-squircle {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-squircle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .icon-squircle.orange { background: rgba(255, 154, 69, 0.12); color: var(--candy-orange); }
+    .icon-squircle.green  { background: rgba(79, 214, 160, 0.12); color: var(--candy-green); }
+    .icon-squircle.blue   { background: rgba(127, 180, 255, 0.12); color: var(--candy-blue); }
+    .icon-squircle.purple { background: rgba(194, 155, 255, 0.12); color: var(--candy-purple); }
+    .icon-squircle.amber  { background: rgba(245, 196, 83, 0.12); color: var(--candy-amber); }
+
+    .icon-squircle svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
+    }
+
+    /* Certificates Grid */
+    .cert-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 16px;
+      margin-top: 20px;
     }
 
-    .cert-item {
-      background: #FFFFFF;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 14px;
+    .cert-card {
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-inner);
+      padding: 16px;
       cursor: pointer;
       transition: var(--transition);
       display: flex;
@@ -246,258 +332,210 @@
       text-align: center;
     }
 
-    .cert-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-      border-color: rgba(0, 113, 227, 0.3);
+    .cert-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--candy-blue);
+      transform: translateY(-3px);
     }
 
-    .cert-img-wrap {
+    .cert-img-box {
       width: 100%;
       height: 160px;
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      background: #F0F0F2;
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
-    .cert-img-wrap img {
+    .cert-img-box img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       transition: transform 0.4s ease;
     }
 
-    .cert-item:hover .cert-img-wrap img {
+    .cert-card:hover .cert-img-box img {
       transform: scale(1.04);
     }
 
-    .cert-item-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 2px;
-    }
-
-    .cert-item-sub {
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    /* Core Modules */
-    .module-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 14px;
-    }
-
-    .module-box {
-      background: rgba(0, 0, 0, 0.02);
-      border-radius: 14px;
-      padding: 16px;
-      border: 1px solid rgba(0, 0, 0, 0.03);
-    }
-
-    .module-box-title {
+    .cert-name {
       font-size: 15px;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--text-main);
       margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    .module-box-desc {
+    .cert-meta {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* Competencies Grid */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .comp-item {
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-inner);
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .comp-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .comp-desc {
       font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.5;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     /* Timeline */
     .timeline {
-      margin-top: 14px;
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 22px;
+      position: relative;
     }
 
     .timeline-item {
       position: relative;
-      padding-left: 20px;
-      border-left: 2px solid rgba(0, 0, 0, 0.08);
+      padding-left: 24px;
+      border-left: 2px solid var(--border-subtle);
     }
 
-    .timeline-item::before {
-      content: "";
+    .timeline-dot {
       position: absolute;
       left: -6px;
       top: 4px;
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: var(--accent);
+      background: var(--candy-blue);
+      box-shadow: 0 0 10px var(--candy-blue);
     }
 
-    .timeline-date {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-secondary);
-      margin-bottom: 2px;
-    }
-
-    .timeline-role {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .timeline-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 4px;
-      line-height: 1.5;
-    }
-
-    /* Media Cards */
-    .media-placeholder {
-      width: 100%;
-      height: 190px;
-      background: linear-gradient(135deg, #1C1C1E 0%, #2C2C2E 100%);
-      border-radius: 14px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: #FFFFFF;
-      cursor: pointer;
-      margin-top: 14px;
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-    }
-
-    .media-placeholder:hover {
-      transform: scale(1.01);
-    }
-
-    .play-btn {
-      width: 54px;
-      height: 54px;
-      background: rgba(255, 255, 255, 0.25);
-      backdrop-filter: blur(10px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .media-placeholder:hover .play-btn {
-      transform: scale(1.1);
-      background: rgba(255, 255, 255, 0.35);
-    }
-
-    .play-icon {
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 9px 0 9px 15px;
-      border-color: transparent transparent transparent #FFFFFF;
-      margin-left: 3px;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .photo-box {
-      height: 110px;
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      border: 1px dashed rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .photo-box:hover {
-      background: rgba(0, 0, 0, 0.07);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Contact Card */
-    .contact-card {
+    .timeline-header-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(135deg, #1D1D1F 0%, #000000 100%);
-      color: #FFFFFF;
-      border: none;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 4px;
     }
 
-    .contact-card .card-title {
-      color: #FFFFFF;
-      font-size: 26px;
+    .timeline-role-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .timeline-badge {
+      font-size: 12px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      color: var(--candy-orange);
+      background: rgba(255, 154, 69, 0.1);
+      padding: 2px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 154, 69, 0.2);
+    }
+
+    .timeline-company {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
       margin-bottom: 6px;
     }
 
-    .contact-card .card-desc {
-      color: rgba(255, 255, 255, 0.7);
+    .timeline-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
-    .contact-actions {
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .contact-box {
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-inner);
+      padding: 20px;
       display: flex;
-      gap: 12px;
       align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
     }
 
-    .btn {
-      padding: 12px 24px;
-      border-radius: 999px;
-      font-size: 14px;
+    .contact-box:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--border-hover);
+    }
+
+    .contact-info-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .contact-val {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      font-family: var(--font-mono);
+    }
+
+    .btn-copy {
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      color: var(--text-main);
+      font-size: 12px;
       font-weight: 600;
-      text-decoration: none;
       cursor: pointer;
       transition: var(--transition);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      border: none;
+      gap: 6px;
     }
 
-    .btn-primary {
-      background: #FFFFFF;
-      color: #1D1D1F;
+    .btn-copy:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: var(--candy-blue);
     }
 
-    .btn-primary:hover {
-      background: #F5F5F7;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.15);
-      color: #FFFFFF;
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
+    .btn-copy svg {
+      width: 14px;
+      height: 14px;
     }
 
     /* Modal */
@@ -507,13 +545,14 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(15px);
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      padding: 20px;
+      padding: 24px;
     }
 
     .modal-overlay.active {
@@ -521,15 +560,16 @@
     }
 
     .modal-content {
-      background: #FFFFFF;
-      border-radius: 24px;
-      max-width: 800px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hover);
+      border-radius: var(--radius-card);
+      max-width: 820px;
       width: 100%;
       max-height: 90vh;
       overflow-y: auto;
-      padding: 30px;
+      padding: 32px;
       position: relative;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
       text-align: center;
     }
 
@@ -540,22 +580,27 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(0, 0, 0, 0.06);
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .modal-img {
       max-width: 100%;
       max-height: 70vh;
       object-fit: contain;
-      border-radius: 12px;
-      margin-top: 10px;
+      border-radius: var(--radius-inner);
+      margin-top: 14px;
+      border: 1px solid var(--border-subtle);
     }
 
     /* Responsive */
@@ -563,20 +608,14 @@
       .col-8, .col-7, .col-6, .col-5, .col-4 {
         grid-column: span 12;
       }
-      .cert-container {
+      .cert-grid {
         grid-template-columns: 1fr;
       }
-      .module-list {
+      .comp-grid {
         grid-template-columns: 1fr;
       }
-      .contact-card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-      }
-      .contact-actions {
-        width: 100%;
-        flex-wrap: wrap;
+      .contact-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -586,11 +625,11 @@
   <div class="container">
     <!-- Top Bar -->
     <div class="top-bar">
-      <div class="badge-pill">
-        <span class="dot"></span>
+      <div class="badge-glass">
+        <span class="status-dot"></span>
         <span>可接受一对一私教预约</span>
       </div>
-      <div class="badge-pill">
+      <div class="badge-glass">
         <span>专业健身指导 · 健康管理师</span>
       </div>
     </div>
@@ -601,235 +640,291 @@
       <!-- 1. Hero Profile Card -->
       <div class="card col-8 hero-card">
         <div>
-          <div class="card-label">Personal Profile · 个人主页</div>
+          <div class="section-tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>PERSONAL PROFILE</span>
+          </div>
           <div class="hero-header">
-            <div class="avatar-box">邹</div>
+            <div class="avatar-frame">邹</div>
             <div>
               <div class="hero-name">邹泽霖 <span>Ethan</span></div>
               <div class="hero-subtitle">私人健身教练 / 健康管理师</div>
             </div>
           </div>
-          <p class="card-desc" style="margin-top: 18px;">
+          <p class="card-desc" style="margin-top: 20px;">
             3年全日制健身专业科班，近7年一线带教实战历练。坚守科学、安全、因人施教的带教理念，专注体态纠正、肩颈腰椎慢痛减压、减脂塑形与功能性训练；注重教学中的专注陪伴与隐私保护。
           </p>
         </div>
         <div class="hero-tags">
-          <div class="tag-chip">🎓 上海思博全日制健身专业</div>
-          <div class="tag-chip">🏆 IFBB 认证私教 & 运动营养师</div>
-          <div class="tag-chip">🛡️ 严守客户隐私</div>
-          <div class="tag-chip">⚡ 专注体能与功能性康复</div>
+          <span class="tag-pill">上海思博全日制健身专业</span>
+          <span class="tag-pill">IFBB 认证私教 & 运动营养师</span>
+          <span class="tag-pill">严守客户隐私</span>
+          <span class="tag-pill">专注体能与功能性康复</span>
         </div>
       </div>
 
       <!-- 2. Metrics Card -->
-      <div class="card col-4 metric-card">
-        <div class="card-label">Track Record · 实战数据</div>
+      <div class="card col-4">
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          <span>TRACK RECORD</span>
+        </div>
+        <div class="card-title">实战数据</div>
         <div class="metric-grid">
-          <div class="metric-item">
-            <div class="metric-num">2500<span style="font-size:22px;">+</span></div>
-            <div class="metric-text">一对一带教课时</div>
+          <div>
+            <div class="metric-num">2500<span>+</span></div>
+            <div class="metric-label">一对一带教课时</div>
           </div>
-          <div class="metric-item">
-            <div class="metric-num">220<span style="font-size:22px;">万+</span></div>
-            <div class="metric-text">个人累计销售业绩</div>
+          <div>
+            <div class="metric-num">220<span>万+</span></div>
+            <div class="metric-label">个人累计销售业绩</div>
           </div>
-          <div class="metric-item">
-            <div class="metric-num">85<span style="font-size:22px;">%+</span></div>
-            <div class="metric-text">课程平均完课率</div>
+          <div>
+            <div class="metric-num">85<span>%+</span></div>
+            <div class="metric-label">课程平均完课率</div>
           </div>
-          <div class="metric-item">
+          <div>
             <div class="metric-num">TOP3</div>
-            <div class="metric-text">门店月度销售业绩</div>
+            <div class="metric-label">门店月度销售业绩</div>
           </div>
         </div>
       </div>
 
       <!-- 3. Professional Certificates Card -->
       <div class="card col-12">
-        <div class="card-label">Credentials & Certifications · 专业认证</div>
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          <span>CREDENTIALS & CERTIFICATIONS</span>
+        </div>
         <div class="card-title">专业资质与国际急救认证</div>
-        <div class="card-desc">点击卡片可查看官方证书原件与编号。</div>
+        <div class="card-desc">点击卡片可查看官方证书原件与认证编号。</div>
 
-        <div class="cert-container">
+        <div class="cert-grid">
           <!-- Cert 1: IFBB -->
-          <div class="cert-item" onclick="openModal('certificates/IFBB_认证私教证书.jpg', 'IFBB 职业联盟认证私人教练 (CFPT)', '证书编号：PT2018-1713 · IFBB Professional League 官方认证')">
-            <div class="cert-img-wrap">
-              <img src="certificates/IFBB_认证私教证书.jpg" alt="IFBB 私人教练认证">
+          <div class="cert-card" onclick="openModal('certificates/IFBB_认证私教证书.jpg', 'IFBB 职业联盟认证私人教练 (CFPT)', '证书编号：PT2018-1713 · IFBB Professional League 官方认证')">
+            <div class="cert-img-box">
+              <img src="certificates/IFBB_认证私教证书.jpg" alt="IFBB 认证私教证书" />
             </div>
-            <div class="cert-item-title">IFBB 职业联盟认证私教 (CFPT)</div>
-            <div class="cert-item-sub">编号 PT2018-1713 · 国际权威健美联合会</div>
+            <div class="cert-name">IFBB 职业联盟认证私教 (CFPT)</div>
+            <div class="cert-meta">编号 PT2018-1713 · 国际健美联合会官方认证</div>
           </div>
 
           <!-- Cert 2: IBFA -->
-          <div class="cert-item" onclick="openModal('certificates/IBFA_国际体适能教练证书.jpg', 'IBFA 国际身体阻力与体适能训练协会认证', '证书编号：PFTC-107466 · 专业私人教练认证')">
-            <div class="cert-img-wrap">
-              <img src="certificates/IBFA_国际体适能教练证书.jpg" alt="IBFA 国际体适能认证">
+          <div class="cert-card" onclick="openModal('certificates/IBFA_国际体适能教练证书.jpg', 'IBFA 国际身体阻力与体适能训练协会认证', '证书编号：PFTC-107466 · 专业私人教练认证')">
+            <div class="cert-img-box">
+              <img src="certificates/IBFA_国际体适能教练证书.jpg" alt="IBFA 国际体适能认证" />
             </div>
-            <div class="cert-item-title">IBFA 国际体适能专业私教</div>
-            <div class="cert-item-sub">编号 PFTC-107466 · 身体阻力与体适能协会</div>
+            <div class="cert-name">IBFA 国际体适能专业私教</div>
+            <div class="cert-meta">编号 PFTC-107466 · 身体阻力与体适能协会</div>
           </div>
 
           <!-- Cert 3: AHA CPR AED -->
-          <div class="cert-item" onclick="openModal('certificates/AHA_急救卡.png', 'AHA 美国心脏协会 Heartsaver CPR AED', '具备心肺复苏与自动体外除颤器急救资质 · 教学安全防护保障')">
-            <div class="cert-img-wrap">
-              <img src="certificates/AHA_急救卡.png" alt="AHA 急救卡">
+          <div class="cert-card" onclick="openModal('certificates/AHA_急救卡.png', 'AHA 美国心脏协会 Heartsaver CPR AED', '具备心肺复苏与自动体外除颤器急救资质 · 教学安全防护保障')">
+            <div class="cert-img-box">
+              <img src="certificates/AHA_急救卡.png" alt="AHA 急救卡" />
             </div>
-            <div class="cert-item-title">AHA 美国心脏协会 CPR AED</div>
-            <div class="cert-item-sub">国际急救急护资质 · 教学安全最高底线</div>
+            <div class="cert-name">AHA 美国心脏协会 CPR AED</div>
+            <div class="cert-meta">国际急救急护资质 · 教学安全最高底线</div>
           </div>
         </div>
       </div>
 
       <!-- 4. Core Competencies -->
       <div class="card col-7">
-        <div class="card-label">Core Competencies · 核心专长</div>
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>CORE COMPETENCIES</span>
+        </div>
         <div class="card-title">四大定制教学模块</div>
-        <div class="module-list">
-          <div class="module-box">
-            <div class="module-box-title">📐 不良体态评估与纠错</div>
-            <div class="module-box-desc">针对圆肩驼背、头前引、骨盆前倾等失衡，激活深层稳定肌，重塑端正挺拔体态。</div>
+        <div class="comp-grid">
+          <div class="comp-item">
+            <div class="icon-squircle coral">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><path d="M8 12h8"></path></svg>
+            </div>
+            <div>
+              <div class="comp-title">不良体态评估与纠错</div>
+              <div class="comp-desc">针对圆肩驼背、头前引、骨盆前倾等失衡，激活深层稳定肌，重塑端正挺拔体态。</div>
+            </div>
           </div>
-          <div class="module-box">
-            <div class="module-box-title">🧘 久坐高压人群脊椎减压</div>
-            <div class="module-box-desc">科学融入筋膜松解与核心抗旋训练，温和改善肩颈酸痛与腰椎劳损，提升日常精力。</div>
+          <div class="comp-item">
+            <div class="icon-squircle blue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div>
+              <div class="comp-title">久坐高压人群脊椎减压</div>
+              <div class="comp-desc">科学融入筋膜松解与核心抗旋训练，温和改善肩颈酸痛与腰椎劳损，提升日常精力。</div>
+            </div>
           </div>
-          <div class="module-box">
-            <div class="module-box-title">⚡ 科学减脂塑形与线条雕刻</div>
-            <div class="module-box-desc">定制温和可持续进阶计划，拒绝极端节食；把控动作发力轨迹细节，打造紧致健康体魄。</div>
+          <div class="comp-item">
+            <div class="icon-squircle green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div>
+              <div class="comp-title">科学减脂塑形与线条雕刻</div>
+              <div class="comp-desc">定制温和可持续进阶计划，拒绝极端节食；把控动作发力轨迹细节，打造紧致健康体魄。</div>
+            </div>
           </div>
-          <div class="module-box">
-            <div class="module-box-title">📊 数字化全周期身体档案</div>
-            <div class="module-box-desc">课前确认身心状态，课后肌肉反馈追踪；建立阶段性体测对比表，让体能改善清晰可见。</div>
+          <div class="comp-item">
+            <div class="icon-squircle purple">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <div>
+              <div class="comp-title">数字化全周期身体档案</div>
+              <div class="comp-desc">课前确认身心状态，课后肌肉反馈追踪；建立阶段性体测对比表，让体能改善清晰可见。</div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 5. Education Card -->
+      <!-- 5. Academic Background -->
       <div class="card col-5">
-        <div class="card-label">Academic Background · 教育背景</div>
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          <span>EDUCATION</span>
+        </div>
         <div class="card-title">专业科班与数字化素养</div>
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date">2017.09 – 2020.07</div>
-            <div class="timeline-role">上海思博职业技术学院 · 健身指导与管理</div>
-            <div class="timeline-desc">3年全日制专科，系统研修运动解剖学、运动生理学、运动损伤防护与急救技巧。</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-header-row">
+              <div class="timeline-role-title">上海思博职业技术学院</div>
+              <span class="timeline-badge">2017.09 – 2020.07</span>
+            </div>
+            <div class="timeline-company">健身指导与管理 ｜ 全日制专科</div>
+            <div class="timeline-body">系统研修运动解剖学、运动生理学、运动损伤防护与急救技巧，奠定扎实科学运动基础。</div>
           </div>
+
           <div class="timeline-item">
-            <div class="timeline-date">2024.03 – 2026.06</div>
-            <div class="timeline-role">齐鲁工业大学 · 计算机科学与技术</div>
-            <div class="timeline-desc">工学学士，具备严谨逻辑思维，熟练应用数字化工具建立科学学员健康档案。</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-header-row">
+              <div class="timeline-role-title">齐鲁工业大学</div>
+              <span class="timeline-badge">2024.03 – 2026.06</span>
+            </div>
+            <div class="timeline-company">计算机科学与技术 ｜ 工学学士</div>
+            <div class="timeline-body">具备严谨逻辑思维，熟练应用数字化工具建立学员健康档案与阶段对比系统。</div>
           </div>
         </div>
       </div>
 
-      <!-- 6. Work Timeline -->
-      <div class="card col-7">
-        <div class="card-label">Experience · 工作经历</div>
-        <div class="card-title">实战带教积累</div>
+      <!-- 6. Work Experience Timeline -->
+      <div class="card col-12">
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          <span>EXPERIENCE</span>
+        </div>
+        <div class="card-title">工作经历与带教战绩</div>
         <div class="timeline">
+          <!-- Job 1 -->
           <div class="timeline-item">
-            <div class="timeline-date">2023.06 – 2026.07</div>
-            <div class="timeline-role">7 号健身铁馆 ｜ 资深私人健身教练</div>
-            <div class="timeline-desc">主导会员私教全流程带教服务与体验转化，累计服务会员超 200+ 人，课程完课率 85% 以上、老会员续课率 60% 以上，个人累计销售业绩超 220 万元，月度销售额稳居门店 TOP3。深度参与门店运营与营销流程优化，助力新客到店转化率提升 20%+。结合自身伤病康复与关节保养的深刻体会，针对久坐及劳损人群定向开发肩颈腰椎减压、关节弹响纠错方案。</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-header-row">
+              <div class="timeline-role-title">7 号健身铁馆 ｜ 资深私人健身教练</div>
+              <span class="timeline-badge">2023.06 – 2026.07</span>
+            </div>
+            <div class="timeline-body">
+              主导会员私教全流程带教服务与体验转化，累计服务会员超 200+ 人，课程完课率 85% 以上、老会员续课率 60% 以上，个人累计销售业绩超 220 万元，月度销售额稳居门店 TOP3。深度参与门店运营与营销流程优化，助力新客到店转化率提升 20%+。结合自身伤病康复与关节保养的深刻体会，针对久坐及劳损人群定向开发肩颈腰椎减压、关节弹响纠错方案。
+            </div>
           </div>
+
+          <!-- Job 2 -->
           <div class="timeline-item">
-            <div class="timeline-date">2021.09 – 2023.03</div>
-            <div class="timeline-role">pop fit 健身工作室（上海） ｜ 私人健身教练</div>
-            <div class="timeline-desc">面向上海中高端白领与企业员工高管开展一对一体能评估与身体成分筛查，根据个体骨骼排列与体能瓶颈定制个性化周期训练计划；月均稳定授课 80-120+ 节，带教风格沉稳严谨；老会员续课率达 60%–80%，赢得会员长期信赖与主动转介绍。</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-header-row">
+              <div class="timeline-role-title">pop fit 健身工作室（上海） ｜ 私人健身教练</div>
+              <span class="timeline-badge">2021.09 – 2023.03</span>
+            </div>
+            <div class="timeline-body">
+              面向上海中高端白领与企业员工高管开展一对一体能评估与身体成分筛查，根据个体骨骼排列与体能瓶颈定制个性化周期训练计划；月均稳定授课 80-120+ 节，带教风格沉稳严谨；老会员续课率达 60%–80%，赢得会员长期信赖与主动转介绍。
+            </div>
           </div>
+
+          <!-- Job 3 -->
           <div class="timeline-item">
-            <div class="timeline-date">2019.06 – 2021.08</div>
-            <div class="timeline-role">星之健身（上海华为） ｜ 私人健身教练</div>
-            <div class="timeline-desc">结合健身专业理论，完成从巡场指导、体测筛查到一对一带教实战沉淀，系统掌握体能筛查、体态评估与急救保护流程；负责新会员体测分析与体验课转化，指导基础动作发力模式与运动营养建议。</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-header-row">
+              <div class="timeline-role-title">星之健身（上海华为） ｜ 私人健身教练</div>
+              <span class="timeline-badge">2019.06 – 2021.08</span>
+            </div>
+            <div class="timeline-body">
+              结合健身专业理论，完成从巡场指导、体测筛查到一对一带教实战沉淀，系统掌握体能筛查、体态评估与急救保护流程；负责新会员体测分析与体验课转化，指导基础动作发力模式与运动营养建议。
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 7. Media Showcase (Video & Photos) -->
-      <div class="card col-5">
-        <div class="card-label">Media & Works · 动作演示与剪影</div>
-        <div class="card-title">教学演示与训练记录</div>
-        
-        <div class="media-placeholder" onclick="openVideoModal()">
-          <div class="play-btn">
-            <div class="play-icon"></div>
+      <!-- 7. Contact Card -->
+      <div class="card col-12">
+        <div class="section-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 2L11 13"></path><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          <span>CONTACT & BOOKING</span>
+        </div>
+        <div class="card-title">预约沟通</div>
+        <div class="card-desc">提供面对面体能评估与个性化周期方案定制。</div>
+
+        <div class="contact-grid">
+          <!-- Phone -->
+          <div class="contact-box">
+            <div class="contact-info-left">
+              <div class="icon-squircle orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div>
+                <span class="contact-label">联系电话</span>
+                <span class="contact-val">176-5859-6889</span>
+              </div>
+            </div>
+            <button class="btn-copy" onclick="copyText('17658596889', this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>复制</span>
+            </button>
           </div>
-          <div style="font-size:14px; font-weight:600;">动作示范与体态评估解析</div>
-          <div style="font-size:12px; color:rgba(255,255,255,0.7); margin-top:2px;">点击预览教学短片</div>
-        </div>
 
-        <div class="photo-grid">
-          <div class="photo-box" onclick="alert('可在工作区放入个人训练照片，即可替换此展示位')">📷 训练动作实拍</div>
-          <div class="photo-box" onclick="alert('可在工作区放入体态纠正对比图，即可替换此展示位')">📷 体态评估记录</div>
-          <div class="photo-box" onclick="alert('可在工作区放入会所训练环境图，即可替换此展示位')">📷 场馆实拍记录</div>
-        </div>
-      </div>
+          <!-- Email -->
+          <div class="contact-box">
+            <div class="contact-info-left">
+              <div class="icon-squircle purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <span class="contact-label">电子邮箱</span>
+                <span class="contact-val">757458811@qq.com</span>
+              </div>
+            </div>
+            <button class="btn-copy" onclick="copyText('757458811@qq.com', this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>复制</span>
+            </button>
+          </div>
 
-      <!-- 8. Contact Card -->
-      <div class="card col-12 contact-card">
-        <div>
-          <div class="card-label" style="color: rgba(255,255,255,0.6);">Direct Booking · 预约沟通</div>
-          <div class="card-title">预约一对一健身评估与指导</div>
-          <div class="card-desc">提供面对面体能评估与个性化周期方案定制。</div>
-        </div>
-        <div class="contact-actions">
-          <a class="btn btn-primary" href="tel:17658596889">
-            📞 176-5859-6889
-          </a>
-          <button class="btn btn-secondary" onclick="openWechatModal()">
-            💬 微信预约
-          </button>
-          <a class="btn btn-secondary" href="mailto:757458811@qq.com">
-            ✉️ 757458811@qq.com
-          </a>
+          <!-- WeChat -->
+          <div class="contact-box">
+            <div class="contact-info-left">
+              <div class="icon-squircle green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              </div>
+              <div>
+                <span class="contact-label">微信账号</span>
+                <span class="contact-val">17658596889</span>
+              </div>
+            </div>
+            <button class="btn-copy" onclick="copyText('17658596889', this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>复制</span>
+            </button>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- Image Modal -->
-  <div class="modal-overlay" id="imageModal" onclick="closeModal('imageModal')">
+  <!-- Certificate Image Modal -->
+  <div class="modal-overlay" id="certModal" onclick="closeModal('certModal')">
     <div class="modal-content" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal('imageModal')">✕</button>
-      <h3 id="modalTitle" style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">证书标题</h3>
-      <p id="modalSub" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">证书编号与说明</p>
-      <img id="modalImg" class="modal-img" src="" alt="证书大图">
-    </div>
-  </div>
-
-  <!-- Video Modal -->
-  <div class="modal-overlay" id="videoModal" onclick="closeModal('videoModal')">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal('videoModal')">✕</button>
-      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">动作教学与带教短片</h3>
-      <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">可传入本地 MP4 视频或 B 站/YouTube 嵌入链接</p>
-      <div style="background:#000; border-radius:12px; height:360px; display:flex; align-items:center; justify-content:center; color:#fff;">
-        <video id="mainVideo" controls style="width:100%; height:100%; border-radius:12px; display:none;">
-          <source src="" type="video/mp4">
-        </video>
-        <div id="videoEmptyNotice" style="text-align:center; padding:20px;">
-          <div style="font-size:32px; margin-bottom:8px;">🎬</div>
-          <div style="font-size:15px; font-weight:600;">视频展示位已就绪</div>
-          <div style="font-size:13px; color:#888; margin-top:4px;">将你的教学或训练 mp4 视频文件放入工作区，即可直接播放</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- WeChat Modal -->
-  <div class="modal-overlay" id="wechatModal" onclick="closeModal('wechatModal')">
-    <div class="modal-content" style="max-width:400px;" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal('wechatModal')">✕</button>
-      <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 6px;">微信预约与沟通</h3>
-      <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">扫描二维码或复制微信号添加好友</p>
-      <div style="width:180px; height:180px; margin:0 auto; background:#F5F5F7; border-radius:16px; border:1px dashed #CCC; display:flex; align-items:center; justify-content:center; color:#888; font-size:13px;">
-        二维码展示位<br>(放入二维码图片)
-      </div>
-      <div style="margin-top:20px; font-size:15px; font-weight:600;">微信号：17658596889</div>
-      <button class="btn btn-primary" style="margin-top:14px; width:100%; justify-content:center;" onclick="navigator.clipboard.writeText('17658596889'); alert('微信号已复制到剪贴板！');">
-        📋 复制微信号
-      </button>
+      <button class="modal-close" onclick="closeModal('certModal')">✕</button>
+      <h3 id="modalTitle" style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 6px;">证书标题</h3>
+      <p id="modalSub" style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">证书编号与认证说明</p>
+      <img id="modalImg" class="modal-img" src="" alt="证书大图" />
     </div>
   </div>
 
@@ -838,19 +933,25 @@
       document.getElementById('modalImg').src = imgSrc;
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('modalSub').innerText = sub;
-      document.getElementById('imageModal').classList.add('active');
-    }
-
-    function openVideoModal() {
-      document.getElementById('videoModal').classList.add('active');
-    }
-
-    function openWechatModal() {
-      document.getElementById('wechatModal').classList.add('active');
+      document.getElementById('certModal').classList.add('active');
     }
 
     function closeModal(id) {
       document.getElementById(id).classList.remove('active');
+    }
+
+    function copyText(val, btn) {
+      navigator.clipboard.writeText(val);
+      const span = btn.querySelector('span');
+      const oldText = span.innerText;
+      span.innerText = '已复制';
+      btn.style.borderColor = 'var(--candy-green)';
+      btn.style.color = 'var(--candy-green)';
+      setTimeout(() => {
+        span.innerText = oldText;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
     }
 
     window.addEventListener('keydown', function(e) {
