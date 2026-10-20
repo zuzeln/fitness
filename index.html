@@ -7,7 +7,7 @@
   <meta name="description" content="邹泽霖 (Ethan) - 资深私人健身教练与健康管理师，专注体态矫正、脊椎减压与定制运动康复。" />
   <style>
     :root {
-      /* 瑞士精密与高端私享调色体系 (Swiss Precision & Atelier Palette) */
+      /* 瑞士精密与高端私享调色体系 (Swiss Precision & Atelier Palette - 暗色默认) */
       --bg-base: #08090C;
       --bg-surface: #0E1015;
       --bg-surface-elevated: #13161D;
@@ -41,7 +41,39 @@
 
       --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
       --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.6);
+      --modal-backdrop-bg: rgba(8, 9, 12, 0.85);
+      --toast-bg: #181B22;
+      --cert-stage-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* 系统浅色模式自动适配 (跟随系统设备，无手动按钮) */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg-base: #F8F9FA;
+        --bg-surface: #FFFFFF;
+        --bg-surface-elevated: #F1F3F5;
+        --bg-subtle: rgba(0, 0, 0, 0.03);
+        --bg-hover: rgba(0, 0, 0, 0.055);
+
+        --border-hairline: rgba(0, 0, 0, 0.08);
+        --border-focus: rgba(0, 0, 0, 0.18);
+        --border-accent: rgba(158, 123, 53, 0.35);
+
+        --accent-gold: #9E7B35;
+        --accent-gold-light: #7E6125;
+        --accent-gold-dim: rgba(158, 123, 53, 0.09);
+
+        --text-primary: #12141A;
+        --text-secondary: #58606E;
+        --text-tertiary: #848D9A;
+
+        --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.1);
+        --modal-backdrop-bg: rgba(248, 249, 250, 0.88);
+        --toast-bg: #FFFFFF;
+        --cert-stage-shadow: inset 0 0 20px rgba(0, 0, 0, 0.04);
+      }
     }
 
     * {
@@ -405,7 +437,7 @@
       justify-content: center;
       margin-bottom: 20px;
       border: 1px solid var(--border-hairline);
-      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+      box-shadow: var(--cert-stage-shadow);
       padding: 12px;
     }
 
@@ -697,7 +729,7 @@
 
     .btn-action-copy {
       padding: 6px 14px;
-      background: rgba(255, 255, 255, 0.05);
+      background: var(--bg-subtle);
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-pill);
       color: var(--text-primary);
@@ -711,7 +743,7 @@
     }
 
     .btn-action-copy:hover {
-      background: rgba(255, 255, 255, 0.12);
+      background: var(--bg-hover);
       border-color: var(--accent-gold);
       color: var(--accent-gold-light);
     }
@@ -729,7 +761,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(8, 9, 12, 0.85);
+      background: var(--modal-backdrop-bg);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
       display: none;
@@ -764,7 +796,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--bg-subtle);
       border: 1px solid var(--border-hairline);
       color: var(--text-primary);
       display: flex;
@@ -775,7 +807,7 @@
     }
 
     .modal-close-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: var(--bg-hover);
     }
 
     .modal-close-btn svg {
@@ -803,7 +835,7 @@
       border-radius: var(--radius-md);
       padding: 16px;
       border: 1px solid var(--border-hairline);
-      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+      box-shadow: var(--cert-stage-shadow);
     }
 
     .modal-certificate-img {
@@ -820,7 +852,7 @@
       bottom: 32px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: #181B22;
+      background: var(--toast-bg);
       border: 1px solid var(--border-accent);
       color: var(--text-primary);
       padding: 10px 22px;
