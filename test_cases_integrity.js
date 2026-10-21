@@ -121,6 +121,13 @@ assert(htmlContent.includes('switchCaseTab'), '包含 switchCaseTab 案例切换
 assert(htmlContent.includes('modalDetailBox'), '包含弹窗诊断细节 modalDetailBox 容器');
 assert(htmlContent.includes('comparison-detail-banner'), '对比照下方包含明确执教诊断成效标注');
 
+// 3.1 验证带教课时与累计销售额严密对齐（全周期 3500+ 课时、380万+ 销售额）
+assert(htmlContent.includes('3500<span class="unit">+</span>'), '数据横栏：带教课时已校准为 3500+ 课时');
+assert(htmlContent.includes('380<span class="unit">万+</span>'), '数据横栏：累计销售业绩已校准为 380万+');
+assert(htmlContent.includes('阶段销售业绩超 220 万元，带教超 1800+ 课时'), '时间线 7 号铁馆：阶段销售 220 万元与 1800+ 课时闭环');
+assert(htmlContent.includes('阶段销售额超 120 万元，累计带教超 1200+ 课时'), '时间线 pop fit：阶段销售 120 万元与 1200+ 课时闭环');
+assert(htmlContent.includes('阶段销售额超 40 万元，累计带教超 600+ 课时'), '时间线星之健身：阶段销售 40 万元与 600+ 课时闭环');
+
 // 4. 严格规范扫描：深色模式去黑边规范（禁止 #000 / #000000 出现在容器背景）
 const blackBgMatch = htmlContent.match(/background(-color)?:\s*#000(000)?/i);
 assert(!blackBgMatch, '多媒体展示与容器底色严禁使用 #000 / #000000 纯黑底色');
