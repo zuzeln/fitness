@@ -22,11 +22,11 @@ function test(name, fn) {
 
 const mockPhotos = [
   { id: "p0", title: "正式教练肖像", src: "avatar.png" },
-  { id: "p1", title: "随照 01", src: "photos/coach_photo_01.png" },
-  { id: "p2", title: "随照 02", src: "photos/coach_photo_02.png" },
-  { id: "p3", title: "随照 03", src: "photos/coach_photo_03.png" },
-  { id: "p4", title: "随照 04", src: "photos/coach_photo_04.png" },
-  { id: "p5", title: "随照 05", src: "photos/coach_photo_05.png" }
+  { id: "p1", title: "随照 01", src: "photos/coach_photo_01.jpg" },
+  { id: "p2", title: "随照 02", src: "photos/coach_photo_02.jpg" },
+  { id: "p3", title: "随照 03", src: "photos/coach_photo_03.jpg" },
+  { id: "p4", title: "随照 04", src: "photos/coach_photo_04.jpg" },
+  { id: "p5", title: "随照 05", src: "photos/coach_photo_05.jpg" }
 ];
 
 test("初始化堆叠包含 6 张照片且当前索引为 0", () => {

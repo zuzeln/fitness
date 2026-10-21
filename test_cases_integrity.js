@@ -58,11 +58,11 @@ certImages.forEach(imgName => {
 });
 
 const coachPhotos = [
-  'coach_photo_01.png',
-  'coach_photo_02.png',
-  'coach_photo_03.png',
-  'coach_photo_04.png',
-  'coach_photo_05.png'
+  'coach_photo_01.jpg',
+  'coach_photo_02.jpg',
+  'coach_photo_03.jpg',
+  'coach_photo_04.jpg',
+  'coach_photo_05.jpg'
 ];
 const photosDir = path.join(rootDir, 'photos');
 assert(fs.existsSync(photosDir), 'photos 随照目录必须存在');
@@ -76,7 +76,7 @@ coachPhotos.forEach(photoName => {
     sizeOk = stats.size > 10 * 1024;
     compressedOk = stats.size < 1024 * 1024; // 严格小于 1MB
   }
-  assert(exists && sizeOk && compressedOk, `随照抠图 ${photoName} 存在且体积小于 1MB`);
+  assert(exists && sizeOk && compressedOk, `随照原图 ${photoName} 存在且体积小于 1MB`);
 });
 
 // 3. 验证 index.html 文件与 JS 脚本语法无错误
@@ -110,6 +110,12 @@ assert(htmlContent.includes('stack-container'), '拟物照片展台：包含 sta
 assert(htmlContent.includes('stack-deck'), '拟物照片展台：包含 stack-deck 堆叠层');
 assert(htmlContent.includes('initPhotoStack'), '拟物照片展台：包含 initPhotoStack 物理拖拽与滑动逻辑');
 assert(htmlContent.includes('nextStackPhoto') && htmlContent.includes('prevStackPhoto'), '拟物照片展台：支持向后滑/左右翻转物理动作');
+assert(htmlContent.includes('resetHorizontalScroll'), '移动端视口防护：包含 resetHorizontalScroll 防止左右漂移');
+
+assert(!htmlContent.includes('执教随照'), '照片展台纯净性：已彻底清除“执教随照”');
+assert(!htmlContent.includes('轻拖翻看物理照片堆'), '照片展台纯净性：已彻底清除“左右滑动或轻拖翻看物理照片堆”提示语');
+assert(!htmlContent.includes('stack-card-tag'), '照片展台纯净性：已彻底清除卡片底部标签 (stack-card-tag)');
+assert(!htmlContent.includes('stackIndicator'), '照片展台纯净性：已彻底清除 1/6 指示器');
 
 assert(htmlContent.includes('switchCaseTab'), '包含 switchCaseTab 案例切换函数');
 assert(htmlContent.includes('modalDetailBox'), '包含弹窗诊断细节 modalDetailBox 容器');
