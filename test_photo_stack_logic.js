@@ -5,7 +5,9 @@ const {
   getNextStackState,
   getPrevStackState,
   calculateStackLayerStyle,
-  calculateDragStyle
+  calculateDragStyle,
+  determineSwipeAction,
+  calculateDragFrame
 } = require("./photoStackLogic");
 
 let fails = 0;
@@ -47,6 +49,15 @@ test("向左滑到最后边：第一张放到最后，第二张变成第一张",
   }
 });
 
+test("向右滑往前翻：最后一张拿回到顶层，原来第一张顺延为第二张", () => {
+  const stack0 = createPhotoStack(mockPhotos);
+  const stackPrev = getPrevStackState(stack0);
+
+  if (stackPrev.currentIndex !== 5) throw new Error("currentIndex 应回退为 5");
+  if (stackPrev.items[0].id !== "p5") throw new Error("上一张（原末尾 p5）必须被放到当前第一张");
+  if (stackPrev.items[1].id !== "p0") throw new Error("原来的第一张 p0 顺延为第二张");
+});
+
 test("连续滑动 6 次后状态完整循环归位", () => {
   let stack = createPhotoStack(mockPhotos);
   for (let i = 0; i < 6; i++) {
@@ -81,8 +92,34 @@ test("跟手拖拽物理倾角限制在安全物理阈值内", () => {
   if (dLeft.rotateDeg >= 0) throw new Error("向左滑动必须具有负向（逆时针）拟物倾角");
   if (dLeft.rotateDeg !== -6) throw new Error(`期望倾角 -6 度，实际为 ${dLeft.rotateDeg}`);
 
+  const dRight = calculateDragStyle(100, 0);
+  if (dRight.rotateDeg <= 0) throw new Error("向右滑动必须具有正向（顺时针）拟物倾角");
+  if (dRight.rotateDeg !== 6) throw new Error(`期望倾角 +6 度，实际为 ${dRight.rotateDeg}`);
+
   const dExtreme = calculateDragStyle(-1000, 0);
   if (dExtreme.rotateDeg < -15) throw new Error("极限拖拽倾角不应超出 15 度安全线");
+});
+
+test("滑动动作判定准确映射 NEXT、PREV 与 RESET", () => {
+  if (determineSwipeAction(-80) !== "NEXT") throw new Error("向左拖拽超过阈值应判定为 NEXT");
+  if (determineSwipeAction(80) !== "PREV") throw new Error("向右拖拽超过阈值应判定为 PREV");
+  if (determineSwipeAction(-20) !== "RESET") throw new Error("微幅向左应判定为 RESET");
+  if (determineSwipeAction(20) !== "RESET") throw new Error("微幅向右应判定为 RESET");
+});
+
+test("向左滑时预览底层必为下一张（index 1）", () => {
+  const frames = calculateDragFrame(6, -80, 0);
+  if (frames[0].zIndex !== 10) throw new Error("顶层照片层级必须为 10");
+  if (frames[1].zIndex !== 9) throw new Error("向左滑时下一张（index 1）必须为露出的第二层（zIndex 9）");
+  if (frames[1].opacity <= 0.8) throw new Error("下一张应随拖拽进度提升透明度");
+});
+
+test("向右滑时预览底层必为上一张（index 5）而绝非下一张", () => {
+  const frames = calculateDragFrame(6, 80, 0);
+  if (frames[0].zIndex !== 10) throw new Error("顶层照片层级必须为 10");
+  if (frames[5].zIndex !== 9) throw new Error("向右滑时上一张（index 5）必须提升为露出的第二层（zIndex 9）");
+  if (frames[1].zIndex >= 9) throw new Error("向右滑时下一张（index 1）严禁抢占露出层（zIndex 必须低于 9）");
+  if (frames[5].opacity < 0.9) throw new Error("上一张应随向右拖拽呈现清晰预览");
 });
 
 if (fails > 0) {

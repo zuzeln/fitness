@@ -100,10 +100,90 @@ function calculateDragStyle(dx, dy) {
   };
 }
 
+// 判定滑动释放后的触发动作
+function determineSwipeAction(dx, threshold = 65) {
+  if (dx < -threshold) {
+    return 'NEXT';
+  } else if (dx > threshold) {
+    return 'PREV';
+  }
+  return 'RESET';
+}
+
+// 计算拖拽过程中各卡片的实时物理渲染属性
+function calculateDragFrame(totalCount, dx, dy) {
+  if (totalCount < 1) return [];
+  const dragStyle = calculateDragStyle(dx, dy);
+  const frames = [];
+  const progress = Math.min(1, Math.abs(dx) / 160);
+
+  // top card (index 0) 始终跟手位移与微旋转
+  frames[0] = {
+    translateX: dragStyle.translateX,
+    translateY: dragStyle.translateY,
+    scale: 1,
+    rotateDeg: dragStyle.rotateDeg,
+    opacity: 1,
+    zIndex: 10,
+    pointerEvents: 'auto'
+  };
+
+  if (dx < 0) {
+    // 往左滑（往后翻）：底层露出的预览图为下一张（index 1）
+    const baseL1 = calculateStackLayerStyle(1);
+    const baseL0 = calculateStackLayerStyle(0);
+    frames[1] = {
+      translateX: 0,
+      translateY: Number((baseL1.translateY + (baseL0.translateY - baseL1.translateY) * progress).toFixed(2)),
+      scale: Number((baseL1.scale + (baseL0.scale - baseL1.scale) * progress).toFixed(3)),
+      rotateDeg: Number((baseL1.rotateDeg + (baseL0.rotateDeg - baseL1.rotateDeg) * progress).toFixed(2)),
+      opacity: Number((baseL1.opacity + (baseL0.opacity - baseL1.opacity) * progress).toFixed(3)),
+      zIndex: 9,
+      pointerEvents: 'none'
+    };
+    for (let i = 2; i < totalCount; i++) {
+      frames[i] = calculateStackLayerStyle(i);
+    }
+  } else if (dx > 0) {
+    // 往右滑（往前翻）：底层露出的预览图必须是上一张（index totalCount - 1）
+    const baseL1 = calculateStackLayerStyle(1);
+    const baseL0 = calculateStackLayerStyle(0);
+    const lastIdx = totalCount - 1;
+
+    frames[lastIdx] = {
+      translateX: 0,
+      translateY: Number((baseL1.translateY + (baseL0.translateY - baseL1.translateY) * progress).toFixed(2)),
+      scale: Number((baseL1.scale + (baseL0.scale - baseL1.scale) * progress).toFixed(3)),
+      rotateDeg: Number((baseL1.rotateDeg + (baseL0.rotateDeg - baseL1.rotateDeg) * progress).toFixed(2)),
+      opacity: Number((0.85 + 0.15 * progress).toFixed(3)),
+      zIndex: 9,
+      pointerEvents: 'none'
+    };
+
+    // 其他卡片沉底，避免下一张（index 1）抢先露出穿帮
+    for (let i = 1; i < lastIdx; i++) {
+      frames[i] = {
+        ...calculateStackLayerStyle(i + 1),
+        zIndex: Math.max(1, 8 - i),
+        pointerEvents: 'none'
+      };
+    }
+  } else {
+    // dx === 0 静态层级
+    for (let i = 0; i < totalCount; i++) {
+      frames[i] = calculateStackLayerStyle(i);
+    }
+  }
+
+  return frames;
+}
+
 module.exports = {
   createPhotoStack,
   getNextStackState,
   getPrevStackState,
   calculateStackLayerStyle,
-  calculateDragStyle
+  calculateDragStyle,
+  determineSwipeAction,
+  calculateDragFrame
 };

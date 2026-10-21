@@ -109,6 +109,8 @@ assert(htmlContent.includes('contact-action-arrow'), '联系方式交互：包�
 assert(htmlContent.includes('stack-container'), '拟物照片展台：包含 stack-container 容器');
 assert(htmlContent.includes('stack-deck'), '拟物照片展台：包含 stack-deck 堆叠层');
 assert(htmlContent.includes('initPhotoStack'), '拟物照片展台：包含 initPhotoStack 物理拖拽与滑动逻辑');
+assert(htmlContent.includes('calculateDragFrame'), '拟物照片展台：包含左右对称动态跟手计算 calculateDragFrame');
+assert(htmlContent.includes('applyCardStyle'), '拟物照片展台：包含 applyCardStyle 物理渲染');
 assert(htmlContent.includes('nextStackPhoto') && htmlContent.includes('prevStackPhoto'), '拟物照片展台：支持向后滑/左右翻转物理动作');
 assert(htmlContent.includes('resetHorizontalScroll'), '移动端视口防护：包含 resetHorizontalScroll 防止左右漂移');
 
