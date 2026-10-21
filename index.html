@@ -926,6 +926,364 @@
         padding: 28px 20px;
       }
     }
+  
+    /* ==========================================================================
+       典型学员案例与执教实录 (Cases & Clinical Evidence)
+       严格遵循深色去黑边规范与全站零 Emoji 铁律
+       ========================================================================== */
+    .cases-section {
+      margin-bottom: 40px;
+    }
+
+    .case-tab-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .case-tab-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+    }
+
+    .case-tab-btn:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-focus);
+    }
+
+    .case-tab-btn.is-active {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-accent);
+      box-shadow: 0 4px 16px var(--accent-gold-dim);
+    }
+
+    .case-tab-code {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--accent-gold);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .case-tab-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .case-tab-sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .case-panel {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-subtle);
+      animation: fadeInCase 0.3s ease;
+    }
+
+    .case-panel.is-active {
+      display: block;
+    }
+
+    @keyframes fadeInCase {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .case-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-hairline);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .case-code-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--border-accent);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 8px;
+    }
+
+    .case-name-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .case-bio-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .metric-capsules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .metric-capsule-item {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: border-color 0.2s ease;
+    }
+
+    .metric-capsule-item:hover {
+      border-color: var(--border-focus);
+    }
+
+    .capsule-val-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      font-family: var(--font-mono);
+      letter-spacing: -0.02em;
+    }
+
+    .capsule-lbl-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* 视觉展示展台 (严禁 #000 纯黑，采用微透底板加立体微投影) */
+    .case-visual-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .case-gallery-card {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-card-title svg {
+      width: 15px;
+      height: 15px;
+      color: var(--accent-gold);
+    }
+
+    .comparison-stage-box {
+      width: 100%;
+      height: 290px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-hairline);
+      box-shadow: var(--cert-stage-shadow);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .comparison-stage-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      transition: transform 0.35s var(--ease-out);
+    }
+
+    .comparison-stage-box:hover img {
+      transform: scale(1.02);
+    }
+
+    .zoom-hint-tag {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(8, 9, 12, 0.75);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-pill);
+      padding: 4px 10px;
+      font-size: 11px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .zoom-hint-tag svg {
+      width: 12px;
+      height: 12px;
+      color: var(--accent-gold);
+    }
+
+    .posture-triple-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      height: 290px;
+    }
+
+    .posture-shot-item {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .posture-shot-img-wrap {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+    }
+
+    .posture-shot-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    .posture-shot-item:hover .posture-shot-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .posture-shot-label {
+      padding: 6px 8px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-hairline);
+      text-align: center;
+    }
+
+    /* 处方与动力链两列排版 */
+    .prescription-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .prescription-block {
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      padding: 22px;
+    }
+
+    .prescription-block-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .prescription-block-title svg {
+      width: 16px;
+      height: 16px;
+      color: var(--accent-gold);
+    }
+
+    .rx-item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .rx-item-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .rx-bullet-icon {
+      width: 14px;
+      height: 14px;
+      color: var(--accent-gold);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .rx-item-row strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 900px) {
+      .case-tab-bar {
+        grid-template-columns: 1fr;
+      }
+      .case-visual-layout {
+        grid-template-columns: 1fr;
+      }
+      .prescription-split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1145,6 +1503,419 @@
       </div>
     </section>
 
+
+    <!-- 执教实录与典型学员案例 -->
+    <section class="cases-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Clinical Cases & Evidence</span>
+          <h2 class="section-heading">执教实录与典型学员案例</h2>
+        </div>
+        <div class="section-hint">全量案例均脱敏备案 · 拒绝千人一方套课 · 恪守运动人体科学</div>
+      </div>
+
+      <!-- 案例切换 Tab 栏 -->
+      <div class="case-tab-bar">
+        <button type="button" class="case-tab-btn" id="tab-case-01" onclick="switchCaseTab('case-01')">
+          <span class="case-tab-code">CASE-01</span>
+          <span class="case-tab-title">偏瘦增肌 & 复杂体态矫正</span>
+          <span class="case-tab-sub">学员 A · 41.6kg 至 45kg · 高低肩/翼状纠正</span>
+        </button>
+
+        <button type="button" class="case-tab-btn is-active" id="tab-case-02" onclick="switchCaseTab('case-02')">
+          <span class="case-tab-code">CASE-02</span>
+          <span class="case-tab-title">减脂塑形 & 假胯宽消除</span>
+          <span class="case-tab-sub">学员 B · 58kg 至 53kg 减重 6.5kg · 腰围 -6.5cm</span>
+        </button>
+
+        <button type="button" class="case-tab-btn" id="tab-case-03" onclick="switchCaseTab('case-03')">
+          <span class="case-tab-code">CASE-03</span>
+          <span class="case-tab-title">大基数减脂 & 心肺重塑</span>
+          <span class="case-tab-sub">学员 C · 82.5kg 至 60kg 净减重 22.5kg · 关节零冲击</span>
+        </button>
+      </div>
+
+      <!-- 案例 01 面板 -->
+      <div class="case-panel" id="panel-case-01">
+        <div class="case-header-row">
+          <div>
+            <div class="case-code-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              <span>CASE-01 · 标准化执教纪实 (已脱敏)</span>
+            </div>
+            <h3 class="case-name-title">学员 A ｜ 低体重偏瘦增肌与复杂体态矫正教学案</h3>
+            <p class="case-bio-desc">
+              年龄 26 岁 ｜ 身高 150 CM ｜ 初始体重 41.6 KG ｜ 基础代谢率 1011 kcal ｜ 初始 BMI 18.5（偏瘦临界）<br />
+              首要执教矛盾：肌力极度低下无法承受常规器械负荷，非对称高低肩造成躯干侧屈代偿加重，骨骼肌储备严重匮乏。
+            </p>
+          </div>
+        </div>
+
+        <div class="metric-capsules-grid">
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">45.0 kg</span>
+            <span class="capsule-lbl-text">健康增肌目标 (净增肌 +3.4kg)</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">20.0</span>
+            <span class="capsule-lbl-text">BMI 平稳回升至健康标准区间</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">0 偏差</span>
+            <span class="capsule-lbl-text">双侧高低肩与脊柱侧屈完全回正</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">100% 贴附</span>
+            <span class="capsule-lbl-text">前锯肌唤醒 · 翼状肩胛翘离消除</span>
+          </div>
+        </div>
+
+        <!-- 视觉展示 -->
+        <div class="case-visual-layout">
+          <div class="case-gallery-card">
+            <div class="gallery-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>静态体态真实影像筛查 (点击查看大图)</span>
+            </div>
+            <div class="posture-triple-grid">
+              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_front.jpg', '学员 A · 正面体态影像', '筛查表现：锁骨倾斜、圆肩肱骨内旋，肌力严重失衡')">
+                <div class="posture-shot-img-wrap">
+                  <img src="cases/case01_posture_front.jpg" alt="学员 A 正面体态" />
+                </div>
+                <div class="posture-shot-label">正面 · 圆肩/锁骨倾斜</div>
+              </div>
+
+              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_side.jpg', '学员 A · 侧面体态影像', '筛查表现：骨盆前倾合并头前引，下交叉动力链失衡')">
+                <div class="posture-shot-img-wrap">
+                  <img src="cases/case01_posture_side.jpg" alt="学员 A 侧面体态" />
+                </div>
+                <div class="posture-shot-label">侧面 · 骨盆前倾/头前引</div>
+              </div>
+
+              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_back.jpg', '学员 A · 背面体态影像', '筛查表现：左高右低高低肩、双侧翼状肩胛翘离胸廓')">
+                <div class="posture-shot-img-wrap">
+                  <img src="cases/case01_posture_back.jpg" alt="学员 A 背面体态" />
+                </div>
+                <div class="posture-shot-label">背面 · 高低肩/翼状肩胛</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-gallery-card">
+            <div class="gallery-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <span>三阶全周期递进规划 (7-12 个月)</span>
+            </div>
+            <div class="rx-item-list" style="margin-top: 10px;">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div><strong>阶段一 · 适应阶段 (1-8 周)</strong>：自重呼吸模式与肩袖核心唤醒，抑制左斜方肌痉挛，导入宏量营养认知，严禁空腹训练。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div><strong>阶段二 · 进步阶段 (9-20 周)</strong>：高低肩与翼状基本回正，无氧抗阻与有氧比例调整为 6:4，肌纤维募集增强，体重增长至 43-44kg。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div><strong>阶段三 · 巩固交付 (21-48 周)</strong>：胸背腿核心大肌群分化进阶，达成 45kg 目标体重，骨骼肌质量显著跃升，学员具备自主设计饮食能力。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 动力链与处方 -->
+        <div class="prescription-split-grid">
+          <div class="prescription-block">
+            <h4 class="prescription-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>动力链代偿诊断原点 (Kinetic Chain Impairments)</span>
+            </h4>
+            <div class="rx-item-list">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <div><strong>高低肩畸形 (左高右低)</strong>：左侧肩胛骨异常上提、下回旋，左侧斜方肌上束及肩胛提肌进行性痉挛代偿；右侧腰方肌缩短导致躯干侧倾。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <div><strong>双侧翼状肩胛</strong>：前锯肌与菱形肌严重失活软弱，肩胛骨内侧缘翘离胸廓，上肢推拉动作丧失动力锚定点。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <div><strong>骨盆代偿与肱骨内旋</strong>：胸大肌与胸小肌紧张牵拉肱骨内旋；双侧髂腰肌与阔筋膜张肌挛缩牵拉骨盆前倾合并股骨内旋。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prescription-block">
+            <h4 class="prescription-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>针对性解剖学校正处方 (Corrective Prescription)</span>
+            </h4>
+            <div class="rx-item-list">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>抑制与松解紧张肌群</strong>：筋膜枪配合拉伸左侧斜方肌上束、左侧肩胛提肌；门框动态伸展胸大肌/胸小肌；泡沫轴滚压松解背阔肌肌腱止点。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>前锯肌特异性激活</strong>：仰卧哑铃空推 (Serratus Punch) 及四足支撑推肩胛，特异性募集前锯肌，将肩胛骨牢固贴附胸廓，根治翼状肩胛。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>肩袖与臀中肌回正</strong>：弹力带肩外旋 (强化冈下肌/小圆肌) 建立肩胛中立位；弹力带侧步走强化双侧臀中肌，引导股骨外旋回正骨盆。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 案例 02 面板 (默认显示) -->
+      <div class="case-panel is-active" id="panel-case-02">
+        <div class="case-header-row">
+          <div>
+            <div class="case-code-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              <span>CASE-02 · 标准化执教纪实 (已脱敏)</span>
+            </div>
+            <h3 class="case-name-title">学员 B ｜ 标准体型减脂塑形与假胯宽突破教学案</h3>
+            <p class="case-bio-desc">
+              年龄 32 岁 ｜ 身高 164 CM ｜ 初始体重 59.5 KG ｜ 初始体脂 27.8% ｜ 基础代谢率 1190 kcal<br />
+              首要执教矛盾：基础代谢过低导致日常消耗小，盲目节食导致易胖反弹；久坐臀中肌失活引发假胯宽与 X 型腿内扣。
+            </p>
+          </div>
+        </div>
+
+        <div class="metric-capsules-grid">
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">-6.5 kg</span>
+            <span class="capsule-lbl-text">真实净减重 (58kg 至 53kg 紧致线条)</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">-6.5 cm</span>
+            <span class="capsule-lbl-text">腰围缩减 (73.5cm 至 67.0cm)</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">21.0%</span>
+            <span class="capsule-lbl-text">阶段体脂率 (告别 27.8% 虚胖)</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">6 周</span>
+            <span class="capsule-lbl-text">阶段成效周期 (假胯宽显著消除)</span>
+          </div>
+        </div>
+
+        <!-- 视觉展示 -->
+        <div class="case-visual-layout">
+          <div class="case-gallery-card">
+            <div class="gallery-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>身材蜕变对比实录 (58kg 居家 至 53kg 马甲线)</span>
+            </div>
+            <div class="comparison-stage-box" onclick="openModal('cases/case02_comparison.jpg', '学员 B · 减脂塑形前后对比实录', '左侧 58kg 居家基线 至 右侧 53kg 紧致腹肌线条，腰围净缩减 6.5cm，体脂率降至 21%')">
+              <img src="cases/case02_comparison.jpg" alt="学员 B 减脂对比图" />
+              <div class="zoom-hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                <span>点击放大对比</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-gallery-card">
+            <div class="gallery-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>体态筛查多角度实录 (点击查看诊断细节)</span>
+            </div>
+            <div class="posture-triple-grid">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_front.jpg', '学员 B · 正面体态筛查', '表现：轻度圆肩、股骨内旋合并假胯宽明显')">
+                <div class="posture-shot-img-wrap">
+                  <img src="cases/case02_posture_front.jpg" alt="学员 B 正面" />
+                </div>
+                <div class="posture-shot-label">正面 · 圆肩/假胯宽</div>
+              </div>
+
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_side.jpg', '学员 B · 侧面体态筛查', '表现：腹壁肌力松弛、轻度骨盆前倾代偿')">
+                <div class="posture-shot-img-wrap">
+                  <img src="cases/case02_posture_side.jpg" alt="学员 B 侧面" />
+                </div>
+                <div class="posture-shot-label">侧面 · 腹壁/前倾</div>
+              </div>
+
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_back.jpg', '学员 B · 背面体态筛查', '表现：臀肌失活软弱、下肢下坠力线偏移')">
+                <div class="posture-shot-img-wrap">
+                  <img src="cases/case02_posture_back.jpg" alt="学员 B 背面" />
+                </div>
+                <div class="posture-shot-label">背面 · 臀肌/腿型力线</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 动力链与处方 -->
+        <div class="prescription-split-grid">
+          <div class="prescription-block">
+            <h4 class="prescription-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>下肢力线矫正与假胯宽消除 (Lower Body Alignment)</span>
+            </h4>
+            <div class="rx-item-list">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>髂腰肌与 TFL 深度松解</strong>：利用泡沫轴深度按压阔筋膜张肌止点，配合低重心单腿弓步主动拉伸髂腰肌，释放髋关节受限空间。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>臀中肌后束孤立激活</strong>：侧卧弹力带蚌式开合、抗阻侧步走 (Monster Walk)，精准体会髋部后外侧酸胀发力，强化骨盆侧向悬吊能力。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>下肢动力链闭锁重构</strong>：高脚杯深蹲强化足底三点支撑 (大拇指球、小拇指球、足跟)，下蹲全程双膝严禁内扣，正对第二脚趾。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prescription-block">
+            <h4 class="prescription-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M13 2 3 14 12 14 11 22 21 10 12 10 13 2z"></path></svg>
+              <span>大肌群抗阻与代谢激发处方 (Resistance & EPOC)</span>
+            </h4>
+            <div class="rx-item-list">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>复合动作激发过量氧耗</strong>：以杠铃辅助深蹲、高位下拉、坐姿划船等大肌群动作为主，提高肌纤维征召率，引发运动后过量氧耗 (EPOC)。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>上肢开肩美背组合</strong>：站姿弹力带面拉 (Face Pull) 及俯卧 T 字伸展，强化肩袖外旋肌群，放松斜方肌上束，消除斜方肌厚钝感。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>心肺区间动态切换</strong>：结合坡度快走 (心率 120-140 bpm) 与短间歇 HIIT，兼顾体脂燃烧与胰岛素敏感性改善。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 案例 03 面板 -->
+      <div class="case-panel" id="panel-case-03">
+        <div class="case-header-row">
+          <div>
+            <div class="case-code-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              <span>CASE-03 · 标准化执教纪实 (已脱敏)</span>
+            </div>
+            <h3 class="case-name-title">学员 C ｜ 大基数高风险减脂与心肺功能重塑教学案</h3>
+            <p class="case-bio-desc">
+              年龄 24 岁 ｜ 身高 170 CM ｜ 初始空腹体重 82.5 KG ｜ 初始 BMI 28.4（轻度肥胖临界）｜ 基础代谢率 1520 kcal<br />
+              首要执教矛盾：体重基数过大，下肢承重极易磨损膝盖与半月板；心血管负荷沉重且最大摄氧量低下，早期高风险严禁跳跃。
+            </p>
+          </div>
+        </div>
+
+        <div class="metric-capsules-grid">
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">-22.5 kg</span>
+            <span class="capsule-lbl-text">全周期真实净减重 (82.5kg 至 60kg)</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">20.7</span>
+            <span class="capsule-lbl-text">BMI 平稳回归至正常健康标准</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">0 损伤</span>
+            <span class="capsule-lbl-text">膝踝关节零冲击 · 半月板无劳损</span>
+          </div>
+          <div class="metric-capsule-item">
+            <span class="capsule-val-text">12 个月</span>
+            <span class="capsule-lbl-text">长周期科学重塑 (骨骼肌完整保留)</span>
+          </div>
+        </div>
+
+        <!-- 视觉展示 -->
+        <div class="case-visual-layout">
+          <div class="case-gallery-card">
+            <div class="gallery-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>身材蜕变对比实录 (82.5kg 居家 至 60kg 风衣重塑)</span>
+            </div>
+            <div class="comparison-stage-box" onclick="openModal('cases/case03_comparison.jpg', '学员 C · 大基数减脂全周期蜕变实录', '右侧 82.5kg 居家肥胖临界 至 左侧 60.0kg 紧致身形，全周期净减重 22.5kg，健康风险全面清零')">
+              <img src="cases/case03_comparison.jpg" alt="学员 C 减脂蜕变图" />
+              <div class="zoom-hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                <span>点击放大对比</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-gallery-card">
+            <div class="gallery-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <span>大基数执教风险控制与安全红线 (Risk Safety Bounds)</span>
+            </div>
+            <div class="rx-item-list" style="margin-top: 10px;">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div><strong>下肢承重关节损伤高危</strong>：体重高达 82kg，跳跃中膝踝承受 4-6 倍地面反作用力。早期绝对禁止波比跳、跳绳、开合跳等任何高冲击跳跃动作，禁止自由深蹲大负重，彻底杜绝半月板磨损。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div><strong>心血管负荷与低摄氧量限制</strong>：早期严禁高强度间歇，抗阻训练中严禁憋气产生瓦氏反应，防止脑部供血不足与胸腔静脉回流受阻引发晕厥。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <div><strong>肌肉量丢失与代谢代偿风险</strong>：拒绝盲目追求快速掉秤，在保护骨骼肌的前提下循序渐进降脂，使 BMI 安全平稳回落至 20 正常区间。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 动力链与处方 -->
+        <div class="prescription-split-grid">
+          <div class="prescription-block">
+            <h4 class="prescription-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              <span>心肺耐力优先金字塔构建 (Cardio Endurance Priority)</span>
+            </h4>
+            <div class="rx-item-list">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>低冲击有氧心率精准区间</strong>：采用坡度快走、坐姿划船机、椭圆机等低冲击器械，有氧训练心率严格保持在 120-140 bpm 高比例脂肪氧化区间。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>循序渐进三大体能台阶</strong>：严守“心肺耐力 至 肌耐力 至 极限肌力”进阶序列，先建立强大心输出量与代谢废物清除能力。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>阶段性高阶心肺冲刺</strong>：中后期引入自重结合抗阻间歇，冲刺心率控制在 150-180 bpm，持续激活运动后燃脂效应。</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prescription-block">
+            <h4 class="prescription-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>关节友好型抗阻动作矩阵 (Joint-Friendly Matrix)</span>
+            </h4>
+            <div class="rx-item-list">
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>坐姿与仰卧闭链器械为主</strong>：优先选用坐姿推胸器、高位下拉、坐姿腿屈伸、仰卧器械腿举等固定轨迹器械，躯干与脊柱有牢固背板支撑。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>肌肉募集感与协同发力</strong>：以 15-20 RM 中等重量培养神经肌肉连接，学会中立位核心紧绷（肩部以下、髋部以上保持稳定）。</div>
+              </div>
+              <div class="rx-item-row">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div><strong>呼吸节律与防伤严控</strong>：动作向心发力呼气，离心慢放拉长吸气，严禁任何膝关节超伸锁死 (Lockout) 动作，保护软骨健康。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 学历与履历非对称排版 -->
     <section class="split-section">
       <!-- 学历背景 -->
@@ -1308,6 +2079,19 @@
   </div>
 
   <script>
+
+    function switchCaseTab(caseId) {
+      const tabs = document.querySelectorAll(.case-tab-btn);
+      const panels = document.querySelectorAll(.case-panel);
+      tabs.forEach(t => t.classList.remove(is-active));
+      panels.forEach(p => p.classList.remove(is-active));
+
+      const activeTab = document.getElementById(tab- + caseId);
+      const activePanel = document.getElementById(panel- + caseId);
+      if (activeTab) activeTab.classList.add(is-active);
+      if (activePanel) activePanel.classList.add(is-active);
+    }
+
     function openModal(imgSrc, title, sub) {
       document.getElementById('modalCertImage').src = imgSrc;
       document.getElementById('modalCertTitle').innerText = title;
