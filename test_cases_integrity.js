@@ -1,12 +1,12 @@
 // test_cases_integrity.js
-// 命令行自动化体检脚本：验证案例库素材完整性、DOM规范、深色去黑边与零Emoji规范
+// 命令行自动化体检脚本：验证案例库素材完整性、JS语法、体积优化、深色去黑边与零Emoji规范
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 const rootDir = __dirname;
-const htmlPath = path.join(rootDir, "index.html");
-const casesDir = path.join(rootDir, "cases");
+const htmlPath = path.join(rootDir, 'index.html');
+const casesDir = path.join(rootDir, 'cases');
 
 let failedTests = 0;
 
@@ -19,53 +19,79 @@ function assert(condition, testName) {
   }
 }
 
-console.log("=== 开始执行案例库与页面完整性体检 ===\n");
+console.log('=== 开始执行案例库与页面完整性体检 ===\n');
 
-// 1. 验证 cases 目录及 8 张核心案例图片真实存在且非空
+// 1. 验证 cases 目录及 8 张核心案例图片真实存在且非空，且完成体积压缩（小于 1MB，大于 10KB）
 const requiredImages = [
-  "case01_posture_front.jpg",
-  "case01_posture_side.jpg",
-  "case01_posture_back.jpg",
-  "case02_posture_front.jpg",
-  "case02_posture_side.jpg",
-  "case02_posture_back.jpg",
-  "case02_comparison.jpg",
-  "case03_comparison.jpg"
+  'case01_posture_front.jpg',
+  'case01_posture_side.jpg',
+  'case01_posture_back.jpg',
+  'case02_posture_front.jpg',
+  'case02_posture_side.jpg',
+  'case02_posture_back.jpg',
+  'case02_comparison.jpg',
+  'case03_comparison.jpg'
 ];
 
-assert(fs.existsSync(casesDir), "cases 目录必须存在");
+assert(fs.existsSync(casesDir), 'cases 目录必须存在');
 
 requiredImages.forEach(imgName => {
   const imgPath = path.join(casesDir, imgName);
   const exists = fs.existsSync(imgPath);
   let sizeOk = false;
+  let compressedOk = false;
   if (exists) {
     const stats = fs.statSync(imgPath);
     sizeOk = stats.size > 10 * 1024; // 大于 10KB
+    compressedOk = stats.size < 1024 * 1024; // 严格小于 1MB，保障手机极速秒开
   }
-  assert(exists && sizeOk, `案例图片 ${imgName} 真实存在且体积正常 (>10KB)`);
+  assert(exists && sizeOk && compressedOk, `案例图片 ${imgName} 存在且已优化体积 (<1MB)`);
 });
 
-// 2. 验证 index.html 文件与案例结构
-assert(fs.existsSync(htmlPath), "index.html 必须存在");
-const htmlContent = fs.readFileSync(htmlPath, "utf8");
+// 2. 验证证书图片优化体积
+const certImages = ['IFBB_认证私教证书.jpg', 'IBFA_国际体适能教练证书.jpg', 'AHA_急救卡.png'];
+certImages.forEach(imgName => {
+  const imgPath = path.join(rootDir, 'certificates', imgName);
+  if (fs.existsSync(imgPath)) {
+    const stats = fs.statSync(imgPath);
+    assert(stats.size < 500 * 1024, `证书图片 ${imgName} 经压缩后体积正常 (${(stats.size/1024).toFixed(1)}KB < 500KB)`);
+  }
+});
 
-assert(htmlContent.includes("class=\"cases-section\""), "包含 cases-section 案例主模块");
-assert(htmlContent.includes("case-tab-btn"), "包含案例 Tab 切换按钮");
-assert(htmlContent.includes("CASE-01") && htmlContent.includes("CASE-02") && htmlContent.includes("CASE-03"), "包含 3 大标准化案例编号");
-assert(htmlContent.includes("switchCaseTab"), "包含 switchCaseTab 案例切换纯逻辑函数");
+// 3. 验证 index.html 文件与 JS 脚本语法无错误
+assert(fs.existsSync(htmlPath), 'index.html 必须存在');
+const htmlContent = fs.readFileSync(htmlPath, 'utf8');
 
-// 3. 严格规范扫描：深色模式去黑边规范（禁止 #000 / #000000 出现在容器背景）
+const scriptMatch = htmlContent.match(/<script>([\s\S]*?)<\/script>/);
+assert(scriptMatch && scriptMatch[1], '包含有效的 <script> 标签');
+let jsValid = false;
+try {
+  new Function(scriptMatch[1]);
+  jsValid = true;
+} catch (e) {
+  console.error('JS Syntax Error in index.html:', e.message);
+}
+assert(jsValid, 'index.html 中的 JavaScript 语法 100% 正确无报错');
+
+assert(htmlContent.includes('class="cases-section"'), '包含 cases-section 案例主模块');
+assert(htmlContent.includes('case-tab-btn'), '包含案例 Tab 切换按钮');
+assert(htmlContent.includes('CASE-01') && htmlContent.includes('CASE-02') && htmlContent.includes('CASE-03'), '包含 3 大标准化案例编号');
+assert(htmlContent.includes('switchCaseTab'), '包含 switchCaseTab 案例切换函数');
+assert(htmlContent.includes('modalDetailBox'), '包含弹窗诊断细节 modalDetailBox 容器');
+assert(htmlContent.includes('posture-shot-info') && htmlContent.includes('posture-shot-desc'), '体态图下方包含明确诊断细节描述');
+assert(htmlContent.includes('comparison-detail-banner'), '对比照下方包含明确执教诊断成效标注');
+
+// 4. 严格规范扫描：深色模式去黑边规范（禁止 #000 / #000000 出现在容器背景）
 const blackBgMatch = htmlContent.match(/background(-color)?:\s*#000(000)?/i);
-assert(!blackBgMatch, "多媒体展示与容器底色严禁使用 #000 / #000000 纯黑底色");
+assert(!blackBgMatch, '多媒体展示与容器底色严禁使用 #000 / #000000 纯黑底色');
 
-// 4. 严格规范扫描：零 Emoji 铁律
+// 5. 严格规范扫描：零 Emoji 铁律
 const emojiRegex = /[\u{1F300}-\u{1F6FF}\u{1F900}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}]/u;
 const hasEmoji = emojiRegex.test(htmlContent);
-assert(!hasEmoji, "全站零 Emoji 铁律：严禁使用任何 Emoji 图标");
+assert(!hasEmoji, '全站零 Emoji 铁律：严禁使用任何 Emoji 图标');
 
-// 5. 严格规范扫描：严禁使用 Unicode 符号代替 SVG (如 ✕, ×, ✓ 等)
-const forbiddenSymbols = ["✕", "×", "✓", "✔", "▲", "▶", "★"];
+// 6. 严格规范扫描：严禁使用 Unicode 符号代替 SVG (如 ✕, ×, ✓ 等)
+const forbiddenSymbols = ['✕', '×', '✓', '✔', '▲', '▶', '★'];
 let foundForbidden = false;
 for (const sym of forbiddenSymbols) {
   if (htmlContent.includes(sym)) {
@@ -74,11 +100,11 @@ for (const sym of forbiddenSymbols) {
     break;
   }
 }
-assert(!foundForbidden, "功能与交互图标一律使用原生 Inline SVG，无违规 Unicode 符号");
+assert(!foundForbidden, '功能与交互图标一律使用原生 Inline SVG，无违规 Unicode 符号');
 
-console.log("\n=== 体检结果汇总 ===");
+console.log('\n=== 体检结果汇总 ===');
 if (failedTests === 0) {
-  console.log("所有自动化测试项全部通过！[OK]");
+  console.log('所有自动化测试项全部通过！[OK]');
   process.exit(0);
 } else {
   console.error(`共有 ${failedTests} 项测试失败，请排查修正。`);

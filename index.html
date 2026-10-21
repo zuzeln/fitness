@@ -1166,12 +1166,12 @@
     .posture-triple-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      height: 290px;
+      gap: 12px;
+      min-height: 310px;
     }
 
     .posture-shot-item {
-      background: var(--bg-subtle);
+      background: var(--bg-surface);
       border: 1px solid var(--border-hairline);
       border-radius: var(--radius-sm);
       overflow: hidden;
@@ -1179,37 +1179,72 @@
       flex-direction: column;
       cursor: pointer;
       position: relative;
+      transition: transform 0.25s var(--ease-out), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .posture-shot-item:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-focus);
+      box-shadow: var(--shadow-subtle);
     }
 
     .posture-shot-img-wrap {
-      flex: 1;
+      height: 190px;
       overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 6px;
+      padding: 8px;
+      background: var(--bg-subtle);
     }
 
     .posture-shot-img-wrap img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      border-radius: 2px;
+      border-radius: 3px;
       transition: transform 0.3s ease;
     }
 
     .posture-shot-item:hover .posture-shot-img-wrap img {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
 
-    .posture-shot-label {
-      padding: 6px 8px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-secondary);
+    .posture-shot-info {
+      padding: 10px 12px;
       background: var(--bg-surface);
       border-top: 1px solid var(--border-hairline);
-      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .posture-shot-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-gold);
+    }
+
+    .posture-shot-desc {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .comparison-detail-banner {
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .comparison-detail-banner strong {
+      color: var(--text-primary);
     }
 
     /* 处方与动力链两列排版 */
@@ -1383,7 +1418,7 @@
         <!-- 证书 1: IFBB -->
         <div class="cert-pedestal" onclick="openModal('certificates/IFBB_认证私教证书.jpg', 'IFBB 职业联盟认证私教 (CFPT)', '编号 PT2018-1713 · 国际健美联合会官方认证')">
           <div class="cert-stage">
-            <img src="certificates/IFBB_认证私教证书.jpg" alt="IFBB 认证私教证书" />
+            <img src="certificates/IFBB_认证私教证书.jpg" loading="lazy" decoding="async" alt="IFBB 认证私教证书" />
           </div>
           <div class="cert-info-box">
             <div class="cert-title-text">IFBB 职业联盟认证私教 (CFPT)</div>
@@ -1398,7 +1433,7 @@
         <!-- 证书 2: IBFA -->
         <div class="cert-pedestal" onclick="openModal('certificates/IBFA_国际体适能教练证书.jpg', 'IBFA 国际体适能专业私教', '编号 PFTC-107466 · 国际身体阻力与体适能训练协会认证')">
           <div class="cert-stage">
-            <img src="certificates/IBFA_国际体适能教练证书.jpg" alt="IBFA 国际体适能教练证书" />
+            <img src="certificates/IBFA_国际体适能教练证书.jpg" loading="lazy" decoding="async" alt="IBFA 国际体适能教练证书" />
           </div>
           <div class="cert-info-box">
             <div class="cert-title-text">IBFA 国际体适能专业私教</div>
@@ -1413,7 +1448,7 @@
         <!-- 证书 3: AHA CPR AED -->
         <div class="cert-pedestal" onclick="openModal('certificates/AHA_急救卡.png', 'AHA 美国心脏协会 CPR AED 急救资质', '具备心肺复苏与自动体外除颤器急救资质 · 国际急救急护资质 · 教学安全最高底线')">
           <div class="cert-stage">
-            <img src="certificates/AHA_急救卡.png" alt="AHA 急救卡" />
+            <img src="certificates/AHA_急救卡.png" loading="lazy" decoding="async" alt="AHA 急救卡" />
           </div>
           <div class="cert-info-box">
             <div class="cert-title-text">AHA 美国心脏协会 CPR AED</div>
@@ -1578,25 +1613,34 @@
               <span>静态体态真实影像筛查 (点击查看大图)</span>
             </div>
             <div class="posture-triple-grid">
-              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_front.jpg', '学员 A · 正面体态影像', '筛查表现：锁骨倾斜、圆肩肱骨内旋，肌力严重失衡')">
+              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_front.jpg', '学员 A · 正面体态筛查诊断', '解剖观察：左锁骨显著上倾、肱骨内旋，胸小肌严重痉挛挛缩', '【临床诊断细节】静态评估显示左侧锁骨明显高于右侧，双肩内扣伴随肱骨内旋，胸大肌与胸小肌胸肋束重度紧绷，限制肩关节正常后移幅度。处方实施门框动态前链拉伸与背阔肌止点松解。')">
                 <div class="posture-shot-img-wrap">
-                  <img src="cases/case01_posture_front.jpg" alt="学员 A 正面体态" />
+                  <img src="cases/case01_posture_front.jpg" loading="lazy" decoding="async" alt="学员 A 正面体态" />
                 </div>
-                <div class="posture-shot-label">正面 · 圆肩/锁骨倾斜</div>
+                <div class="posture-shot-info">
+                  <div class="posture-shot-title">正面 · 圆肩/锁骨倾斜</div>
+                  <div class="posture-shot-desc">左锁骨异常上扬，肱骨内旋，胸小肌严重挛缩限制肩外展</div>
+                </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_side.jpg', '学员 A · 侧面体态影像', '筛查表现：骨盆前倾合并头前引，下交叉动力链失衡')">
+              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_side.jpg', '学员 A · 侧面体态筛查诊断', '解剖观察：耳垂垂线前移超 3cm，骨盆前倾角大于 15 度', '【临床诊断细节】颈椎前引伴随轻度反弓代偿，骨盆前倾牵拉腹直肌被动拉长，双侧髂腰肌与阔筋膜张肌显著缩短。处方通过低位箭步蹲深层拉伸髂腰肌，建立骨盆中立位力线。')">
                 <div class="posture-shot-img-wrap">
-                  <img src="cases/case01_posture_side.jpg" alt="学员 A 侧面体态" />
+                  <img src="cases/case01_posture_side.jpg" loading="lazy" decoding="async" alt="学员 A 侧面体态" />
                 </div>
-                <div class="posture-shot-label">侧面 · 骨盆前倾/头前引</div>
+                <div class="posture-shot-info">
+                  <div class="posture-shot-title">侧面 · 骨盆前倾/头前引</div>
+                  <div class="posture-shot-desc">耳垂前移超 3cm，骨盆前倾角大于 15 度，下交叉失衡</div>
+                </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_back.jpg', '学员 A · 背面体态影像', '筛查表现：左高右低高低肩、双侧翼状肩胛翘离胸廓')">
+              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_back.jpg', '学员 A · 背面体态筛查诊断', '解剖观察：左肩峰异常上提 1.5cm，前锯肌失活致肩胛骨翘离', '【临床诊断细节】左侧斜方肌上束与肩胛提肌进行性痉挛代偿导致左高右低，前锯肌与下斜方肌肌力低下，肩胛骨内侧缘翘离胸廓呈现典型翼状肩胛。处方通过 Serratus Punch 仰卧空推精准唤醒前锯肌。')">
                 <div class="posture-shot-img-wrap">
-                  <img src="cases/case01_posture_back.jpg" alt="学员 A 背面体态" />
+                  <img src="cases/case01_posture_back.jpg" loading="lazy" decoding="async" alt="学员 A 背面体态" />
                 </div>
-                <div class="posture-shot-label">背面 · 高低肩/翼状肩胛</div>
+                <div class="posture-shot-info">
+                  <div class="posture-shot-title">背面 · 高低肩/翼状肩胛</div>
+                  <div class="posture-shot-desc">左肩异常高出 1.5cm，前锯肌失活导致内侧缘翘离胸壁</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1711,12 +1755,16 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
               <span>身材蜕变对比实录 (58kg 居家 至 53kg 马甲线)</span>
             </div>
-            <div class="comparison-stage-box" onclick="openModal('cases/case02_comparison.jpg', '学员 B · 减脂塑形前后对比实录', '左侧 58kg 居家基线 至 右侧 53kg 紧致腹肌线条，腰围净缩减 6.5cm，体脂率降至 21%')">
-              <img src="cases/case02_comparison.jpg" alt="学员 B 减脂对比图" />
+            <div class="comparison-stage-box" onclick="openModal('cases/case02_comparison.jpg', '学员 B · 减脂塑形前后对比实录', '左侧 58kg 居家基线 至 右侧 53kg 紧致腹肌线条，腰围净缩减 6.5cm，体脂率降至 21%', '【塑形成效临床论证】左侧基线状态腹壁肌群缺乏张力，体脂 27.8% 伴随腰腹松弛；右侧经过 6 周抗阻与 EPOC 代谢处方，体重稳降至 53kg，腰围由 73.5cm 缩减至 67.0cm，腹直肌与马甲线轮廓清晰凸显，基础代谢率逆势回升。')">
+              <img src="cases/case02_comparison.jpg" loading="lazy" decoding="async" alt="学员 B 减脂对比图" />
               <div class="zoom-hint-tag">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
                 <span>点击放大对比</span>
               </div>
+            </div>
+            <div class="comparison-detail-banner">
+              <strong>执教诊断与蜕变成效：</strong>
+              强化臀中肌与大肌群抗阻，6周达成净减重 6.5kg、腰围缩减 6.5cm，彻底消除假胯宽并显现紧致腹肌线条。
             </div>
           </div>
 
@@ -1726,25 +1774,34 @@
               <span>体态筛查多角度实录 (点击查看诊断细节)</span>
             </div>
             <div class="posture-triple-grid">
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_front.jpg', '学员 B · 正面体态筛查', '表现：轻度圆肩、股骨内旋合并假胯宽明显')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_front.jpg', '学员 B · 正面体态筛查诊断', '解剖观察：股骨内旋导致大转子外凸，双膝内扣呈轻度 X 型腿', '【临床诊断细节】站立位双侧大转子异常外凸形成假胯宽视觉，伴随双膝向内扣合与足底内侧承重偏向。处方采用侧卧弹力带蚌式开合与抗阻侧步走 (Monster Walk)，孤立激活臀中肌后束，牵引大转子回归原位。')">
                 <div class="posture-shot-img-wrap">
-                  <img src="cases/case02_posture_front.jpg" alt="学员 B 正面" />
+                  <img src="cases/case02_posture_front.jpg" loading="lazy" decoding="async" alt="学员 B 正面" />
                 </div>
-                <div class="posture-shot-label">正面 · 圆肩/假胯宽</div>
+                <div class="posture-shot-info">
+                  <div class="posture-shot-title">正面 · 圆肩/假胯宽</div>
+                  <div class="posture-shot-desc">大转子外凸形成假胯宽，双膝内扣，阔筋膜张肌过度代偿</div>
+                </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_side.jpg', '学员 B · 侧面体态筛查', '表现：腹壁肌力松弛、轻度骨盆前倾代偿')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_side.jpg', '学员 B · 侧面体态筛查诊断', '解剖观察：腹横肌失活腹壁松弛微凸，下背部腰椎曲度受迫增大', '【临床诊断细节】核心肌群张力不足导致骨盆出现 8 度前倾，躯干重心前移使下背竖脊肌过度收缩疲劳。处方引入死虫式与平板支撑核心抗伸展训练，收紧腹横肌并纠正腰椎反弓。')">
                 <div class="posture-shot-img-wrap">
-                  <img src="cases/case02_posture_side.jpg" alt="学员 B 侧面" />
+                  <img src="cases/case02_posture_side.jpg" loading="lazy" decoding="async" alt="学员 B 侧面" />
                 </div>
-                <div class="posture-shot-label">侧面 · 腹壁/前倾</div>
+                <div class="posture-shot-info">
+                  <div class="posture-shot-title">侧面 · 腹壁/前倾</div>
+                  <div class="posture-shot-desc">腹横肌失活腹壁松弛微凸，骨盆轻度前倾，腰椎曲度代偿增大</div>
+                </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_back.jpg', '学员 B · 背面体态筛查', '表现：臀肌失活软弱、下肢下坠力线偏移')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_back.jpg', '学员 B · 背面体态筛查诊断', '解剖观察：臀中肌失活致下肢力线下坠，骨盆侧向悬吊力不足', '【临床诊断细节】双侧臀大肌与臀中肌深度沉睡扁平，骨盆在步态中缺乏侧向悬吊支撑，造成下肢轮廓横向延展与臀线下移。处方通过高脚杯深蹲重建足底三点支撑与闭锁动力链协同。')">
                 <div class="posture-shot-img-wrap">
-                  <img src="cases/case02_posture_back.jpg" alt="学员 B 背面" />
+                  <img src="cases/case02_posture_back.jpg" loading="lazy" decoding="async" alt="学员 B 背面" />
                 </div>
-                <div class="posture-shot-label">背面 · 臀肌/腿型力线</div>
+                <div class="posture-shot-info">
+                  <div class="posture-shot-title">背面 · 臀肌/腿型力线</div>
+                  <div class="posture-shot-desc">臀中肌沉睡导致下肢力线下坠，骨盆侧向悬吊力严重不足</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1838,12 +1895,16 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
               <span>身材蜕变对比实录 (82.5kg 居家 至 60kg 风衣重塑)</span>
             </div>
-            <div class="comparison-stage-box" onclick="openModal('cases/case03_comparison.jpg', '学员 C · 大基数减脂全周期蜕变实录', '右侧 82.5kg 居家肥胖临界 至 左侧 60.0kg 紧致身形，全周期净减重 22.5kg，健康风险全面清零')">
-              <img src="cases/case03_comparison.jpg" alt="学员 C 减脂蜕变图" />
+            <div class="comparison-stage-box" onclick="openModal('cases/case03_comparison.jpg', '学员 C · 大基数减脂全周期蜕变实录', '右侧 82.5kg 居家肥胖临界 至 左侧 60.0kg 紧致身形，全周期净减重 22.5kg，健康风险全面清零', '【长周期控险论证】初始体重 82.5kg、BMI 28.4，心血管静息负荷极沉且下肢承压巨大。前两个月严禁跳跃与自由深蹲，全量采用坡度快走与闭链固定器械；中后期强化骨骼肌阻击代谢反弹，最终平稳减重 22.5kg，半月板与韧带零损伤。')">
+              <img src="cases/case03_comparison.jpg" loading="lazy" decoding="async" alt="学员 C 减脂蜕变图" />
               <div class="zoom-hint-tag">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
                 <span>点击放大对比</span>
               </div>
+            </div>
+            <div class="comparison-detail-banner">
+              <strong>执教诊断与控险蜕变：</strong>
+              全周期严格控制心肺区间 (120-140 bpm) 与关节零冲击，12个月安全净减重 22.5kg，BMI 回归 20.7，膝关节零磨损。
             </div>
           </div>
 
@@ -2067,8 +2128,9 @@
       <h3 class="modal-title-text" id="modalCertTitle">证书标题</h3>
       <p class="modal-sub-text" id="modalCertSub">证书编号与认证说明</p>
       <div class="modal-stage-surface">
-        <img id="modalCertImage" class="modal-certificate-img" src="" alt="官方证书原件大图" />
+        <img id="modalCertImage" class="modal-certificate-img" src="" alt="官方证书或案例大图" />
       </div>
+      <div class="modal-detail-box" id="modalDetailBox" style="display:none; margin-top:16px; padding:14px 18px; background:var(--bg-subtle); border-radius:var(--radius-sm); border:1px solid var(--border-hairline); font-size:13px; color:var(--text-secondary); line-height:1.6; text-align:left;"></div>
     </div>
   </div>
 
@@ -2079,76 +2141,102 @@
   </div>
 
   <script>
+function switchCaseTab(caseId) {
+  var tabs = document.querySelectorAll('.case-tab-btn');
+  var panels = document.querySelectorAll('.case-panel');
+  for (var i = 0; i < tabs.length; i++) {
+    tabs[i].classList.remove('is-active');
+  }
+  for (var j = 0; j < panels.length; j++) {
+    panels[j].classList.remove('is-active');
+  }
 
-    function switchCaseTab(caseId) {
-      const tabs = document.querySelectorAll(.case-tab-btn);
-      const panels = document.querySelectorAll(.case-panel);
-      tabs.forEach(t => t.classList.remove(is-active));
-      panels.forEach(p => p.classList.remove(is-active));
+  var activeTab = document.getElementById('tab-' + caseId);
+  var activePanel = document.getElementById('panel-' + caseId);
+  if (activeTab) activeTab.classList.add('is-active');
+  if (activePanel) activePanel.classList.add('is-active');
+}
 
-      const activeTab = document.getElementById(tab- + caseId);
-      const activePanel = document.getElementById(panel- + caseId);
-      if (activeTab) activeTab.classList.add(is-active);
-      if (activePanel) activePanel.classList.add(is-active);
+function openModal(imgSrc, title, sub, detail) {
+  var img = document.getElementById('modalCertImage');
+  var titleEl = document.getElementById('modalCertTitle');
+  var subEl = document.getElementById('modalCertSub');
+  var detailEl = document.getElementById('modalDetailBox');
+
+  if (img) img.src = imgSrc;
+  if (titleEl) titleEl.innerText = title || '';
+  if (subEl) subEl.innerText = sub || '';
+  if (detailEl) {
+    if (detail) {
+      detailEl.innerText = detail;
+      detailEl.style.display = 'block';
+    } else {
+      detailEl.style.display = 'none';
     }
+  }
+  var modal = document.getElementById('certificateModal');
+  if (modal) {
+    modal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  }
+}
 
-    function openModal(imgSrc, title, sub) {
-      document.getElementById('modalCertImage').src = imgSrc;
-      document.getElementById('modalCertTitle').innerText = title;
-      document.getElementById('modalCertSub').innerText = sub;
-      document.getElementById('certificateModal').classList.add('is-active');
-    }
+function closeModal(id) {
+  var modal = document.getElementById(id || 'certificateModal');
+  if (modal) {
+    modal.classList.remove('is-active');
+    document.body.style.overflow = '';
+  }
+}
 
-    function closeModal(id) {
-      document.getElementById('certificateModal').classList.remove('is-active');
-    }
+var toastTimer = null;
+function showToast(msg) {
+  var toast = document.getElementById('actionToast');
+  var text = document.getElementById('toastMessage');
+  if (text) text.innerText = msg;
+  if (toast) {
+    toast.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() {
+      toast.classList.remove('show');
+    }, 2000);
+  }
+}
 
-    let toastTimer = null;
-    function showToast(msg) {
-      const toast = document.getElementById('actionToast');
-      const text = document.getElementById('toastMessage');
-      text.innerText = msg;
-      toast.classList.add('show');
-
-      if (toastTimer) clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2000);
-    }
-
-    function copyValue(val, label) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(val).then(() => {
-          showToast(label + '已复制');
-        }).catch(() => {
-          fallbackCopy(val, label);
-        });
-      } else {
-        fallbackCopy(val, label);
-      }
-    }
-
-    function fallbackCopy(val, label) {
-      const textarea = document.createElement('textarea');
-      textarea.value = val;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        document.execCommand('copy');
-        showToast(label + '已复制');
-      } catch (err) {
-        showToast('复制失败，请手动长按');
-      }
-      document.body.removeChild(textarea);
-    }
-
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal('certificateModal');
-      }
+function copyValue(val, label) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(val).then(function() {
+      showToast(label + '已复制');
+    }).catch(function() {
+      fallbackCopy(val, label);
     });
+  } else {
+    fallbackCopy(val, label);
+  }
+}
+
+function fallbackCopy(val, label) {
+  var textarea = document.createElement('textarea');
+  textarea.value = val;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    showToast(label + '已复制');
+  } catch (err) {
+    showToast('复制失败，请手动长按');
+  }
+  document.body.removeChild(textarea);
+}
+
+window.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeModal('certificateModal');
+  }
+});
+
   </script>
 </body>
 </html>
