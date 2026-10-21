@@ -21,11 +21,10 @@ function assert(condition, testName) {
 
 console.log('=== 开始执行案例库与页面完整性体检 ===\n');
 
-// 1. 验证 cases 目录及 8 张核心案例图片真实存在且非空，且完成体积压缩（小于 1MB，大于 10KB）
+// 1. 验证 cases 目录及核心案例图片真实存在且非空，且完成体积压缩（小于 1MB，大于 10KB）
 const requiredImages = [
-  'case01_posture_front.jpg',
-  'case01_posture_side.jpg',
-  'case01_posture_back.jpg',
+  'case01_male_front_comparison.jpg',
+  'case01_male_back_comparison.jpg',
   'case02_posture_front.jpg',
   'case02_posture_side.jpg',
   'case02_posture_back.jpg',
@@ -75,10 +74,15 @@ assert(jsValid, 'index.html 中的 JavaScript 语法 100% 正确无报错');
 
 assert(htmlContent.includes('class="cases-section"'), '包含 cases-section 案例主模块');
 assert(htmlContent.includes('case-tab-btn'), '包含案例 Tab 切换按钮');
-assert(htmlContent.includes('CASE-01') && htmlContent.includes('CASE-02') && htmlContent.includes('CASE-03'), '包含 3 大标准化案例编号');
+assert(htmlContent.includes('案例一') && htmlContent.includes('案例二') && htmlContent.includes('案例三'), '全量中文规范：包含 3 大标准化案例名称');
+assert(!htmlContent.includes('CASE-01') && !htmlContent.includes('CASE-02') && !htmlContent.includes('CASE-03'), '全量中文规范：已彻底清除 CASE-01/02/03 英文代号');
+assert(!htmlContent.includes('居家'), '文案纯净性：已彻底清除所有“居家”字样');
+assert(htmlContent.includes('away_oflife'), '联系方式规范：微信号已更新为 away_oflife');
+assert(htmlContent.includes('href="tel:17658596889"'), '联系方式交互：电话链接支持直接唤起呼叫');
+assert(htmlContent.includes('href="mailto:757458811@qq.com"'), '联系方式交互：邮箱链接支持直接唤起邮件客户端');
+assert(htmlContent.includes('handleWeChatClick'), '联系方式交互：包含微信自动复制并唤起客户端函数');
 assert(htmlContent.includes('switchCaseTab'), '包含 switchCaseTab 案例切换函数');
 assert(htmlContent.includes('modalDetailBox'), '包含弹窗诊断细节 modalDetailBox 容器');
-assert(htmlContent.includes('posture-shot-info') && htmlContent.includes('posture-shot-desc'), '体态图下方包含明确诊断细节描述');
 assert(htmlContent.includes('comparison-detail-banner'), '对比照下方包含明确执教诊断成效标注');
 
 // 4. 严格规范扫描：深色模式去黑边规范（禁止 #000 / #000000 出现在容器背景）

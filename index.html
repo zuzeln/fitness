@@ -669,6 +669,14 @@
       margin-top: 24px;
     }
 
+    .contact-box,
+    .contact-link,
+    .contact-link *,
+    a.contact-box {
+      text-decoration: none !important;
+      color: inherit;
+    }
+
     .contact-box {
       background: var(--bg-subtle);
       border: 1px solid var(--border-hairline);
@@ -1155,6 +1163,7 @@
       gap: 6px;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
     }
 
     .zoom-hint-tag svg {
@@ -1551,118 +1560,97 @@
 
       <!-- 案例切换 Tab 栏 -->
       <div class="case-tab-bar">
-        <button type="button" class="case-tab-btn" id="tab-case-01" onclick="switchCaseTab('case-01')">
-          <span class="case-tab-code">CASE-01</span>
-          <span class="case-tab-title">偏瘦增肌 & 复杂体态矫正</span>
-          <span class="case-tab-sub">学员 A · 41.6kg 至 45kg · 高低肩/翼状纠正</span>
+        <button type="button" class="case-tab-btn is-active" id="tab-case-01" onclick="switchCaseTab('case-01')">
+          <span class="case-tab-code">案例一</span>
+          <span class="case-tab-title">力量减脂 & 倒三角重塑</span>
+          <span class="case-tab-sub">学员 A · 78.5kg 降至 72.0kg · 8周胸肌重塑与后腰折痕平复</span>
         </button>
 
-        <button type="button" class="case-tab-btn is-active" id="tab-case-02" onclick="switchCaseTab('case-02')">
-          <span class="case-tab-code">CASE-02</span>
+        <button type="button" class="case-tab-btn" id="tab-case-02" onclick="switchCaseTab('case-02')">
+          <span class="case-tab-code">案例二</span>
           <span class="case-tab-title">减脂塑形 & 假胯宽消除</span>
-          <span class="case-tab-sub">学员 B · 58kg 至 53kg 减重 6.5kg · 腰围 -6.5cm</span>
+          <span class="case-tab-sub">学员 B · 140斤至58kg再至53kg · 历时7个月</span>
         </button>
 
         <button type="button" class="case-tab-btn" id="tab-case-03" onclick="switchCaseTab('case-03')">
-          <span class="case-tab-code">CASE-03</span>
+          <span class="case-tab-code">案例三</span>
           <span class="case-tab-title">大基数减脂 & 心肺重塑</span>
-          <span class="case-tab-sub">学员 C · 82.5kg 至 60kg 净减重 22.5kg · 关节零冲击</span>
+          <span class="case-tab-sub">学员 C · 82.5kg 降至 59.0kg · 历时12个月 · 净减47斤</span>
         </button>
       </div>
 
-      <!-- 案例 01 面板 -->
-      <div class="case-panel" id="panel-case-01">
+      <!-- 案例一 面板 (默认显示) -->
+      <div class="case-panel is-active" id="panel-case-01">
         <div class="case-header-row">
           <div>
             <div class="case-code-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-              <span>CASE-01 · 标准化执教纪实 (已脱敏)</span>
+              <span>案例一 · 标准化执教纪实 (已脱敏)</span>
             </div>
-            <h3 class="case-name-title">学员 A ｜ 低体重偏瘦增肌与复杂体态矫正教学案</h3>
+            <h3 class="case-name-title">学员 A ｜ 38岁男士高管 8周复合力量训练减脂与倒三角重塑教学案</h3>
             <p class="case-bio-desc">
-              年龄 26 岁 ｜ 身高 150 CM ｜ 初始体重 41.6 KG ｜ 基础代谢率 1011 kcal ｜ 初始 BMI 18.5（偏瘦临界）<br />
-              首要执教矛盾：肌力极度低下无法承受常规器械负荷，非对称高低肩造成躯干侧屈代偿加重，骨骼肌储备严重匮乏。
+              年龄 38 岁 ｜ 身高 176 CM ｜ 初始体重 78.5 KG ｜ 交付体重 72.0 KG ｜ 初始体脂 22.5% ｜ 阶段体脂 14.8%<br />
+              首要执教矛盾：高压久坐导致躯干与后腰脂肪堆积，伴随圆肩驼背与肱骨内旋代偿；后链肌群力量匮乏，需通过大肌群复合抗阻极速剥离脂肪并重构肌肉铠甲。
             </p>
           </div>
         </div>
 
         <div class="metric-capsules-grid">
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">45.0 kg</span>
-            <span class="capsule-lbl-text">健康增肌目标 (净增肌 +3.4kg)</span>
+            <span class="capsule-val-text">-6.5 kg</span>
+            <span class="capsule-lbl-text">真实净减重 (78.5kg 降至 72.0kg 紧致线条)</span>
           </div>
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">20.0</span>
-            <span class="capsule-lbl-text">BMI 平稳回升至健康标准区间</span>
+            <span class="capsule-val-text">14.8%</span>
+            <span class="capsule-lbl-text">阶段体脂率 (告别 22.5% 肚腩虚胖)</span>
           </div>
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">0 偏差</span>
-            <span class="capsule-lbl-text">双侧高低肩与脊柱侧屈完全回正</span>
+            <span class="capsule-val-text">-7.0 cm</span>
+            <span class="capsule-lbl-text">腰围缩减 (后腰横向脂肪褶皱抹平)</span>
           </div>
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">100% 贴附</span>
-            <span class="capsule-lbl-text">前锯肌唤醒 · 翼状肩胛翘离消除</span>
+            <span class="capsule-val-text">8 周</span>
+            <span class="capsule-lbl-text">力量减脂周期 (胸肌铠甲与倒三角重塑)</span>
           </div>
         </div>
 
         <!-- 视觉展示 -->
         <div class="case-visual-layout">
+          <!-- 正面实录卡片 -->
           <div class="case-gallery-card">
             <div class="gallery-card-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              <span>静态体态真实影像筛查 (点击查看大图)</span>
+              <span>正面身材蜕变对比实录 (点击放大查看细节)</span>
             </div>
-            <div class="posture-triple-grid">
-              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_front.jpg', '学员 A · 正面体态筛查诊断', '解剖观察：左锁骨显著上倾、肱骨内旋，胸小肌严重痉挛挛缩', '【临床诊断细节】静态评估显示左侧锁骨明显高于右侧，双肩内扣伴随肱骨内旋，胸大肌与胸小肌胸肋束重度紧绷，限制肩关节正常后移幅度。处方实施门框动态前链拉伸与背阔肌止点松解。')">
-                <div class="posture-shot-img-wrap">
-                  <img src="cases/case01_posture_front.jpg" loading="lazy" decoding="async" alt="学员 A 正面体态" />
-                </div>
-                <div class="posture-shot-info">
-                  <div class="posture-shot-title">正面 · 圆肩/锁骨倾斜</div>
-                  <div class="posture-shot-desc">左锁骨异常上扬，肱骨内旋，胸小肌严重挛缩限制肩外展</div>
-                </div>
+            <div class="comparison-stage-box" onclick="openModal('cases/case01_male_front_comparison.jpg', '学员 A · 正面力量减脂与胸肌腹肌蜕变实录', '初始 78.5kg 躯干体脂堆积 至 72.0kg 紧致胸肌铠甲与清晰腹直肌，体脂率降至 14.8%', '【执教诊断与训练论证】初始状态胸大肌薄弱扁平，胸肋束与锁骨束缺乏厚度，腹壁受内脏脂肪与皮下脂肪挤压松弛；通过 8 周杠铃卧推、双杠臂屈伸与悬垂举腿复合抗阻，胸肌轮廓立体外扩，上腹与下腹体脂大幅剥离，腹直肌分界清晰显现。')">
+              <img src="cases/case01_male_front_comparison.jpg" loading="lazy" decoding="async" alt="学员 A 正面力量减脂对比图" />
+              <div class="zoom-hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                <span>点击放大对比</span>
               </div>
-
-              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_side.jpg', '学员 A · 侧面体态筛查诊断', '解剖观察：耳垂垂线前移超 3cm，骨盆前倾角大于 15 度', '【临床诊断细节】颈椎前引伴随轻度反弓代偿，骨盆前倾牵拉腹直肌被动拉长，双侧髂腰肌与阔筋膜张肌显著缩短。处方通过低位箭步蹲深层拉伸髂腰肌，建立骨盆中立位力线。')">
-                <div class="posture-shot-img-wrap">
-                  <img src="cases/case01_posture_side.jpg" loading="lazy" decoding="async" alt="学员 A 侧面体态" />
-                </div>
-                <div class="posture-shot-info">
-                  <div class="posture-shot-title">侧面 · 骨盆前倾/头前引</div>
-                  <div class="posture-shot-desc">耳垂前移超 3cm，骨盆前倾角大于 15 度，下交叉失衡</div>
-                </div>
-              </div>
-
-              <div class="posture-shot-item" onclick="openModal('cases/case01_posture_back.jpg', '学员 A · 背面体态筛查诊断', '解剖观察：左肩峰异常上提 1.5cm，前锯肌失活致肩胛骨翘离', '【临床诊断细节】左侧斜方肌上束与肩胛提肌进行性痉挛代偿导致左高右低，前锯肌与下斜方肌肌力低下，肩胛骨内侧缘翘离胸廓呈现典型翼状肩胛。处方通过 Serratus Punch 仰卧空推精准唤醒前锯肌。')">
-                <div class="posture-shot-img-wrap">
-                  <img src="cases/case01_posture_back.jpg" loading="lazy" decoding="async" alt="学员 A 背面体态" />
-                </div>
-                <div class="posture-shot-info">
-                  <div class="posture-shot-title">背面 · 高低肩/翼状肩胛</div>
-                  <div class="posture-shot-desc">左肩异常高出 1.5cm，前锯肌失活导致内侧缘翘离胸壁</div>
-                </div>
-              </div>
+            </div>
+            <div class="comparison-detail-banner">
+              <strong>执教成效与体态改善：</strong>
+              8周复合力量训练剥离胸腹多余体脂，胸大肌锁骨束与胸肋束明显增厚，腹直肌分界清晰显现。
             </div>
           </div>
 
+          <!-- 背面实录卡片 -->
           <div class="case-gallery-card">
             <div class="gallery-card-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-              <span>三阶全周期递进规划 (7-12 个月)</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>背面身材蜕变对比实录 (点击放大查看细节)</span>
             </div>
-            <div class="rx-item-list" style="margin-top: 10px;">
-              <div class="rx-item-row">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <div><strong>阶段一 · 适应阶段 (1-8 周)</strong>：自重呼吸模式与肩袖核心唤醒，抑制左斜方肌痉挛，导入宏量营养认知，严禁空腹训练。</div>
+            <div class="comparison-stage-box" onclick="openModal('cases/case01_male_back_comparison.jpg', '学员 A · 背面倒三角重塑与后腰折痕平复实录', '背部倒三角立体展开，后腰双侧横向脂肪褶皱完全平复，圆肩肱骨内旋彻底回正', '【执教诊断与体态论证】久坐导致背阔肌、大圆肌和菱形肌肌力严重匮乏，后腰脂肪随骨盆松弛出现明显水平褶皱折叠；通过引体向上、高位下拉与俯身划船强化后链，圆肩内扣完全回正，背部呈标准倒三角，后腰脂肪折痕彻底抹平。')">
+              <img src="cases/case01_male_back_comparison.jpg" loading="lazy" decoding="async" alt="学员 A 背面力量减脂对比图" />
+              <div class="zoom-hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                <span>点击放大对比</span>
               </div>
-              <div class="rx-item-row">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <div><strong>阶段二 · 进步阶段 (9-20 周)</strong>：高低肩与翼状基本回正，无氧抗阻与有氧比例调整为 6:4，肌纤维募集增强，体重增长至 43-44kg。</div>
-              </div>
-              <div class="rx-item-row">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <div><strong>阶段三 · 巩固交付 (21-48 周)</strong>：胸背腿核心大肌群分化进阶，达成 45kg 目标体重，骨骼肌质量显著跃升，学员具备自主设计饮食能力。</div>
-              </div>
+            </div>
+            <div class="comparison-detail-banner">
+              <strong>执教成效与体态改善：</strong>
+              强化背阔肌与大圆肌募集，圆肩肱骨内旋彻底回正，背部展开呈倒三角，后腰脂肪折叠完全平复。
             </div>
           </div>
         </div>
@@ -1672,20 +1660,20 @@
           <div class="prescription-block">
             <h4 class="prescription-block-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-              <span>动力链代偿诊断原点 (Kinetic Chain Impairments)</span>
+              <span>上交叉综合征纠正与动力链回正 (Upper Crossed Correction)</span>
             </h4>
             <div class="rx-item-list">
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                <div><strong>高低肩畸形 (左高右低)</strong>：左侧肩胛骨异常上提、下回旋，左侧斜方肌上束及肩胛提肌进行性痉挛代偿；右侧腰方肌缩短导致躯干侧倾。</div>
+                <div><strong>圆肩与肱骨内旋矫正</strong>：动态拉伸松解胸小肌与肩胛下肌，特异性激活冈下肌与小圆肌，恢复盂肱关节中立位。</div>
               </div>
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                <div><strong>双侧翼状肩胛</strong>：前锯肌与菱形肌严重失活软弱，肩胛骨内侧缘翘离胸廓，上肢推拉动作丧失动力锚定点。</div>
+                <div><strong>菱形肌与斜方肌中下束强化</strong>：绳索面拉 (Face Pull) 与俯身 Y-Raise，拉回前引肩胛骨，重塑背部挺拔体态。</div>
               </div>
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                <div><strong>骨盆代偿与肱骨内旋</strong>：胸大肌与胸小肌紧张牵拉肱骨内旋；双侧髂腰肌与阔筋膜张肌挛缩牵拉骨盆前倾合并股骨内旋。</div>
+                <div><strong>腹横肌激活与骨盆抗伸展</strong>：死虫式与平板支撑募集深层腹横肌，增强腹腔内压，稳固腰椎力线并平复下腹松弛。</div>
               </div>
             </div>
           </div>
@@ -1693,88 +1681,71 @@
           <div class="prescription-block">
             <h4 class="prescription-block-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>针对性解剖学校正处方 (Corrective Prescription)</span>
+              <span>8周高效复合抗阻减脂处方 (Resistance & EPOC)</span>
             </h4>
             <div class="rx-item-list">
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <div><strong>抑制与松解紧张肌群</strong>：筋膜枪配合拉伸左侧斜方肌上束、左侧肩胛提肌；门框动态伸展胸大肌/胸小肌；泡沫轴滚压松解背阔肌肌腱止点。</div>
+                <div><strong>多关节复合大肌群抗阻</strong>：以深蹲、硬拉、卧推、引体向上为主，大范围募集肌纤维，引发剧烈运动后过量氧耗 (EPOC)。</div>
               </div>
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <div><strong>前锯肌特异性激活</strong>：仰卧哑铃空推 (Serratus Punch) 及四足支撑推肩胛，特异性募集前锯肌，将肩胛骨牢固贴附胸廓，根治翼状肩胛。</div>
+                <div><strong>胸背对抗肌超级组分化</strong>：采用推拉对抗编排，提升训练密度与能量消耗，在有限时间内兼顾增肌与减脂。</div>
               </div>
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <div><strong>肩袖与臀中肌回正</strong>：弹力带肩外旋 (强化冈下肌/小圆肌) 建立肩胛中立位；弹力带侧步走强化双侧臀中肌，引导股骨外旋回正骨盆。</div>
+                <div><strong>渐进超负荷与营养调控</strong>：每公斤体重摄入 1.8g 优质蛋白，制造 400-500 kcal 热量缺口，达成减脂不掉骨骼肌。</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 案例 02 面板 (默认显示) -->
-      <div class="case-panel is-active" id="panel-case-02">
+      <!-- 案例二 面板 -->
+      <div class="case-panel" id="panel-case-02">
         <div class="case-header-row">
           <div>
             <div class="case-code-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-              <span>CASE-02 · 标准化执教纪实 (已脱敏)</span>
+              <span>案例二 · 标准化执教纪实 (已脱敏)</span>
             </div>
-            <h3 class="case-name-title">学员 B ｜ 标准体型减脂塑形与假胯宽突破教学案</h3>
+            <h3 class="case-name-title">学员 B ｜ 140斤减脂塑形与假胯宽突破教学案</h3>
             <p class="case-bio-desc">
-              年龄 32 岁 ｜ 身高 164 CM ｜ 初始体重 59.5 KG ｜ 初始体脂 27.8% ｜ 基础代谢率 1190 kcal<br />
-              首要执教矛盾：基础代谢过低导致日常消耗小，盲目节食导致易胖反弹；久坐臀中肌失活引发假胯宽与 X 型腿内扣。
+              年龄 32 岁 ｜ 身高 164 CM ｜ 初始体重 140 斤 (70.0 KG) ｜ 阶段体重 58.0 KG ｜ 交付体重 53.0 KG ｜ 全周期净减重 17.0 KG (34 斤) ｜ 阶段体脂 21.0%<br />
+              首要执教矛盾：基础代谢低下导致日常消耗小，久坐臀中肌失活引发假胯宽与 X 型腿内扣；体重大基数减脂需保护骨骼肌与下肢关节力线。
             </p>
           </div>
         </div>
 
         <div class="metric-capsules-grid">
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">-6.5 kg</span>
-            <span class="capsule-lbl-text">真实净减重 (58kg 至 53kg 紧致线条)</span>
+            <span class="capsule-val-text">-17.0 kg</span>
+            <span class="capsule-lbl-text">全周期净减重 (从 140 斤减至 58kg 再至 53kg)</span>
           </div>
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">-6.5 cm</span>
-            <span class="capsule-lbl-text">腰围缩减 (73.5cm 至 67.0cm)</span>
+            <span class="capsule-val-text">-9.5 cm</span>
+            <span class="capsule-lbl-text">腰围净缩减 (紧致马甲线线条呈现)</span>
           </div>
           <div class="metric-capsule-item">
             <span class="capsule-val-text">21.0%</span>
-            <span class="capsule-lbl-text">阶段体脂率 (告别 27.8% 虚胖)</span>
+            <span class="capsule-lbl-text">阶段体脂率 (告别虚胖与腹壁松弛)</span>
           </div>
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">6 周</span>
-            <span class="capsule-lbl-text">阶段成效周期 (假胯宽显著消除)</span>
+            <span class="capsule-val-text">7 个月</span>
+            <span class="capsule-lbl-text">全周期健康时长 (前4月降至58kg+后3月刷脂至53kg)</span>
           </div>
         </div>
 
-        <!-- 视觉展示 -->
+        <!-- 视觉展示：体态筛查在前，身材蜕变在后 -->
         <div class="case-visual-layout">
+          <!-- 卡片 1 (前)：体态筛查多角度实录 -->
           <div class="case-gallery-card">
             <div class="gallery-card-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              <span>身材蜕变对比实录 (58kg 居家 至 53kg 马甲线)</span>
-            </div>
-            <div class="comparison-stage-box" onclick="openModal('cases/case02_comparison.jpg', '学员 B · 减脂塑形前后对比实录', '左侧 58kg 居家基线 至 右侧 53kg 紧致腹肌线条，腰围净缩减 6.5cm，体脂率降至 21%', '【塑形成效临床论证】左侧基线状态腹壁肌群缺乏张力，体脂 27.8% 伴随腰腹松弛；右侧经过 6 周抗阻与 EPOC 代谢处方，体重稳降至 53kg，腰围由 73.5cm 缩减至 67.0cm，腹直肌与马甲线轮廓清晰凸显，基础代谢率逆势回升。')">
-              <img src="cases/case02_comparison.jpg" loading="lazy" decoding="async" alt="学员 B 减脂对比图" />
-              <div class="zoom-hint-tag">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-                <span>点击放大对比</span>
-              </div>
-            </div>
-            <div class="comparison-detail-banner">
-              <strong>执教诊断与蜕变成效：</strong>
-              强化臀中肌与大肌群抗阻，6周达成净减重 6.5kg、腰围缩减 6.5cm，彻底消除假胯宽并显现紧致腹肌线条。
-            </div>
-          </div>
-
-          <div class="case-gallery-card">
-            <div class="gallery-card-title">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              <span>体态筛查多角度实录 (点击查看诊断细节)</span>
+              <span>140斤初始体态多角度筛查 (点击查看诊断细节)</span>
             </div>
             <div class="posture-triple-grid">
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_front.jpg', '学员 B · 正面体态筛查诊断', '解剖观察：股骨内旋导致大转子外凸，双膝内扣呈轻度 X 型腿', '【临床诊断细节】站立位双侧大转子异常外凸形成假胯宽视觉，伴随双膝向内扣合与足底内侧承重偏向。处方采用侧卧弹力带蚌式开合与抗阻侧步走 (Monster Walk)，孤立激活臀中肌后束，牵引大转子回归原位。')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_front.jpg', '学员 B · 140斤正面体态筛查诊断', '解剖观察：股骨内旋导致大转子外凸，双膝内扣呈轻度 X 型腿', '【临床诊断细节】站立位双侧大转子异常外凸形成假胯宽视觉，伴随双膝向内扣合与足底内侧承重偏向。处方采用侧卧弹力带蚌式开合与抗阻侧步走 (Monster Walk)，孤立激活臀中肌后束，牵引大转子回归原位。')">
                 <div class="posture-shot-img-wrap">
                   <img src="cases/case02_posture_front.jpg" loading="lazy" decoding="async" alt="学员 B 正面" />
                 </div>
@@ -1784,7 +1755,7 @@
                 </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_side.jpg', '学员 B · 侧面体态筛查诊断', '解剖观察：腹横肌失活腹壁松弛微凸，下背部腰椎曲度受迫增大', '【临床诊断细节】核心肌群张力不足导致骨盆出现 8 度前倾，躯干重心前移使下背竖脊肌过度收缩疲劳。处方引入死虫式与平板支撑核心抗伸展训练，收紧腹横肌并纠正腰椎反弓。')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_side.jpg', '学员 B · 140斤侧面体态筛查诊断', '解剖观察：腹横肌失活腹壁松弛微凸，下背部腰椎曲度受迫增大', '【临床诊断细节】核心肌群张力不足导致骨盆出现 8 度前倾，躯干重心前移使下背竖脊肌过度收缩疲劳。处方引入死虫式与平板支撑核心抗伸展训练，收紧腹横肌并纠正腰椎反弓。')">
                 <div class="posture-shot-img-wrap">
                   <img src="cases/case02_posture_side.jpg" loading="lazy" decoding="async" alt="学员 B 侧面" />
                 </div>
@@ -1794,7 +1765,7 @@
                 </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_back.jpg', '学员 B · 背面体态筛查诊断', '解剖观察：臀中肌失活致下肢力线下坠，骨盆侧向悬吊力不足', '【临床诊断细节】双侧臀大肌与臀中肌深度沉睡扁平，骨盆在步态中缺乏侧向悬吊支撑，造成下肢轮廓横向延展与臀线下移。处方通过高脚杯深蹲重建足底三点支撑与闭锁动力链协同。')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_back.jpg', '学员 B · 140斤背面体态筛查诊断', '解剖观察：臀中肌失活致下肢力线下坠，骨盆侧向悬吊力不足', '【临床诊断细节】双侧臀大肌与臀中肌深度沉睡扁平，骨盆在步态中缺乏侧向悬吊支撑，造成下肢轮廓横向延展与臀线下移。处方通过高脚杯深蹲重建足底三点支撑与闭锁动力链协同。')">
                 <div class="posture-shot-img-wrap">
                   <img src="cases/case02_posture_back.jpg" loading="lazy" decoding="async" alt="学员 B 背面" />
                 </div>
@@ -1803,6 +1774,25 @@
                   <div class="posture-shot-desc">臀中肌沉睡导致下肢力线下坠，骨盆侧向悬吊力严重不足</div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- 卡片 2 (后)：身材蜕变对比实录 -->
+          <div class="case-gallery-card">
+            <div class="gallery-card-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+              <span>身材蜕变对比实录 (从140斤减至58kg再至53kg)</span>
+            </div>
+            <div class="comparison-stage-box" onclick="openModal('cases/case02_comparison.jpg', '学员 B · 减脂塑形前后对比实录', '从 140斤 减至 58kg，再刷脂至 53kg 紧致腹肌线条，腰围净缩减 9.5cm，体脂率降至 21%', '【塑形成效临床论证】从 140 斤开始启动，前 4 个月通过规律抗阻与低冲击代谢调控平稳减至 58kg；后 3 个月强化大肌群抗阻与腹横肌收紧，体重稳步刷至 53kg，腰围由 76.5cm 缩减至 67.0cm，腹直肌与马甲线轮廓清晰凸显，基础代谢率逆势回升。')">
+              <img src="cases/case02_comparison.jpg" loading="lazy" decoding="async" alt="学员 B 减脂对比图" />
+              <div class="zoom-hint-tag">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                <span>点击放大对比</span>
+              </div>
+            </div>
+            <div class="comparison-detail-banner">
+              <strong>执教诊断与蜕变成效：</strong>
+              全周期历时 7 个月，从 140 斤平稳降至 58kg，再精细刷脂至 53kg，彻底消除假胯宽并显现清晰马甲线。
             </div>
           </div>
         </div>
@@ -1853,17 +1843,17 @@
         </div>
       </div>
 
-      <!-- 案例 03 面板 -->
+      <!-- 案例三 面板 -->
       <div class="case-panel" id="panel-case-03">
         <div class="case-header-row">
           <div>
             <div class="case-code-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-              <span>CASE-03 · 标准化执教纪实 (已脱敏)</span>
+              <span>案例三 · 标准化执教纪实 (已脱敏)</span>
             </div>
             <h3 class="case-name-title">学员 C ｜ 大基数高风险减脂与心肺功能重塑教学案</h3>
             <p class="case-bio-desc">
-              年龄 24 岁 ｜ 身高 170 CM ｜ 初始空腹体重 82.5 KG ｜ 初始 BMI 28.4（轻度肥胖临界）｜ 基础代谢率 1520 kcal<br />
+              年龄 24 岁 ｜ 身高 170 CM ｜ 初始空腹体重 82.5 KG ｜ 交付体重 59.0 KG ｜ 净减重 23.5 KG (47斤) ｜ 交付 BMI 20.4 ｜ 基础代谢率 1520 kcal<br />
               首要执教矛盾：体重基数过大，下肢承重极易磨损膝盖与半月板；心血管负荷沉重且最大摄氧量低下，早期高风险严禁跳跃。
             </p>
           </div>
@@ -1871,11 +1861,11 @@
 
         <div class="metric-capsules-grid">
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">-22.5 kg</span>
-            <span class="capsule-lbl-text">全周期真实净减重 (82.5kg 至 60kg)</span>
+            <span class="capsule-val-text">-23.5 kg</span>
+            <span class="capsule-lbl-text">全周期真实净减重 (82.5kg 降至 59.0kg)</span>
           </div>
           <div class="metric-capsule-item">
-            <span class="capsule-val-text">20.7</span>
+            <span class="capsule-val-text">20.4</span>
             <span class="capsule-lbl-text">BMI 平稳回归至正常健康标准</span>
           </div>
           <div class="metric-capsule-item">
@@ -1893,9 +1883,9 @@
           <div class="case-gallery-card">
             <div class="gallery-card-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              <span>身材蜕变对比实录 (82.5kg 居家 至 60kg 风衣重塑)</span>
+              <span>身材蜕变对比实录 (82.5kg 初始 至 59.0kg 风衣重塑)</span>
             </div>
-            <div class="comparison-stage-box" onclick="openModal('cases/case03_comparison.jpg', '学员 C · 大基数减脂全周期蜕变实录', '左侧 82.5kg 居家初始 至 右侧 60.0kg 紧致风衣蜕变，全周期净减重 22.5kg，健康风险全面清零', '【长周期控险论证】初始体重 82.5kg、BMI 28.4，心血管静息负荷极沉且下肢承压巨大。前两个月严禁跳跃与自由深蹲，全量采用坡度快走与闭链固定器械；中后期强化骨骼肌阻击代谢反弹，最终平稳减重 22.5kg，半月板与韧带零损伤。')">
+            <div class="comparison-stage-box" onclick="openModal('cases/case03_comparison.jpg', '学员 C · 大基数减脂全周期蜕变实录', '82.5kg 初始 至 59.0kg 紧致风衣蜕变，全周期净减重 23.5kg (47斤)，健康风险全面清零', '【长周期控险论证】初始体重 82.5kg、BMI 28.4，心血管静息负荷极沉且下肢承压巨大。前两个月严禁跳跃与自由深蹲，全量采用坡度快走与闭链固定器械；中后期强化骨骼肌阻击代谢反弹，全周期 12 个月平稳减重 23.5kg，交付体重 59.0kg，半月板与韧带零损伤。')">
               <img src="cases/case03_comparison.jpg" loading="lazy" decoding="async" alt="学员 C 减脂蜕变图" />
               <div class="zoom-hint-tag">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
@@ -1904,7 +1894,7 @@
             </div>
             <div class="comparison-detail-banner">
               <strong>执教诊断与控险蜕变：</strong>
-              全周期严格控制心肺区间 (120-140 bpm) 与关节零冲击，12个月安全净减重 22.5kg，BMI 回归 20.7，膝关节零磨损。
+              全周期严格控制心肺区间 (120-140 bpm) 与关节零冲击，12个月安全净减重 23.5kg (47斤)，交付体重 59.0kg，BMI 回归 20.4，膝关节零磨损。
             </div>
           </div>
 
@@ -1916,7 +1906,7 @@
             <div class="rx-item-list" style="margin-top: 10px;">
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                <div><strong>下肢承重关节损伤高危</strong>：体重高达 82kg，跳跃中膝踝承受 4-6 倍地面反作用力。早期绝对禁止波比跳、跳绳、开合跳等任何高冲击跳跃动作，禁止自由深蹲大负重，彻底杜绝半月板磨损。</div>
+                <div><strong>下肢承重关节损伤高危</strong>：体重高达 82.5kg，跳跃中膝踝承受 4-6 倍地面反作用力。早期绝对禁止波比跳、跳绳、开合跳等任何高冲击跳跃动作，禁止自由深蹲大负重，彻底杜绝半月板磨损。</div>
               </div>
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
@@ -1924,7 +1914,7 @@
               </div>
               <div class="rx-item-row">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="rx-bullet-icon"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                <div><strong>肌肉量丢失与代谢代偿风险</strong>：拒绝盲目追求快速掉秤，在保护骨骼肌的前提下循序渐进降脂，使 BMI 安全平稳回落至 20 正常区间。</div>
+                <div><strong>肌肉量丢失与代谢代偿风险</strong>：拒绝盲目追求快速掉秤，在保护骨骼肌的前提下循序渐进降脂，使 BMI 安全平稳回落至 20.4 正常区间。</div>
               </div>
             </div>
           </div>
@@ -2065,7 +2055,7 @@
 
       <div class="contact-grid">
         <!-- 电话 -->
-        <div class="contact-box">
+        <a href="tel:17658596889" class="contact-box contact-link">
           <div class="contact-detail-left">
             <div class="contact-icon-ring">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -2075,14 +2065,14 @@
               <span class="contact-val-text">176-5859-6889</span>
             </div>
           </div>
-          <button class="btn-action-copy" onclick="copyValue('17658596889', '联系电话')">
+          <button type="button" class="btn-action-copy" onclick="event.preventDefault(); event.stopPropagation(); copyValue('17658596889', '联系电话')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制</span>
           </button>
-        </div>
+        </a>
 
         <!-- 邮箱 -->
-        <div class="contact-box">
+        <a href="mailto:757458811@qq.com" class="contact-box contact-link">
           <div class="contact-detail-left">
             <div class="contact-icon-ring">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -2092,26 +2082,26 @@
               <span class="contact-val-text">757458811@qq.com</span>
             </div>
           </div>
-          <button class="btn-action-copy" onclick="copyValue('757458811@qq.com', '电子邮箱')">
+          <button type="button" class="btn-action-copy" onclick="event.preventDefault(); event.stopPropagation(); copyValue('757458811@qq.com', '电子邮箱')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制</span>
           </button>
-        </div>
+        </a>
 
         <!-- 微信 -->
-        <div class="contact-box">
+        <div class="contact-box contact-link" onclick="handleWeChatClick('away_oflife')" style="cursor: pointer;">
           <div class="contact-detail-left">
             <div class="contact-icon-ring">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
             </div>
             <div>
               <span class="contact-label-text">微信账号</span>
-              <span class="contact-val-text">17658596889</span>
+              <span class="contact-val-text">away_oflife</span>
             </div>
           </div>
-          <button class="btn-action-copy" onclick="copyValue('17658596889', '微信账号')">
+          <button type="button" class="btn-action-copy" onclick="event.stopPropagation(); handleWeChatClick('away_oflife')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>复制</span>
+            <span>复制并跳转</span>
           </button>
         </div>
       </div>
@@ -2229,6 +2219,13 @@ function fallbackCopy(val, label) {
     showToast('复制失败，请手动长按');
   }
   document.body.removeChild(textarea);
+}
+
+function handleWeChatClick(wechatId) {
+  copyValue(wechatId, '微信号');
+  setTimeout(function() {
+    window.location.href = 'weixin://';
+  }, 250);
 }
 
 window.addEventListener('keydown', function(e) {

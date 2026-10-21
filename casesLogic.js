@@ -1,47 +1,52 @@
 // casesLogic.js
-// 纯逻辑模块：案例 Tab 状态机与数据查询（不碰 DOM，纯数据输入输出）
+// 纯逻辑模块：案例 Tab 状态机与数据查询（纯数据输入输出，全量中文规范）
 
 const CASE_REGISTRY = {
   "case-01": {
-    code: "CASE-01",
-    type: "alignment",
+    code: "案例一",
+    type: "male_sculpting",
     client: "学员 A",
-    gender: "女",
-    age: 26,
-    heightCm: 150,
-    initialWeightKg: 41.6,
-    targetWeightKg: 45.0,
-    initialBmi: 18.5,
-    targetBmi: 20.0,
-    coreFocus: ["高低肩矫正", "翼状肩胛回正", "前锯肌特异性激活", "偏瘦增肌"]
+    gender: "男",
+    age: 38,
+    heightCm: 176,
+    initialWeightKg: 78.5,
+    targetWeightKg: 72.0,
+    weightLossKg: 6.5,
+    bodyFatPercent: 14.8,
+    durationMonths: 2,
+    coreFocus: ["胸肌铠甲重塑", "后腰脂肪折叠抹平", "圆肩肱骨内旋回正", "8周高效率复合抗阻"]
   },
   "case-02": {
-    code: "CASE-02",
-    type: "sculpting",
+    code: "案例二",
+    type: "female_alignment_sculpting",
     client: "学员 B",
     gender: "女",
     age: 32,
     heightCm: 164,
-    initialWeightKg: 59.5,
-    stageWeightKg: 53.0,
-    weightLossKg: 6.5,
-    waistLossCm: 6.5,
+    initialWeightJin: 140,
+    initialWeightKg: 70.0,
+    stageWeightKg: 58.0,
+    targetWeightKg: 53.0,
+    weightLossKg: 17.0,
+    waistLossCm: 9.5,
     bodyFatPercent: 21.0,
-    coreFocus: ["假胯宽消除", "X型腿内扣回正", "臀中肌激活", "大肌群抗阻EPOC"]
+    durationMonths: 7,
+    coreFocus: ["140斤减至58kg再至53kg", "假胯宽消除", "X型腿力线回正", "臀中肌激活"]
   },
   "case-03": {
-    code: "CASE-03",
-    type: "cardio_heavy",
+    code: "案例三",
+    type: "cardio_heavy_risk_free",
     client: "学员 C",
     gender: "学员",
     age: 24,
     heightCm: 170,
     initialWeightKg: 82.5,
-    targetWeightKg: 60.0,
-    weightLossKg: 22.5,
+    targetWeightKg: 59.0,
+    weightLossKg: 23.5,
     initialBmi: 28.4,
-    targetBmi: 20.7,
-    coreFocus: ["关节零冲击", "心肺耐力优先", "低冲击有氧", "长周期无伤减重"]
+    targetBmi: 20.4,
+    durationMonths: 12,
+    coreFocus: ["82.5kg减至59kg", "净减47斤", "关节零冲击", "长周期无伤重塑"]
   }
 };
 
