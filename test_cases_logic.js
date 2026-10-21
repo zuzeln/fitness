@@ -31,9 +31,9 @@ test("学员 A 数据符合 2 个月力量减脂与体态重塑设定", () => {
   if (c1.targetWeightKg !== 72.0) throw new Error("交付体重不匹配");
 });
 
-test("学员 B 数据符合 140 斤减至 58kg 再减至 53kg 设定", () => {
+test("学员 B 数据符合 70kg 减至 58kg 再减至 53kg 设定", () => {
   const c2 = CASE_REGISTRY["case-02"];
-  if (c2.initialWeightJin !== 140) throw new Error("学员 B 初始体重应为 140 斤");
+  if (c2.initialWeightKg !== 70.0) throw new Error("学员 B 初始体重应为 70.0kg");
   if (c2.stageWeightKg !== 58.0 || c2.targetWeightKg !== 53.0) throw new Error("减脂阶段目标不匹配");
   if (c2.durationMonths !== 7) throw new Error("周期应为 7 个月");
 });

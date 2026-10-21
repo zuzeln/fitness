@@ -23,7 +23,6 @@ const CASE_REGISTRY = {
     gender: "女",
     age: 32,
     heightCm: 164,
-    initialWeightJin: 140,
     initialWeightKg: 70.0,
     stageWeightKg: 58.0,
     targetWeightKg: 53.0,
@@ -31,7 +30,7 @@ const CASE_REGISTRY = {
     waistLossCm: 9.5,
     bodyFatPercent: 21.0,
     durationMonths: 7,
-    coreFocus: ["140斤减至58kg再至53kg", "假胯宽消除", "X型腿力线回正", "臀中肌激活"]
+    coreFocus: ["70kg减至58kg再至53kg", "假胯宽消除", "X型腿力线回正", "臀中肌激活"]
   },
   "case-03": {
     code: "案例三",

@@ -47,7 +47,7 @@ requiredImages.forEach(imgName => {
   assert(exists && sizeOk && compressedOk, `案例图片 ${imgName} 存在且已优化体积 (<1MB)`);
 });
 
-// 2. 验证证书图片优化体积
+// 2. 验证证书与随照抠图优化体积
 const certImages = ['IFBB_认证私教证书.jpg', 'IBFA_国际体适能教练证书.jpg', 'AHA_急救卡.png'];
 certImages.forEach(imgName => {
   const imgPath = path.join(rootDir, 'certificates', imgName);
@@ -55,6 +55,28 @@ certImages.forEach(imgName => {
     const stats = fs.statSync(imgPath);
     assert(stats.size < 500 * 1024, `证书图片 ${imgName} 经压缩后体积正常 (${(stats.size/1024).toFixed(1)}KB < 500KB)`);
   }
+});
+
+const coachPhotos = [
+  'coach_photo_01.png',
+  'coach_photo_02.png',
+  'coach_photo_03.png',
+  'coach_photo_04.png',
+  'coach_photo_05.png'
+];
+const photosDir = path.join(rootDir, 'photos');
+assert(fs.existsSync(photosDir), 'photos 随照目录必须存在');
+coachPhotos.forEach(photoName => {
+  const pPath = path.join(photosDir, photoName);
+  const exists = fs.existsSync(pPath);
+  let sizeOk = false;
+  let compressedOk = false;
+  if (exists) {
+    const stats = fs.statSync(pPath);
+    sizeOk = stats.size > 10 * 1024;
+    compressedOk = stats.size < 1024 * 1024; // 严格小于 1MB
+  }
+  assert(exists && sizeOk && compressedOk, `随照抠图 ${photoName} 存在且体积小于 1MB`);
 });
 
 // 3. 验证 index.html 文件与 JS 脚本语法无错误
@@ -77,10 +99,18 @@ assert(htmlContent.includes('case-tab-btn'), '包含案例 Tab 切换按钮');
 assert(htmlContent.includes('案例一') && htmlContent.includes('案例二') && htmlContent.includes('案例三'), '全量中文规范：包含 3 大标准化案例名称');
 assert(!htmlContent.includes('CASE-01') && !htmlContent.includes('CASE-02') && !htmlContent.includes('CASE-03'), '全量中文规范：已彻底清除 CASE-01/02/03 英文代号');
 assert(!htmlContent.includes('居家'), '文案纯净性：已彻底清除所有“居家”字样');
+assert(!htmlContent.includes('140 斤') && !htmlContent.includes('140斤'), '案例二体重规范：已彻底清除“140 斤/140斤”，统一为 70 公斤/70kg');
+
 assert(htmlContent.includes('away_oflife'), '联系方式规范：微信号已更新为 away_oflife');
-assert(htmlContent.includes('href="tel:17658596889"'), '联系方式交互：电话链接支持直接唤起呼叫');
-assert(htmlContent.includes('href="mailto:757458811@qq.com"'), '联系方式交互：邮箱链接支持直接唤起邮件客户端');
-assert(htmlContent.includes('handleWeChatClick'), '联系方式交互：包含微信自动复制并唤起客户端函数');
+assert(htmlContent.includes('handleContactClick'), '联系方式交互：卡片点击自动复制并跳转 (handleContactClick)');
+assert(!htmlContent.includes('btn-action-copy'), '联系方式交互：已彻底移除独立复制按钮 (btn-action-copy)');
+assert(htmlContent.includes('contact-action-arrow'), '联系方式交互：包含右侧跳转微指示箭头');
+
+assert(htmlContent.includes('stack-container'), '拟物照片展台：包含 stack-container 容器');
+assert(htmlContent.includes('stack-deck'), '拟物照片展台：包含 stack-deck 堆叠层');
+assert(htmlContent.includes('initPhotoStack'), '拟物照片展台：包含 initPhotoStack 物理拖拽与滑动逻辑');
+assert(htmlContent.includes('nextStackPhoto') && htmlContent.includes('prevStackPhoto'), '拟物照片展台：支持向后滑/左右翻转物理动作');
+
 assert(htmlContent.includes('switchCaseTab'), '包含 switchCaseTab 案例切换函数');
 assert(htmlContent.includes('modalDetailBox'), '包含弹窗诊断细节 modalDetailBox 容器');
 assert(htmlContent.includes('comparison-detail-banner'), '对比照下方包含明确执教诊断成效标注');

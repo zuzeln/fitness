@@ -238,7 +238,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* 头像画框展示 (Portrait Stage) */
+    /* 拟物照片堆叠展台 (WeChat-style Physical Photo Stack Deck) */
     .portrait-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-hairline);
@@ -250,28 +250,151 @@
       box-shadow: var(--shadow-subtle);
     }
 
-    .portrait-frame {
+    .stack-container {
       width: 100%;
-      height: 340px;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-hairline);
       position: relative;
     }
 
-    .portrait-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-      filter: contrast(1.03) brightness(0.98);
-      transition: transform 0.6s var(--ease-out);
+    .stack-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
     }
 
-    .portrait-frame:hover img {
-      transform: scale(1.02);
+    .stack-badge {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: var(--accent-gold-dim);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-accent);
+      letter-spacing: 0.05em;
+    }
+
+    .stack-nav-btns {
+      display: flex;
+      gap: 6px;
+    }
+
+    .stack-nav-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .stack-nav-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-focus);
+      background: var(--bg-hover);
+    }
+
+    .stack-nav-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
+    }
+
+    .stack-deck {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      perspective: 1000px;
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .stack-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 30%, #1a1e27 0%, #0d1016 85%);
+      border: 1px solid var(--border-hairline);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      cursor: grab;
+      transform-origin: center 90%;
+      will-change: transform, opacity;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    }
+
+    .stack-card:active {
+      cursor: grabbing;
+    }
+
+    .stack-card.is-dragging {
+      transition: none !important;
+    }
+
+    .stack-card-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .stack-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.5));
+    }
+
+    .stack-card.is-cover img {
+      object-fit: cover;
+      object-position: center 20%;
+      filter: contrast(1.03) brightness(0.98);
+    }
+
+    .stack-card-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 14px;
+      font-size: 11px;
+      font-family: var(--font-mono);
+      color: var(--accent-gold-light);
+      background: rgba(8, 9, 12, 0.75);
+      border: 1px solid var(--border-hairline);
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      pointer-events: none;
+    }
+
+    .stack-hint-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--text-tertiary);
+      letter-spacing: 0.04em;
+    }
+
+    .stack-hint-bar svg {
+      width: 12px;
+      height: 12px;
+      stroke-width: 2;
+      color: var(--accent-gold);
     }
 
     .portrait-footer {
@@ -735,31 +858,30 @@
       font-family: var(--font-mono);
     }
 
-    .btn-action-copy {
-      padding: 6px 14px;
-      background: var(--bg-subtle);
+    .contact-action-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
       border: 1px solid var(--border-hairline);
-      border-radius: var(--radius-pill);
-      color: var(--text-primary);
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      color: var(--text-tertiary);
+      transition: all 0.25s ease;
+      flex-shrink: 0;
     }
 
-    .btn-action-copy:hover {
-      background: var(--bg-hover);
+    .contact-box:hover .contact-action-arrow {
+      color: var(--accent-gold);
       border-color: var(--accent-gold);
-      color: var(--accent-gold-light);
+      transform: translateX(3px);
     }
 
-    .btn-action-copy svg {
-      width: 13px;
-      height: 13px;
-      stroke-width: 2;
+    .contact-action-arrow svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2.2;
     }
 
     /* 证书弹窗容器 (Modal with Pedestal Depth - No Pure Black) */
@@ -894,8 +1016,9 @@
       .hero-section {
         grid-template-columns: 1fr;
       }
-      .portrait-frame {
-        height: 280px;
+      .portrait-frame,
+      .stack-deck {
+        height: 320px;
       }
       .metrics-bar {
         grid-template-columns: repeat(2, 1fr);
@@ -1369,8 +1492,60 @@
       </div>
 
       <div class="portrait-card">
-        <div class="portrait-frame">
-          <img src="avatar.png" alt="邹泽霖 Ethan 肖像" />
+        <div class="stack-container">
+          <div class="stack-header-bar">
+            <span class="stack-badge" id="stackIndicator">1 / 6 · 执教随照</span>
+            <div class="stack-nav-btns">
+              <button type="button" class="stack-nav-btn" onclick="prevStackPhoto()" aria-label="上一张">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button type="button" class="stack-nav-btn" onclick="nextStackPhoto()" aria-label="下一张">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+          <div class="stack-deck" id="stackDeck">
+            <div class="stack-card is-cover" data-index="0">
+              <div class="stack-card-inner">
+                <img src="avatar.png" alt="邹泽霖 Ethan 肖像" />
+              </div>
+              <span class="stack-card-tag">正式执教肖像</span>
+            </div>
+            <div class="stack-card" data-index="1">
+              <div class="stack-card-inner">
+                <img src="photos/coach_photo_01.png" alt="带教训练实录 01" />
+              </div>
+              <span class="stack-card-tag">带教实录 01</span>
+            </div>
+            <div class="stack-card" data-index="2">
+              <div class="stack-card-inner">
+                <img src="photos/coach_photo_02.png" alt="随行形体实录 02" />
+              </div>
+              <span class="stack-card-tag">形体记录 02</span>
+            </div>
+            <div class="stack-card" data-index="3">
+              <div class="stack-card-inner">
+                <img src="photos/coach_photo_03.png" alt="力量训练剪影 03" />
+              </div>
+              <span class="stack-card-tag">训练剪影 03</span>
+            </div>
+            <div class="stack-card" data-index="4">
+              <div class="stack-card-inner">
+                <img src="photos/coach_photo_04.png" alt="体能专注瞬间 04" />
+              </div>
+              <span class="stack-card-tag">体能专注 04</span>
+            </div>
+            <div class="stack-card" data-index="5">
+              <div class="stack-card-inner">
+                <img src="photos/coach_photo_05.png" alt="运动状态呈现 05" />
+              </div>
+              <span class="stack-card-tag">状态呈现 05</span>
+            </div>
+          </div>
+          <div class="stack-hint-bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="8 17 3 12 8 7"></polyline><line x1="3" y1="12" x2="21" y2="12"></line><polyline points="16 7 21 12 16 17"></polyline></svg>
+            <span>左右滑动或轻拖翻看物理照片堆</span>
+          </div>
         </div>
         <div class="portrait-footer">
           <div>
@@ -1569,7 +1744,7 @@
         <button type="button" class="case-tab-btn" id="tab-case-02" onclick="switchCaseTab('case-02')">
           <span class="case-tab-code">案例二</span>
           <span class="case-tab-title">减脂塑形 & 假胯宽消除</span>
-          <span class="case-tab-sub">学员 B · 140斤至58kg再至53kg · 历时7个月</span>
+          <span class="case-tab-sub">学员 B · 70kg至58kg再至53kg · 历时7个月</span>
         </button>
 
         <button type="button" class="case-tab-btn" id="tab-case-03" onclick="switchCaseTab('case-03')">
@@ -1709,9 +1884,9 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="12" height="12"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
               <span>案例二 · 标准化执教纪实 (已脱敏)</span>
             </div>
-            <h3 class="case-name-title">学员 B ｜ 140斤减脂塑形与假胯宽突破教学案</h3>
+            <h3 class="case-name-title">学员 B ｜ 70公斤减脂塑形与假胯宽突破教学案</h3>
             <p class="case-bio-desc">
-              年龄 32 岁 ｜ 身高 164 CM ｜ 初始体重 140 斤 (70.0 KG) ｜ 阶段体重 58.0 KG ｜ 交付体重 53.0 KG ｜ 全周期净减重 17.0 KG (34 斤) ｜ 阶段体脂 21.0%<br />
+              年龄 32 岁 ｜ 身高 164 CM ｜ 初始体重 70.0 KG ｜ 阶段体重 58.0 KG ｜ 交付体重 53.0 KG ｜ 全周期净减重 17.0 KG (34 斤) ｜ 阶段体脂 21.0%<br />
               首要执教矛盾：基础代谢低下导致日常消耗小，久坐臀中肌失活引发假胯宽与 X 型腿内扣；体重大基数减脂需保护骨骼肌与下肢关节力线。
             </p>
           </div>
@@ -1720,7 +1895,7 @@
         <div class="metric-capsules-grid">
           <div class="metric-capsule-item">
             <span class="capsule-val-text">-17.0 kg</span>
-            <span class="capsule-lbl-text">全周期净减重 (从 140 斤减至 58kg 再至 53kg)</span>
+            <span class="capsule-lbl-text">全周期净减重 (从 70kg 减至 58kg 再至 53kg)</span>
           </div>
           <div class="metric-capsule-item">
             <span class="capsule-val-text">-9.5 cm</span>
@@ -1742,10 +1917,10 @@
           <div class="case-gallery-card">
             <div class="gallery-card-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              <span>140斤初始体态多角度筛查 (点击查看诊断细节)</span>
+              <span>70kg初始体态多角度筛查 (点击查看诊断细节)</span>
             </div>
             <div class="posture-triple-grid">
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_front.jpg', '学员 B · 140斤正面体态筛查诊断', '解剖观察：股骨内旋导致大转子外凸，双膝内扣呈轻度 X 型腿', '【临床诊断细节】站立位双侧大转子异常外凸形成假胯宽视觉，伴随双膝向内扣合与足底内侧承重偏向。处方采用侧卧弹力带蚌式开合与抗阻侧步走 (Monster Walk)，孤立激活臀中肌后束，牵引大转子回归原位。')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_front.jpg', '学员 B · 70kg正面体态筛查诊断', '解剖观察：股骨内旋导致大转子外凸，双膝内扣呈轻度 X 型腿', '【临床诊断细节】站立位双侧大转子异常外凸形成假胯宽视觉，伴随双膝向内扣合与足底内侧承重偏向。处方采用侧卧弹力带蚌式开合与抗阻侧步走 (Monster Walk)，孤立激活臀中肌后束，牵引大转子回归原位。')">
                 <div class="posture-shot-img-wrap">
                   <img src="cases/case02_posture_front.jpg" loading="lazy" decoding="async" alt="学员 B 正面" />
                 </div>
@@ -1755,7 +1930,7 @@
                 </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_side.jpg', '学员 B · 140斤侧面体态筛查诊断', '解剖观察：腹横肌失活腹壁松弛微凸，下背部腰椎曲度受迫增大', '【临床诊断细节】核心肌群张力不足导致骨盆出现 8 度前倾，躯干重心前移使下背竖脊肌过度收缩疲劳。处方引入死虫式与平板支撑核心抗伸展训练，收紧腹横肌并纠正腰椎反弓。')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_side.jpg', '学员 B · 70kg侧面体态筛查诊断', '解剖观察：腹横肌失活腹壁松弛微凸，下背部腰椎曲度受迫增大', '【临床诊断细节】核心肌群张力不足导致骨盆出现 8 度前倾，躯干重心前移使下背竖脊肌过度收缩疲劳。处方引入死虫式与平板支撑核心抗伸展训练，收紧腹横肌并纠正腰椎反弓。')">
                 <div class="posture-shot-img-wrap">
                   <img src="cases/case02_posture_side.jpg" loading="lazy" decoding="async" alt="学员 B 侧面" />
                 </div>
@@ -1765,7 +1940,7 @@
                 </div>
               </div>
 
-              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_back.jpg', '学员 B · 140斤背面体态筛查诊断', '解剖观察：臀中肌失活致下肢力线下坠，骨盆侧向悬吊力不足', '【临床诊断细节】双侧臀大肌与臀中肌深度沉睡扁平，骨盆在步态中缺乏侧向悬吊支撑，造成下肢轮廓横向延展与臀线下移。处方通过高脚杯深蹲重建足底三点支撑与闭锁动力链协同。')">
+              <div class="posture-shot-item" onclick="openModal('cases/case02_posture_back.jpg', '学员 B · 70kg背面体态筛查诊断', '解剖观察：臀中肌失活致下肢力线下坠，骨盆侧向悬吊力不足', '【临床诊断细节】双侧臀大肌与臀中肌深度沉睡扁平，骨盆在步态中缺乏侧向悬吊支撑，造成下肢轮廓横向延展与臀线下移。处方通过高脚杯深蹲重建足底三点支撑与闭锁动力链协同。')">
                 <div class="posture-shot-img-wrap">
                   <img src="cases/case02_posture_back.jpg" loading="lazy" decoding="async" alt="学员 B 背面" />
                 </div>
@@ -1781,9 +1956,9 @@
           <div class="case-gallery-card">
             <div class="gallery-card-title">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-              <span>身材蜕变对比实录 (从140斤减至58kg再至53kg)</span>
+              <span>身材蜕变对比实录 (从70kg减至58kg再至53kg)</span>
             </div>
-            <div class="comparison-stage-box" onclick="openModal('cases/case02_comparison.jpg', '学员 B · 减脂塑形前后对比实录', '从 140斤 减至 58kg，再刷脂至 53kg 紧致腹肌线条，腰围净缩减 9.5cm，体脂率降至 21%', '【塑形成效临床论证】从 140 斤开始启动，前 4 个月通过规律抗阻与低冲击代谢调控平稳减至 58kg；后 3 个月强化大肌群抗阻与腹横肌收紧，体重稳步刷至 53kg，腰围由 76.5cm 缩减至 67.0cm，腹直肌与马甲线轮廓清晰凸显，基础代谢率逆势回升。')">
+            <div class="comparison-stage-box" onclick="openModal('cases/case02_comparison.jpg', '学员 B · 减脂塑形前后对比实录', '从 70kg 减至 58kg，再刷脂至 53kg 紧致腹肌线条，腰围净缩减 9.5cm，体脂率降至 21%', '【塑形成效临床论证】从 70kg 开始启动，前 4 个月通过规律抗阻与低冲击代谢调控平稳减至 58kg；后 3 个月强化大肌群抗阻与腹横肌收紧，体重稳步刷至 53kg，腰围由 76.5cm 缩减至 67.0cm，腹直肌与马甲线轮廓清晰凸显，基础代谢率逆势回升。')">
               <img src="cases/case02_comparison.jpg" loading="lazy" decoding="async" alt="学员 B 减脂对比图" />
               <div class="zoom-hint-tag">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
@@ -1792,7 +1967,7 @@
             </div>
             <div class="comparison-detail-banner">
               <strong>执教诊断与蜕变成效：</strong>
-              全周期历时 7 个月，从 140 斤平稳降至 58kg，再精细刷脂至 53kg，彻底消除假胯宽并显现清晰马甲线。
+              全周期历时 7 个月，从 70kg 平稳降至 58kg，再精细刷脂至 53kg，彻底消除假胯宽并显现清晰马甲线。
             </div>
           </div>
         </div>
@@ -2055,7 +2230,7 @@
 
       <div class="contact-grid">
         <!-- 电话 -->
-        <a href="tel:17658596889" class="contact-box contact-link">
+        <a href="tel:17658596889" class="contact-box contact-link" onclick="handleContactClick('17658596889', '联系电话', 'tel:17658596889', event)">
           <div class="contact-detail-left">
             <div class="contact-icon-ring">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -2065,14 +2240,13 @@
               <span class="contact-val-text">176-5859-6889</span>
             </div>
           </div>
-          <button type="button" class="btn-action-copy" onclick="event.preventDefault(); event.stopPropagation(); copyValue('17658596889', '联系电话')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>复制</span>
-          </button>
+          <div class="contact-action-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </a>
 
         <!-- 邮箱 -->
-        <a href="mailto:757458811@qq.com" class="contact-box contact-link">
+        <a href="mailto:757458811@qq.com" class="contact-box contact-link" onclick="handleContactClick('757458811@qq.com', '电子邮箱', 'mailto:757458811@qq.com', event)">
           <div class="contact-detail-left">
             <div class="contact-icon-ring">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -2082,14 +2256,13 @@
               <span class="contact-val-text">757458811@qq.com</span>
             </div>
           </div>
-          <button type="button" class="btn-action-copy" onclick="event.preventDefault(); event.stopPropagation(); copyValue('757458811@qq.com', '电子邮箱')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>复制</span>
-          </button>
+          <div class="contact-action-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </a>
 
         <!-- 微信 -->
-        <div class="contact-box contact-link" onclick="handleWeChatClick('away_oflife')" style="cursor: pointer;">
+        <div class="contact-box contact-link" onclick="handleContactClick('away_oflife', '微信账号', 'weixin://', event)" style="cursor: pointer;">
           <div class="contact-detail-left">
             <div class="contact-icon-ring">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -2099,10 +2272,9 @@
               <span class="contact-val-text">away_oflife</span>
             </div>
           </div>
-          <button type="button" class="btn-action-copy" onclick="event.stopPropagation(); handleWeChatClick('away_oflife')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>复制并跳转</span>
-          </button>
+          <div class="contact-action-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
         </div>
       </div>
     </section>
@@ -2221,11 +2393,191 @@ function fallbackCopy(val, label) {
   document.body.removeChild(textarea);
 }
 
-function handleWeChatClick(wechatId) {
-  copyValue(wechatId, '微信号');
+function handleContactClick(val, label, url, e) {
+  if (e && e.preventDefault) e.preventDefault();
+  copyValue(val, label);
   setTimeout(function() {
-    window.location.href = 'weixin://';
-  }, 250);
+    if (url) {
+      window.location.href = url;
+    }
+  }, 280);
+}
+
+function handleWeChatClick(wechatId) {
+  handleContactClick(wechatId, '微信账号', 'weixin://');
+}
+
+// 微信式拟物照片堆叠展台交互实现
+var stackCards = [];
+var currentStackIndex = 0;
+var totalStackCount = 6;
+var isDragging = false;
+var startX = 0;
+var startY = 0;
+var currentDx = 0;
+var currentDy = 0;
+var isAnimating = false;
+
+function calcLayerStyle(pos) {
+  if (pos === 0) {
+    return { translateX: 0, translateY: 0, scale: 1, rotateDeg: 0, opacity: 1, zIndex: 10, pointerEvents: 'auto' };
+  } else if (pos === 1) {
+    return { translateX: 0, translateY: 10, scale: 0.95, rotateDeg: -1.8, opacity: 0.9, zIndex: 9, pointerEvents: 'none' };
+  } else if (pos === 2) {
+    return { translateX: 0, translateY: 20, scale: 0.90, rotateDeg: 1.5, opacity: 0.75, zIndex: 8, pointerEvents: 'none' };
+  } else {
+    return { translateX: 0, translateY: 28, scale: 0.85, rotateDeg: 0, opacity: 0, zIndex: 1, pointerEvents: 'none' };
+  }
+}
+
+function renderStack() {
+  var indicator = document.getElementById('stackIndicator');
+  if (indicator) {
+    indicator.innerText = (currentStackIndex + 1) + ' / ' + totalStackCount + ' · 执教随照';
+  }
+  stackCards.forEach(function(card, idx) {
+    card.classList.remove('is-dragging');
+    var pos = idx;
+    var style = calcLayerStyle(pos);
+    card.style.transform = 'translate3d(' + style.translateX + 'px, ' + style.translateY + 'px, 0) scale(' + style.scale + ') rotate(' + style.rotateDeg + 'deg)';
+    card.style.opacity = style.opacity;
+    card.style.zIndex = style.zIndex;
+    card.style.pointerEvents = style.pointerEvents;
+  });
+}
+
+function nextStackPhoto() {
+  if (isAnimating || stackCards.length < 2) return;
+  isAnimating = true;
+  var topCard = stackCards[0];
+  topCard.style.transition = 'transform 0.32s cubic-bezier(0.2, 0.8, 0.25, 1), opacity 0.32s ease';
+  topCard.style.transform = 'translate3d(-120%, 20px, 0) rotate(-14deg)';
+  topCard.style.opacity = '0';
+
+  setTimeout(function() {
+    var shifted = stackCards.shift();
+    stackCards.push(shifted);
+    currentStackIndex = (currentStackIndex + 1) % totalStackCount;
+    shifted.style.transition = 'none';
+    renderStack();
+    setTimeout(function() {
+      if (shifted) shifted.style.transition = '';
+      isAnimating = false;
+    }, 50);
+  }, 320);
+}
+
+function prevStackPhoto() {
+  if (isAnimating || stackCards.length < 2) return;
+  isAnimating = true;
+  var lastCard = stackCards.pop();
+  stackCards.unshift(lastCard);
+  currentStackIndex = (currentStackIndex - 1 + totalStackCount) % totalStackCount;
+  lastCard.style.transition = 'none';
+  lastCard.style.transform = 'translate3d(-120%, 20px, 0) rotate(-14deg)';
+  lastCard.style.opacity = '0';
+  lastCard.style.zIndex = '12';
+
+  renderStack();
+
+  setTimeout(function() {
+    lastCard.style.transition = 'transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease';
+    lastCard.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+    lastCard.style.opacity = '1';
+    setTimeout(function() {
+      lastCard.style.transition = '';
+      isAnimating = false;
+    }, 360);
+  }, 30);
+}
+
+function initPhotoStack() {
+  var deck = document.getElementById('stackDeck');
+  if (!deck) return;
+  stackCards = Array.from(deck.querySelectorAll('.stack-card'));
+  totalStackCount = stackCards.length;
+  renderStack();
+
+  var onStart = function(clientX, clientY) {
+    if (isAnimating || stackCards.length === 0) return;
+    isDragging = true;
+    startX = clientX;
+    startY = clientY;
+    currentDx = 0;
+    currentDy = 0;
+    var topCard = stackCards[0];
+    if (topCard) topCard.classList.add('is-dragging');
+  };
+
+  var onMove = function(clientX, clientY) {
+    if (!isDragging || stackCards.length === 0) return;
+    currentDx = clientX - startX;
+    currentDy = clientY - startY;
+    var topCard = stackCards[0];
+    if (topCard) {
+      var rawDeg = currentDx * 0.06;
+      var rotateDeg = Math.max(-15, Math.min(15, rawDeg));
+      topCard.style.transform = 'translate3d(' + currentDx + 'px, ' + (currentDy * 0.35) + 'px, 0) rotate(' + rotateDeg.toFixed(2) + 'deg)';
+    }
+  };
+
+  var onEnd = function() {
+    if (!isDragging || stackCards.length === 0) return;
+    isDragging = false;
+    var topCard = stackCards[0];
+    if (topCard) topCard.classList.remove('is-dragging');
+
+    if (currentDx < -75) {
+      nextStackPhoto();
+    } else if (currentDx > 90) {
+      prevStackPhoto();
+    } else {
+      if (topCard) {
+        topCard.style.transition = 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        topCard.style.transform = 'translate3d(0, 0, 0) scale(1) rotate(0deg)';
+        setTimeout(function() {
+          if (topCard) topCard.style.transition = '';
+        }, 300);
+      }
+    }
+    currentDx = 0;
+    currentDy = 0;
+  };
+
+  deck.addEventListener('touchstart', function(e) {
+    if (e.touches && e.touches.length === 1) {
+      onStart(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', function(e) {
+    if (isDragging && e.touches && e.touches.length === 1) {
+      onMove(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', function() {
+    if (isDragging) onEnd();
+  });
+
+  window.addEventListener('touchcancel', function() {
+    if (isDragging) onEnd();
+  });
+
+  deck.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    onStart(e.clientX, e.clientY);
+  });
+
+  window.addEventListener('mousemove', function(e) {
+    if (isDragging) {
+      onMove(e.clientX, e.clientY);
+    }
+  });
+
+  window.addEventListener('mouseup', function() {
+    if (isDragging) onEnd();
+  });
 }
 
 window.addEventListener('keydown', function(e) {
@@ -2233,6 +2585,13 @@ window.addEventListener('keydown', function(e) {
     closeModal('certificateModal');
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  initPhotoStack();
+});
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  initPhotoStack();
+}
 
   </script>
 </body>
