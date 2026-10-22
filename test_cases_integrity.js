@@ -138,9 +138,9 @@ assert(htmlContent.includes('switchCaseTab'), '包含 switchCaseTab 案例切换
 assert(htmlContent.includes('modalDetailBox'), '包含弹窗诊断细节 modalDetailBox 容器');
 assert(htmlContent.includes('comparison-detail-banner'), '对比照下方包含明确执教诊断成效标注');
 
-// 3.1 验证带教课时与累计销售额严密对齐（全周期 3500+ 课时、380万+ 销售额）
-assert(htmlContent.includes('3500<span class="unit">+</span>'), '数据横栏：带教课时已校准为 3500+ 课时');
-assert(htmlContent.includes('380<span class="unit">万+</span>'), '数据横栏：累计销售业绩已校准为 380万+');
+// 3.1 验证面向会员的界面纯净性：已彻底移除面向员工的四大销售数据横栏
+assert(!htmlContent.includes('<section class="metrics-bar">') && !htmlContent.includes('class="metric-cell"'), '数据纯净性：已彻底移除顶部四项数据横栏 (metrics-bar)');
+assert(!htmlContent.includes('门店月度销售业绩') && !htmlContent.includes('01 / HOURS'), '数据纯净性：已彻底移除面向员工KPI的顶栏指标');
 assert(htmlContent.includes('阶段销售业绩超 200 万元，带教超 1700+ 课时'), '时间线 7 号铁馆：阶段销售 200 万元与 1700+ 课时');
 assert(htmlContent.includes('阶段销售额超 100 万元，累计带教超 1000+ 课时'), '时间线 pop fit：阶段销售 100 万元与 1000+ 课时');
 assert(htmlContent.includes('阶段销售额超 80 万元，累计带教超 800+ 课时'), '时间线星之健身：阶段销售 80 万元与 800+ 课时');
