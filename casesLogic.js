@@ -76,9 +76,9 @@ const CASE_REGISTRY = {
     weightLossKg: 12.3,
     initialBodyFatPercent: 11.5,
     targetBodyFatPercent: 5.2,
-    durationMonths: 6,
-    durationWeeks: 24,
-    coreFocus: ["瑞兹卡杯健体公开赛132号", "86.5kg刷至74.2kg", "24周科学备赛", "体脂率降至5.2%", "圣诞树竖脊肌与极限干度", "峰值周充碳脱水控钠"]
+    durationMonths: 4,
+    durationWeeks: 16,
+    coreFocus: ["瑞兹卡杯健体公开赛132号", "86.5kg刷至74.2kg", "16周科学备赛", "体脂率降至5.2%", "圣诞树竖脊肌与极限干度", "峰值周充碳脱水控钠"]
   }
 };
 

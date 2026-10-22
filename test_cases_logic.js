@@ -62,7 +62,7 @@ test("健体选手 E 数据符合 86.5kg 刷至 74.2kg 且体脂 5.2% 赛级设�
   if (c5.targetWeightKg !== 74.2) throw new Error("健体选手 E 登台体重应为 74.2kg");
   if (c5.targetBodyFatPercent !== 5.2) throw new Error("登台体脂率应为 5.2%");
   if (c5.weightLossKg !== 12.3) throw new Error("净减脂水分应为 12.3kg");
-  if (c5.durationMonths !== 6 || c5.durationWeeks !== 24) throw new Error("周期应为 6 个月 (24周)");
+  if (c5.durationMonths !== 4 || c5.durationWeeks !== 16) throw new Error("周期应为 4 个月 (16周)");
 });
 
 test("切换至合法案例能返回正确数据", () => {
