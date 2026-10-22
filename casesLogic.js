@@ -60,8 +60,9 @@ const CASE_REGISTRY = {
     initialBodyFatPercent: 26.5,
     targetBodyFatPercent: 14.5,
     waistLossCm: 16.0,
-    durationMonths: 4,
-    coreFocus: ["82kg减至68.5kg", "净减27斤", "腰腹顽固脂肪剥离", "胸肌肩峰立体塑形", "马甲线人鱼线重塑"]
+    durationMonths: 5,
+    durationWeeks: 20,
+    coreFocus: ["82kg减至68.5kg", "净减27斤", "20周系统减脂", "腰腹顽固脂肪剥离", "马甲线人鱼线重塑"]
   },
   "case-05": {
     code: "案例五",
@@ -75,8 +76,9 @@ const CASE_REGISTRY = {
     weightLossKg: 12.3,
     initialBodyFatPercent: 11.5,
     targetBodyFatPercent: 5.2,
-    durationMonths: 4,
-    coreFocus: ["瑞兹卡杯健体公开赛132号", "86.5kg刷至74.2kg", "体脂率降至5.2%", "圣诞树竖脊肌与极限干度", "峰值周充碳脱水控钠"]
+    durationMonths: 6,
+    durationWeeks: 24,
+    coreFocus: ["瑞兹卡杯健体公开赛132号", "86.5kg刷至74.2kg", "24周科学备赛", "体脂率降至5.2%", "圣诞树竖脊肌与极限干度", "峰值周充碳脱水控钠"]
   }
 };
 

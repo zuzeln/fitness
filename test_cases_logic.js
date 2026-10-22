@@ -53,7 +53,7 @@ test("学员 D 数据符合 82.0kg 降至 68.5kg 且腰围缩减 16cm 设定", (
   if (c4.targetWeightKg !== 68.5) throw new Error("学员 D 目标体重应为 68.5kg");
   if (c4.weightLossKg !== 13.5) throw new Error("净减重应为 13.5kg (27斤)");
   if (c4.waistLossCm !== 16.0) throw new Error("腰围缩减应为 16.0cm");
-  if (c4.durationMonths !== 4) throw new Error("周期应为 4 个月 (16周)");
+  if (c4.durationMonths !== 5 || c4.durationWeeks !== 20) throw new Error("周期应为 5 个月 (20周)");
 });
 
 test("健体选手 E 数据符合 86.5kg 刷至 74.2kg 且体脂 5.2% 赛级设定", () => {
@@ -62,6 +62,7 @@ test("健体选手 E 数据符合 86.5kg 刷至 74.2kg 且体脂 5.2% 赛级设�
   if (c5.targetWeightKg !== 74.2) throw new Error("健体选手 E 登台体重应为 74.2kg");
   if (c5.targetBodyFatPercent !== 5.2) throw new Error("登台体脂率应为 5.2%");
   if (c5.weightLossKg !== 12.3) throw new Error("净减脂水分应为 12.3kg");
+  if (c5.durationMonths !== 6 || c5.durationWeeks !== 24) throw new Error("周期应为 6 个月 (24周)");
 });
 
 test("切换至合法案例能返回正确数据", () => {

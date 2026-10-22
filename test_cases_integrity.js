@@ -109,6 +109,8 @@ assert(htmlContent.includes('panel-case-04') && htmlContent.includes('panel-case
 assert(htmlContent.includes('学员 D') && htmlContent.includes('健体选手 E'), '包含学员 D 与健体选手 E 执教案例');
 assert(htmlContent.includes('瑞兹卡杯') && htmlContent.includes('132 号'), '案例五包含瑞兹卡杯健体赛官方执教纪实');
 assert(htmlContent.includes('case05_front_comparison.jpg') && htmlContent.includes('case05_back_comparison.jpg'), '案例五包含正面与背面双视角备赛蜕变对比照');
+assert(htmlContent.includes('20 周') && htmlContent.includes('5个月 (20周)'), '案例四减脂周期校准为 20周 (5个月)');
+assert(htmlContent.includes('24 周') && htmlContent.includes('24周系统科学备赛'), '案例五备赛周期校准为 24周 (6个月)');
 assert(!htmlContent.includes('CASE-01') && !htmlContent.includes('CASE-02') && !htmlContent.includes('CASE-03') && !htmlContent.includes('CASE-04') && !htmlContent.includes('CASE-05'), '全量中文规范：已彻底清除 CASE 英文代号');
 assert(!htmlContent.includes('居家'), '文案纯净性：已彻底清除所有“居家”字样');
 assert(!htmlContent.includes('140 斤') && !htmlContent.includes('140斤'), '案例二体重规范：已彻底清除“140 斤/140斤”，统一为 70 公斤/70kg');
