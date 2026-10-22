@@ -46,6 +46,37 @@ const CASE_REGISTRY = {
     targetBmi: 20.4,
     durationMonths: 12,
     coreFocus: ["82.5kg减至59kg", "净减47斤", "关节零冲击", "长周期无伤重塑"]
+  },
+  "case-04": {
+    code: "案例四",
+    type: "male_fatloss_waist",
+    client: "学员 D",
+    gender: "男",
+    age: 32,
+    heightCm: 176,
+    initialWeightKg: 82.0,
+    targetWeightKg: 68.5,
+    weightLossKg: 13.5,
+    initialBodyFatPercent: 26.5,
+    targetBodyFatPercent: 14.5,
+    waistLossCm: 16.0,
+    durationMonths: 4,
+    coreFocus: ["82kg减至68.5kg", "净减27斤", "腰腹顽固脂肪剥离", "胸肌肩峰立体塑形", "马甲线人鱼线重塑"]
+  },
+  "case-05": {
+    code: "案例五",
+    type: "physique_contest_prep",
+    client: "健体选手 E",
+    gender: "男",
+    age: 25,
+    heightCm: 178,
+    initialWeightKg: 86.5,
+    targetWeightKg: 74.2,
+    weightLossKg: 12.3,
+    initialBodyFatPercent: 11.5,
+    targetBodyFatPercent: 5.2,
+    durationMonths: 4,
+    coreFocus: ["瑞兹卡杯健体公开赛132号", "86.5kg刷至74.2kg", "体脂率降至5.2%", "圣诞树竖脊肌与极限干度", "峰值周充碳脱水控钠"]
   }
 };
 

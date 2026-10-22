@@ -29,7 +29,13 @@ const requiredImages = [
   'case02_posture_side.jpg',
   'case02_posture_back.jpg',
   'case02_comparison.jpg',
-  'case03_comparison.jpg'
+  'case03_comparison.jpg',
+  'case04_fatloss_before.jpg',
+  'case04_fatloss_after.jpg',
+  'case05_physique_prep_front.jpg',
+  'case05_physique_prep_back.jpg',
+  'case05_physique_stage_front.jpg',
+  'case05_physique_stage_back.jpg'
 ];
 
 assert(fs.existsSync(casesDir), 'cases 目录必须存在');
@@ -96,8 +102,11 @@ assert(jsValid, 'index.html 中的 JavaScript 语法 100% 正确无报错');
 
 assert(htmlContent.includes('class="cases-section"'), '包含 cases-section 案例主模块');
 assert(htmlContent.includes('case-tab-btn'), '包含案例 Tab 切换按钮');
-assert(htmlContent.includes('案例一') && htmlContent.includes('案例二') && htmlContent.includes('案例三'), '全量中文规范：包含 3 大标准化案例名称');
-assert(!htmlContent.includes('CASE-01') && !htmlContent.includes('CASE-02') && !htmlContent.includes('CASE-03'), '全量中文规范：已彻底清除 CASE-01/02/03 英文代号');
+assert(htmlContent.includes('案例一') && htmlContent.includes('案例二') && htmlContent.includes('案例三') && htmlContent.includes('案例四') && htmlContent.includes('案例五'), '全量中文规范：包含 5 大标准化案例名称');
+assert(htmlContent.includes('panel-case-04') && htmlContent.includes('panel-case-05'), '包含案例四与案例五内容面板');
+assert(htmlContent.includes('学员 D') && htmlContent.includes('健体选手 E'), '包含学员 D 与健体选手 E 执教案例');
+assert(htmlContent.includes('瑞兹卡杯') && htmlContent.includes('132 号'), '案例五包含瑞兹卡杯健体赛官方执教纪实');
+assert(!htmlContent.includes('CASE-01') && !htmlContent.includes('CASE-02') && !htmlContent.includes('CASE-03') && !htmlContent.includes('CASE-04') && !htmlContent.includes('CASE-05'), '全量中文规范：已彻底清除 CASE 英文代号');
 assert(!htmlContent.includes('居家'), '文案纯净性：已彻底清除所有“居家”字样');
 assert(!htmlContent.includes('140 斤') && !htmlContent.includes('140斤'), '案例二体重规范：已彻底清除“140 斤/140斤”，统一为 70 公斤/70kg');
 
