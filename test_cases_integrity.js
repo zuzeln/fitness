@@ -145,6 +145,13 @@ assert(htmlContent.includes('阶段销售业绩超 200 万元，带教超 1700+ 
 assert(htmlContent.includes('阶段销售额超 100 万元，累计带教超 1000+ 课时'), '时间线 pop fit：阶段销售 100 万元与 1000+ 课时');
 assert(htmlContent.includes('阶段销售额超 80 万元，累计带教超 800+ 课时'), '时间线星之健身：阶段销售 80 万元与 800+ 课时');
 
+// 3.2 验证专业能力与核心优势、职业信念与自我评价模块完整性
+assert(htmlContent.includes('专业能力与核心优势'), '包含【专业能力与核心优势】板块');
+assert(htmlContent.includes('职业信念与自我评价'), '包含【职业信念与自我评价】板块');
+assert(htmlContent.includes('坚信优秀的私教服务依靠扎实的专业交付与情绪价值立足，而非推销套路'), '包含自我评价之职业信念核心文案');
+assert(htmlContent.includes('性格沉稳谦逊，懂得分寸与边界，严守客户隐私；注重陪伴与倾听，让训练过程纯粹舒适'), '包含自我评价之服务素养核心文案');
+assert(htmlContent.includes('身体力行保持自律生活方式，形象健康清爽，深度契合中高端健身工作室与私人会所的专业标准'), '包含自我评价之环境契合核心文案');
+
 // 4. 严格规范扫描：深色模式去黑边规范（禁止 #000 / #000000 出现在容器背景）
 const blackBgMatch = htmlContent.match(/background(-color)?:\s*#000(000)?/i);
 assert(!blackBgMatch, '多媒体展示与容器底色严禁使用 #000 / #000000 纯黑底色');
