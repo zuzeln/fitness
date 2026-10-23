@@ -174,6 +174,12 @@ for (const sym of forbiddenSymbols) {
 }
 assert(!foundForbidden, '功能与交互图标一律使用原生 Inline SVG，无违规 Unicode 符号');
 
+// 7. 严格规范扫描：全站照片展台零黑影铁律（严禁 inset 内黑影，严禁照片四周扩散黑影）
+assert(!htmlContent.includes('inset 0 0 20px'), '全站照片零黑影：彻底清除展台四周 inset 内向暗圈');
+assert(htmlContent.includes('--cert-stage-shadow: none;'), '全站照片零黑影：展台阴影变量设为 none');
+assert(!htmlContent.includes('box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);'), '全站照片零黑影：证书图片四周无黑影');
+assert(!htmlContent.includes('box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);'), '全站照片零黑影：弹窗大图四周无黑影');
+
 console.log('\n=== 体检结果汇总 ===');
 if (failedTests === 0) {
   console.log('所有自动化测试项全部通过！[OK]');

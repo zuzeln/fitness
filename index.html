@@ -43,7 +43,7 @@
       --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.6);
       --modal-backdrop-bg: rgba(8, 9, 12, 0.85);
       --toast-bg: #181B22;
-      --cert-stage-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+      --cert-stage-shadow: none;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -72,7 +72,7 @@
         --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.1);
         --modal-backdrop-bg: rgba(248, 249, 250, 0.88);
         --toast-bg: #FFFFFF;
-        --cert-stage-shadow: inset 0 0 20px rgba(0, 0, 0, 0.04);
+        --cert-stage-shadow: none;
       }
     }
 
@@ -325,7 +325,7 @@
       overflow: hidden;
       background: #141720;
       border: 1px solid var(--border-hairline);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      box-shadow: none;
       cursor: grab;
       transform-origin: center 90%;
       will-change: transform, opacity;
@@ -523,7 +523,7 @@
       justify-content: center;
       margin-bottom: 20px;
       border: 1px solid var(--border-hairline);
-      box-shadow: var(--cert-stage-shadow);
+      box-shadow: none;
       padding: 12px;
     }
 
@@ -531,7 +531,7 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+      box-shadow: none;
       border-radius: 4px;
       transition: transform 0.4s var(--ease-out);
     }
@@ -928,7 +928,7 @@
       border-radius: var(--radius-md);
       padding: 16px;
       border: 1px solid var(--border-hairline);
-      box-shadow: var(--cert-stage-shadow);
+      box-shadow: none;
     }
 
     .modal-certificate-img {
@@ -936,7 +936,7 @@
       max-height: 65vh;
       object-fit: contain;
       border-radius: 6px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+      box-shadow: none;
     }
 
     /* 提示条 (Toast Notification) */
@@ -1217,7 +1217,7 @@
       align-items: center;
       justify-content: center;
       border: 1px solid var(--border-hairline);
-      box-shadow: var(--cert-stage-shadow);
+      box-shadow: none;
       cursor: pointer;
       position: relative;
     }
@@ -1274,13 +1274,13 @@
       flex-direction: column;
       cursor: pointer;
       position: relative;
-      transition: transform 0.25s var(--ease-out), border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.25s var(--ease-out), border-color 0.25s ease;
     }
 
     .posture-shot-item:hover {
       transform: translateY(-3px);
       border-color: var(--border-focus);
-      box-shadow: var(--shadow-subtle);
+      box-shadow: none;
     }
 
     .posture-shot-img-wrap {
