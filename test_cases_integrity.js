@@ -185,6 +185,11 @@ assert(htmlContent.includes('--cert-stage-shadow: none;'), '全站照片零黑�
 assert(!htmlContent.includes('box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);'), '全站照片零黑影：证书图片四周无黑影');
 assert(!htmlContent.includes('box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);'), '全站照片零黑影：弹窗大图四周无黑影');
 
+// 8. 严格规范扫描：照片边缘抗锯齿与圆角蒙版平滑守护（杜绝毛刺与底层斜角穿透）
+assert(htmlContent.includes('-webkit-mask-image: -webkit-radial-gradient(white, black);'), '照片抗锯齿：包含 WebKit 矢量平滑蒙版规则');
+assert(htmlContent.includes('border-radius: inherit;'), '照片抗锯齿：图片元素继承圆角');
+assert(htmlContent.includes("rotateDeg: 0, opacity: 0.9, zIndex: 9"), '照片展台平正对齐：底层卡片静态旋转角度清零杜绝露尖毛刺');
+
 console.log('\n=== 体检结果汇总 ===');
 if (failedTests === 0) {
   console.log('所有自动化测试项全部通过！[OK]');
