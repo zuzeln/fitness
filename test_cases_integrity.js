@@ -138,12 +138,17 @@ assert(htmlContent.includes('switchCaseTab'), '包含 switchCaseTab 案例切换
 assert(htmlContent.includes('modalDetailBox'), '包含弹窗诊断细节 modalDetailBox 容器');
 assert(htmlContent.includes('comparison-detail-banner'), '对比照下方包含明确执教诊断成效标注');
 
-// 3.1 验证面向会员的界面纯净性：已彻底移除面向员工的四大销售数据横栏
+// 3.1 验证面向会员的界面纯净性：已彻底移除面向员工考核的四大销售数据横栏与工作经历销售KPI
 assert(!htmlContent.includes('<section class="metrics-bar">') && !htmlContent.includes('class="metric-cell"'), '数据纯净性：已彻底移除顶部四项数据横栏 (metrics-bar)');
 assert(!htmlContent.includes('门店月度销售业绩') && !htmlContent.includes('01 / HOURS'), '数据纯净性：已彻底移除面向员工KPI的顶栏指标');
-assert(htmlContent.includes('阶段销售业绩超 200 万元，带教超 1700+ 课时'), '时间线 7 号铁馆：阶段销售 200 万元与 1700+ 课时');
-assert(htmlContent.includes('阶段销售额超 100 万元，累计带教超 1000+ 课时'), '时间线 pop fit：阶段销售 100 万元与 1000+ 课时');
-assert(htmlContent.includes('阶段销售额超 80 万元，累计带教超 800+ 课时'), '时间线星之健身：阶段销售 80 万元与 800+ 课时');
+assert(!htmlContent.includes('销售业绩') && !htmlContent.includes('销售额') && !htmlContent.includes('月度销售') && !htmlContent.includes('累计销售'), '执教历程纯净性：彻底清除所有销售业绩与销售金额');
+assert(!htmlContent.includes('转化率') && !htmlContent.includes('体验转化') && !htmlContent.includes('营销流程'), '执教历程纯净性：彻底清除体验课转化与营销流程等KPI术语');
+assert(!htmlContent.includes('带教战绩') && !htmlContent.includes('实战业绩'), '执教历程纯净性：彻底清除带教战绩与实战业绩等进攻性词汇');
+assert(htmlContent.includes('专业执教历程与场馆经验'), '包含【专业执教历程与场馆经验】板块');
+assert(htmlContent.includes('累计深度服务会员超 200+ 人') && htmlContent.includes('累计带教超 1700+ 课时'), '时间线 7 号铁馆：200+会员服务与 1700+ 课时沉淀');
+assert(htmlContent.includes('累计带教超 1000+ 课时') && htmlContent.includes('老会员续课率超 70%'), '时间线 pop fit：1000+课时与 70% 续课口碑');
+assert(htmlContent.includes('累计带教超 800+ 课时') && htmlContent.includes('专注新会员身体评估筛查与发力模式纠错'), '时间线星之健身：800+课时与动作筛查');
+assert(htmlContent.includes('近7年一线带教沉淀与高净值会员口碑'), '核心优势：近7年一线带教沉淀与高净值会员口碑');
 
 // 3.2 验证专业能力与核心优势、职业信念与自我评价模块完整性
 assert(htmlContent.includes('专业能力与核心优势'), '包含【专业能力与核心优势】板块');
